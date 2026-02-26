@@ -1,0 +1,122 @@
+/* Сброс стандартных отступов для всех элементов */
+* {
+    margin: 0; /* убирает внешние отступы */
+    padding: 0; /* убирает внутренние отступы */
+    box-sizing: border-box; /* учитывает padding в ширине элемента */
+    font-family: 'Segoe UI', Arial, sans-serif; /* основной шрифт */
+}
+
+/* Стили для всей страницы */
+body {
+    min-height: 100vh; /* высота на весь экран */
+    padding: 20px; /* отступы от краёв страницы */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/food_kitchen.jpg");
+    /* затемнение поверх картинки + фоновая картинка */
+    background-attachment: fixed; /* фон не двигается при прокрутке */
+}
+
+/* Белая карточка с меню */
+.menu-container {
+    max-width: 900px; /* максимальная ширина */
+    margin: 40px auto; /* центрирование по горизонтали */
+    padding: 40px; /* внутренние отступы */
+    background: white; /* белый фон */
+    border-radius: 30px; /* скруглённые углы */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* тень */
+    position: relative; /* для позиционирования полоски */
+    overflow: hidden; /* скрывает выходящее за границы */
+}
+
+    /* Итальянский триколор сверху карточки */
+    .menu-container::before {
+        content: ''; /* обязательное свойство для псевдоэлемента */
+        position: absolute; /* абсолютное позиционирование */
+        top: 0;
+        left: 0;
+        right: 0; /* растянуть по ширине */
+        height: 8px; /* высота полоски */
+        background: linear-gradient(90deg, #008C45 33%, /* зелёный (33% ширины) */
+        #F4F5F0 33%, /* белый (с 33%) */
+        #F4F5F0 66%, /* белый до 66% */
+        #CD212A 66%); /* красный с 66% до конца */
+    }
+
+/* Основной заголовок */
+.menu-title {
+    color: #2c3e50; /* тёмно-синий цвет */
+    text-align: center; /* выравнивание по центру */
+    font-size: 2.8em; /* крупный размер шрифта */
+    margin-bottom: 20px; /* отступ снизу */
+    font-weight: 600; /* жирность шрифта */
+    text-transform: uppercase; /* все буквы заглавные */
+    letter-spacing: 2px; /* расстояние между буквами */
+    position: relative; /* для декоративной полоски */
+}
+
+    /* Декоративная полоска под заголовками */
+    .menu-title::after {
+        content: ''; /* пустой контент */
+        position: absolute; /* позиционирование */
+        bottom: 0; /* прижать к низу */
+        left: 50%; /* центр по горизонтали */
+        transform: translateX(-50%); /* точное центрирование */
+        width: 100px; /* ширина полоски */
+        height: 3px; /* высота полоски */
+        background: linear-gradient(90deg, #008C45, #F4F5F0, #CD212A);
+        /* градиент из цветов итальянского флага */
+    }
+
+/* Отступы для подзаголовков (кроме первого) */
+h2.menu-title:not(:first-of-type) {
+    margin-top: 50px; /* отступ сверху */
+    font-size: 2.2em; /* размер поменьше */
+}
+
+/* Карточка с блюдом */
+.menu-item {
+    background: #f8f9fa; /* светло-серый фон */
+    padding: 25px; /* внутренние отступы */
+    border-radius: 20px; /* скругление */
+    margin: 25px 0; /* отступы между карточками */
+    transition: all 0.3s ease; /* плавная анимация */
+    border-left: 5px solid #008C45; /* зелёная полоска слева */
+}
+
+    /* Эффект при наведении на карточку */
+    .menu-item:hover {
+        transform: translateX(10px); /* сдвиг вправо */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* тень */
+        background: white; /* белый фон */
+    }
+
+    /* Заголовок блюда */
+    .menu-item h3 {
+        color: #CD212A; /* красный цвет */
+        font-size: 1.6em; /* размер */
+        margin-bottom: 15px; /* отступ снизу */
+        font-weight: 600; /* жирность */
+    }
+
+    /* Описание блюда */
+    .menu-item p {
+        color: #34495e; /* тёмно-серый */
+        line-height: 1.8; /* межстрочный интервал */
+        font-size: 1.1em; /* размер */
+        margin: 15px 0; /* отступы */
+    }
+
+/* Разделительные линии */
+hr {
+    border: 0; /* убрать стандартную рамку */
+    height: 2px; /* толщина линии */
+    background: linear-gradient(90deg, transparent, /* прозрачный по краям */
+    #008C45, /* зелёный */
+    #F4F5F0, /* белый */
+    #CD212A, /* красный */
+    transparent); /* прозрачный */
+    margin: 30px 0; /* отступы сверху/снизу */
+    border-radius: 2px; /* скругление */
+}
+    hr:last-of-type {
+        display: none;
+    }
