@@ -1,33 +1,32 @@
-/* основные стили страницы */
 body {
     background-color: #f2f2f2;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* главный блок в контактах*/
 .hero {
-    position: relative;
-    height: 80vh;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/italy.jpg");
-    background-attachment: fixed;
+    background-size: cover;
     background-position: center;
-    background-size: 110% auto;
-    transform: scale(1.4);
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
-/* контейнер карточек */
 .cards {
     display: flex;
     gap: 30px;
 }
 
-/* отдельная карточка */
 .card {
     width: 250px;
     padding: 30px 20px;
@@ -51,7 +50,6 @@ body {
         font-weight: normal;
     }
 
-/* цвета */
 .green {
     background-color: #008C45;
 }
@@ -65,12 +63,10 @@ body {
     background-color: #CD212A;
 }
 
-/* анимация */
 .card:hover {
     transform: translateY(-8px);
 }
 
-/* navbar-custom.css для панели навигации */
 .navbar {
     background-color: #000;
     border: none;
@@ -78,7 +74,6 @@ body {
     padding: 15px 0;
 }
 
-/* Бренд */
 .navbar-brand {
     font-weight: 700;
     font-size: 36px;
@@ -87,19 +82,17 @@ body {
     text-decoration: none;
 }
 
-/* Ссылки навигации */
 .navbar-collapse .navbar-nav {
     float: right;
     display: flex;
     gap: 20px;
     padding: 15px 0;
 }
-    /* элемент списка навигации */
+
     .navbar-collapse .navbar-nav li {
         display: inline-block;
     }
 
-        /* ссылка навигации */
         .navbar-collapse .navbar-nav li a {
             font-family: 'Trebuchet MS', sans-serif;
             font-size: 20px;
@@ -110,7 +103,6 @@ body {
             text-decoration: none;
         }
 
-            /* ссылка при наведении */
             .navbar-collapse .navbar-nav li a:hover {
                 color: #ccc !important;
             }
