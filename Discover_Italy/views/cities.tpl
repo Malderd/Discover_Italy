@@ -4,44 +4,54 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>Итальянские города</title>
     <link rel="stylesheet" href="/static/content/style_cities.css">
 </head>
 <body>
+    <div class="container">
 
-<section class="hero">
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-        <div class="hero-image">
-            <img src="/static/images/flag.jpg" alt="Рим">
+        
+        <div class="city-block">
+            <div class="col col-left">
+                <h2>Рим</h2>
+            </div>
+            <div class="col col-middle">
+                <p>Рим — столица Италии, город с богатейшей историей и архитектурой, известный Колизеем, форумом и Пантеоном.</p>
+                <img src="/static/images/rome.jpg" alt="Рим маленькая" class="small-image">
+            </div>
+            <div class="col col-right">
+                <img src="/static/images/rome_vert.jpg" alt="Рим большая" class="large-image">
+            </div>
         </div>
 
-        <div class="hero-text">
-            <h1>Главное трио Италии</h1>
-            <p>
-                Италия — это страна, которую хочется открывать 
-                для себя снова и снова. Она манит солнечным 
-                теплом, ароматом свежесваренного кофе и звоном 
-                бокалов, но главное её сокровище — города. Среди
-                всего великолепия есть три, с которых 
-                обязательно начинается знакомство с её душой: 
-                могущественный Рим, где античные руины 
-                соседствуют с шумными площадями; изящная 
-                Флоренция, которая сама похожа на музей под 
-                открытым небом; и сказочная Венеция, медленно 
-                плывущая по водной глади. Три города, три 
-                настроения, три совершенно разных впечатления.
-                Предлагаем вам совершить короткое, но яркое 
-                путешествие по этим главным жемчужинам Италии, 
-                чтобы влюбиться в каждую из них раз и навсегда.
-            </p>
+       
+        <div class="city-block">
+            <div class="col col-left">
+                <h2>Венеция</h2>
+            </div>
+            <div class="col col-middle">
+                <p>Венеция известна своими каналами, гондолами и уникальной архитектурой. Здесь проводятся знаменитый Карнавал и выставки искусства.</p>
+                <img src="/static/venice_small.jpg" alt="Венеция маленькая" class="small-image">
+            </div>
+            <div class="col col-right">
+                <img src="/static/venice_large.jpg" alt="Венеция большая" class="large-image">
+            </div>
         </div>
+
+        
+        <div class="city-block">
+            <div class="col col-left">
+                <h2>Флоренция</h2>
+            </div>
+            <div class="col col-middle">
+                <p>Флоренция — родина Ренессанса. Здесь можно увидеть знаменитые музеи, галереи и архитектурные шедевры, такие как Дуомо и Понте Веккьо.</p>
+                <img src="/static/florence_small.jpg" alt="Флоренция маленькая" class="small-image">
+            </div>
+            <div class="col col-right">
+                <img src="/static/florence_large.jpg" alt="Флоренция большая" class="large-image">
+            </div>
+        </div>
+
     </div>
-</section>
-
-<section class="next-section">
-    <h2>Популярные города</h2>
-</section>
-
 </body>
 </html>

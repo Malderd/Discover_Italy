@@ -1,78 +1,81 @@
-/* основные стили страницы */
 body {
-    overflow-x: hidden;
-    font-family: 'Verdana', 'Arial', sans-serif;
-}
-
-/* главный баннер */
-.hero {
-    position: relative;
-    height: 80vh;
-    width: 100%;
+    font-family: Arial, sans-serif; 
+    font-size: 16px; 
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/italy_main.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 110% auto;
+    background-size: cover; 
+    background-position: center; 
     background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 50px 0 50px;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* контейнер для контента */
-.hero-content {
-    display: flex;
-    align-items: stretch;
-    gap: 40px;
-    max-width: 1400px;
-    width: 100%;
+.city-block:first-child {
+    margin-top: 150px;
 }
 
-/* блок с картинкой */
-.hero-image {
-    width: 400px;
-    flex-shrink: 0;
+.city-block {
     display: flex;
-}
-
-    /* сама картинка */
-    .hero-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-        display: block;
-    }
-
-/* белый блок с текстом */
-.hero-text {
-    background: white;
-    padding: 25px 30px;
+    gap: 20px;
+    margin: 40px 0; 
+    padding: 20px;
+    background-color: #fff;
     border-radius: 10px;
-    max-width: 800px;
-    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative; 
+}
+
+.col {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
 }
 
-    /* заголовок в белом блоке */
-    .hero-text h1 {
-        font-size: 25px;
-        font-weight: 700;
-        margin: 0 0 8px 0;
-        color: #111;
-        text-align: center;
+.col-left {
+    flex: 1;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .col-left h2 {
+        margin: 0;
     }
 
-    /* текст в белом блоке */
-    .hero-text p {
-        font-size: 14px;
-        line-height: 1.5;
-        color: #333;
-        margin: 0;
-        text-align: left;
+.col-middle {
+    flex: 2;
+    font-family: 'Verdana', sans-serif; 
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 0 20px;
+    color: #000;
+}
+
+    .col-middle p {
+        margin-bottom: 10px;
     }
+
+
+.col-right {
+    flex: 1.5;
+    padding: 0 20px;
+}
+
+
+.small-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.large-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
