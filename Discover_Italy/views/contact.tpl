@@ -1,16 +1,36 @@
-% rebase('layout.tpl', title=title, year=year)
+% rebase('layout.tpl', title=title)
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/content/style.css"
+</head>
+<body>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<section class="hero">
+    <div class="overlay"></div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="cards">
+        <div class="card green">
+            <h3>ПОЗВОНИТЕ НАМ</h3>
+            <p>+39 234 567 891</p>
+            <p>+39 987 654 321</p>
+        </div>
+
+        <div class="card white">
+            <h3>МЕСТОПОЛОЖЕНИЕ</h3>
+            <p>Via Roma 21</p>
+            <p>Рим, Италия</p>
+        </div>
+
+        <div class="card red">
+            <h3>ЧАСЫ РАБОТЫ</h3>
+            <p>Пн – Пт: 10:00 – 20:00</p>
+            <p>Сб – Вс: 09:00 – 21:00</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
