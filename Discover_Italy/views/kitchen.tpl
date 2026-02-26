@@ -1,5 +1,14 @@
 % rebase('layout.tpl', title=title, year=year)
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/content/style.css"
+</head>
+<body>
+
+<h2>{{ title }}.</h2>
 <h2>{{ title }}</h2>
 <h3>{{ message }}</h3>
 
