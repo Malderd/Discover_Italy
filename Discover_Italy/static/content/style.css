@@ -2,20 +2,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
     background-color: #f2f2f2;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* главный блок */
 .hero {
-    min-height: 400px;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/italy.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-size: 150% auto;
+    transform: scale(1.5);
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0;
 }
 
 /* контейнер карточек */
@@ -24,7 +32,6 @@ body {
     gap: 30px;
 }
 
-/* карточка */
 .card {
     width: 250px;
     padding: 30px 20px;
@@ -39,6 +46,7 @@ body {
     .card h3 {
         margin-bottom: 15px;
         font-size: 18px;
+        font-family: 'Playfair Display', serif;
     }
 
     .card p {
@@ -47,7 +55,7 @@ body {
         font-weight: normal;
     }
 
-/* цвета Италии */
+/* цвета */
 .green {
     background-color: #008C45;
 }

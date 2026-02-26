@@ -20,7 +20,7 @@
     <RootNamespace>Discover_Italy</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
-    <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,6 +65,11 @@
     <Content Include="static\images\pesto.jpg" />
     <Content Include="static\images\tiramisu.jpg" />
     <Content Include="static\images\kassata.jpg" />
+    <Content Include="static\images\florence.jpg" />
+    <Content Include="static\images\italy.jpg" />
+    <Content Include="static\images\rome.jpg" />
+    <Content Include="static\images\venice.jpg" />
+    <Content Include="static\images\Без названия %283%29.jpg" />
     <Content Include="static\scripts\bootstrap.js" />
     <Content Include="static\scripts\bootstrap.min.js" />
     <Content Include="static\scripts\jquery-1.10.2.intellisense.js" />
