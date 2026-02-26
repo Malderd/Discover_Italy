@@ -58,8 +58,8 @@
     <Content Include="static\images\food_kitchen.jpg" />
     <Content Include="static\images\boloneze.jpg" />
     <Content Include="static\images\Gelato.jpg" />
-    <Content Include="static\images\Panna Cotta 💋.jpg" />
-    <Content Include="static\images\Pizza napolitaine maison.jpg" />
+    <Content Include="static\images\panna_cotta.jpg" />
+    <Content Include="static\images\Pizza_napolitaine_maison.jpg" />
     <Content Include="static\images\peperoni.jpg" />
     <Content Include="static\images\karbonara.jpg" />
     <Content Include="static\images\pesto.jpg" />

@@ -1,122 +1,142 @@
 /* Сброс стандартных отступов для всех элементов */
 * {
-    margin: 0; /* убирает внешние отступы */
-    padding: 0; /* убирает внутренние отступы */
-    box-sizing: border-box; /* учитывает padding в ширине элемента */
-    font-family: 'Segoe UI', Arial, sans-serif; /* основной шрифт */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 /* Стили для всей страницы */
 body {
-    min-height: 100vh; /* высота на весь экран */
-    padding: 20px; /* отступы от краёв страницы */
+    min-height: 100vh;
+    padding: 20px;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/food_kitchen.jpg");
-    /* затемнение поверх картинки + фоновая картинка */
-    background-attachment: fixed; /* фон не двигается при прокрутке */
+    background-attachment: fixed;
 }
 
 /* Белая карточка с меню */
 .menu-container {
-    max-width: 900px; /* максимальная ширина */
-    margin: 40px auto; /* центрирование по горизонтали */
-    padding: 40px; /* внутренние отступы */
-    background: white; /* белый фон */
-    border-radius: 30px; /* скруглённые углы */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* тень */
-    position: relative; /* для позиционирования полоски */
-    overflow: hidden; /* скрывает выходящее за границы */
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
 }
 
     /* Итальянский триколор сверху карточки */
     .menu-container::before {
-        content: ''; /* обязательное свойство для псевдоэлемента */
-        position: absolute; /* абсолютное позиционирование */
+        content: '';
+        position: absolute;
         top: 0;
         left: 0;
-        right: 0; /* растянуть по ширине */
-        height: 8px; /* высота полоски */
-        background: linear-gradient(90deg, #008C45 33%, /* зелёный (33% ширины) */
-        #F4F5F0 33%, /* белый (с 33%) */
-        #F4F5F0 66%, /* белый до 66% */
-        #CD212A 66%); /* красный с 66% до конца */
+        right: 0;
+        height: 8px;
+        background: linear-gradient(90deg, #008C45 33%, #F4F5F0 33%, #F4F5F0 66%, #CD212A 66%);
     }
 
-/* Основной заголовок */
+/* Основной заголовок - УБИРАЕМ ПОЛОСКУ */
 .menu-title {
-    color: #2c3e50; /* тёмно-синий цвет */
-    text-align: center; /* выравнивание по центру */
-    font-size: 2.8em; /* крупный размер шрифта */
-    margin-bottom: 20px; /* отступ снизу */
-    font-weight: 600; /* жирность шрифта */
-    text-transform: uppercase; /* все буквы заглавные */
-    letter-spacing: 2px; /* расстояние между буквами */
-    position: relative; /* для декоративной полоски */
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
 }
 
-    /* Декоративная полоска под заголовками */
+    /* ПОЛНОСТЬЮ УДАЛЯЕМ ДЕКОРАТИВНУЮ ПОЛОСКУ ПОД ЗАГОЛОВКАМИ */
     .menu-title::after {
-        content: ''; /* пустой контент */
-        position: absolute; /* позиционирование */
-        bottom: 0; /* прижать к низу */
-        left: 50%; /* центр по горизонтали */
-        transform: translateX(-50%); /* точное центрирование */
-        width: 100px; /* ширина полоски */
-        height: 3px; /* высота полоски */
-        background: linear-gradient(90deg, #008C45, #F4F5F0, #CD212A);
-        /* градиент из цветов итальянского флага */
+        display: none;
     }
 
 /* Отступы для подзаголовков (кроме первого) */
 h2.menu-title:not(:first-of-type) {
-    margin-top: 50px; /* отступ сверху */
-    font-size: 2.2em; /* размер поменьше */
+    margin-top: 50px;
+    font-size: 2.2em;
 }
 
 /* Карточка с блюдом */
 .menu-item {
-    background: #f8f9fa; /* светло-серый фон */
-    padding: 25px; /* внутренние отступы */
-    border-radius: 20px; /* скругление */
-    margin: 25px 0; /* отступы между карточками */
-    transition: all 0.3s ease; /* плавная анимация */
-    border-left: 5px solid #008C45; /* зелёная полоска слева */
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 25px 0;
+    transition: all 0.3s ease;
+    border-left: 5px solid #008C45;
 }
 
-    /* Эффект при наведении на карточку */
     .menu-item:hover {
-        transform: translateX(10px); /* сдвиг вправо */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* тень */
-        background: white; /* белый фон */
+        transform: translateX(10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        background: white;
     }
 
-    /* Заголовок блюда */
     .menu-item h3 {
-        color: #CD212A; /* красный цвет */
-        font-size: 1.6em; /* размер */
-        margin-bottom: 15px; /* отступ снизу */
-        font-weight: 600; /* жирность */
+        color: #CD212A;
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        font-weight: 600;
     }
 
-    /* Описание блюда */
     .menu-item p {
-        color: #34495e; /* тёмно-серый */
-        line-height: 1.8; /* межстрочный интервал */
-        font-size: 1.1em; /* размер */
-        margin: 15px 0; /* отступы */
+        color: black;
+        line-height: 1.8;
+        font-size: 1.1em;
+        margin: 15px 0;
     }
 
-/* Разделительные линии */
+/* Разделительные линии МЕЖДУ КАРТОЧКАМИ - ОСТАВЛЯЕМ */
 hr {
-    border: 0; /* убрать стандартную рамку */
-    height: 2px; /* толщина линии */
-    background: linear-gradient(90deg, transparent, /* прозрачный по краям */
-    #008C45, /* зелёный */
-    #F4F5F0, /* белый */
-    #CD212A, /* красный */
-    transparent); /* прозрачный */
-    margin: 30px 0; /* отступы сверху/снизу */
-    border-radius: 2px; /* скругление */
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #008C45, #F4F5F0, #CD212A, transparent);
+    margin: 30px 0;
+    border-radius: 2px;
 }
-    hr:last-of-type {
-        display: none;
+
+/* Стили для карточки с изображением */
+.menu-item-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-item-text {
+    flex: 1;
+}
+
+.menu-item-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+    .menu-item-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
+
+/* Для мобильных устройств */
+@media (max-width: 600px) {
+    .menu-item-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-item-image {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+}
+hr:last-of-type {
+    display: none;
+}
