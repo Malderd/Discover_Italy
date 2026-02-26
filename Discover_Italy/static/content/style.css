@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+/* главный блок */
+.hero {
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+/* контейнер карточек */
+.cards {
+    display: flex;
+    gap: 30px;
+}
+
+/* карточка */
+.card {
+    width: 250px;
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+    .card h3 {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+        margin: 5px 0;
+        font-weight: normal;
+    }
+
+/* цвета Италии */
+.green {
+    background-color: #008C45;
+}
+
+.white {
+    background-color: #ffffff;
+    color: #222;
+}
+
+.red {
+    background-color: #CD212A;
+}
+
+/* hover */
+.card:hover {
+    transform: translateY(-8px);
+}
