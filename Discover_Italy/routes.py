@@ -24,12 +24,22 @@ def contact():
         year=datetime.now().year
     )
 
-@route('/about')
-@view('about')
+@route('/kitchen')
+@view('kitchen')
 def about():
-    """Renders the about page."""
+    """Renders the kitchen page."""
     return dict(
-        title='About',
-        message='Your application description page.',
+        title='Кухня',
+        message='Страница кухни',
+        year=datetime.now().year
+    )
+
+@route('/cities')
+@view('cities')
+def home():
+    """Renders the cities page."""
+    return dict(
+        title='Города',
+        message='Города Италии',
         year=datetime.now().year
     )
