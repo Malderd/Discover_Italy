@@ -18,6 +18,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>Discover_Italy</Name>
     <RootNamespace>Discover_Italy</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
