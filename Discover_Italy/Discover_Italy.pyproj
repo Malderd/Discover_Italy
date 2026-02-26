@@ -19,7 +19,7 @@
     <Name>Discover_Italy</Name>
     <RootNamespace>Discover_Italy</RootNamespace>
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
-    <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +51,10 @@
     <Content Include="static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="static\images\florence.jpg" />
+    <Content Include="static\images\italy.jpg" />
+    <Content Include="static\images\rome.jpg" />
+    <Content Include="static\images\venice.jpg" />
     <Content Include="static\images\Без названия %283%29.jpg" />
     <Content Include="static\scripts\bootstrap.js" />
     <Content Include="static\scripts\bootstrap.min.js" />
