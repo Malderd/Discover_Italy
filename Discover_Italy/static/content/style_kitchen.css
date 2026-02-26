@@ -1,0 +1,141 @@
+/* Сброс стандартных отступов для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Стили для всей страницы */
+body {
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/food_kitchen.jpg");
+    background-attachment: fixed;
+}
+
+/* Белая карточка с меню */
+.menu-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background: #FFEBCD;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+    /* Итальянский триколор сверху карточки */
+    .menu-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: linear-gradient(90deg, #008C45 33%, #F4F5F0 33%, #F4F5F0 66%, #CD212A 66%);
+    }
+
+/* Основной заголовок - УБИРАЕМ ПОЛОСКУ */
+.menu-title {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+    .menu-title::after {
+        display: none;
+    }
+
+/* Отступы для подзаголовков (кроме первого) */
+h2.menu-title:not(:first-of-type) {
+    margin-top: 50px;
+    font-size: 2.2em;
+}
+
+/* Карточка с блюдом */
+.menu-item {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 25px 0;
+    transition: all 0.3s ease;
+    border-left: 5px solid #008C45;
+}
+
+    .menu-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        background: white;
+    }
+
+    .menu-item h3 {
+        color: #CD212A;
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .menu-item p {
+        color: black;
+        line-height: 1.8;
+        font-size: 1.1em;
+        margin: 15px 0;
+    }
+
+/* Разделительные линии МЕЖДУ КАРТОЧКАМИ - ОСТАВЛЯЕМ */
+hr {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #008C45, #F4F5F0, #CD212A, transparent);
+    margin: 30px 0;
+    border-radius: 2px;
+}
+
+/* Стили для карточки с изображением */
+.menu-item-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-item-text {
+    flex: 1;
+}
+
+.menu-item-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+    .menu-item-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+/* Для мобильных устройств */
+@media (max-width: 600px) {
+    .menu-item-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-item-image {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+}
+hr:last-of-type {
+    display: none;
+}
