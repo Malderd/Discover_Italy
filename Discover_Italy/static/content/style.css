@@ -1,25 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* основные стили страницы */
 body {
     background-color: #f2f2f2;
+    overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
 }
 
 /* главный блок в контактах*/
 .hero {
     position: relative;
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/italy.jpg");
     background-attachment: fixed;
-    background-size: cover;
     background-position: center;
-    background-size: 150% auto;
-    transform: scale(1.5);
+    background-size: 110% auto;
+    transform: scale(1.4);
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
@@ -32,6 +27,7 @@ body {
     gap: 30px;
 }
 
+/* отдельная карточка */
 .card {
     width: 250px;
     padding: 30px 20px;
@@ -69,59 +65,9 @@ body {
     background-color: #CD212A;
 }
 
-/* hover */
+/* анимация */
 .card:hover {
     transform: translateY(-8px);
-}
-
-.menu-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-}
-
-.menu-title {
-    color: #c43e2c;
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 5px;
-}
-
-.image-credit {
-    text-align: center;
-    font-size: 0.8em;
-    color: #666;
-    margin-top: 0;
-    margin-bottom: 30px;
-}
-
-.menu-item {
-    margin: 20px 0;
-}
-
-    .menu-item h3 {
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    .menu-item p {
-        color: #666;
-        line-height: 1.5;
-        margin: 10px 0;
-    }
-
-.price {
-    font-size: 1.2em;
-    color: #c43e2c;
-    margin-top: 10px;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #ccc, transparent);
-    margin: 30px 0;
 }
 
 /* navbar-custom.css для панели навигации */
@@ -148,11 +94,12 @@ hr {
     gap: 20px;
     padding: 15px 0;
 }
-
+    /* элемент списка навигации */
     .navbar-collapse .navbar-nav li {
         display: inline-block;
     }
 
+        /* ссылка навигации */
         .navbar-collapse .navbar-nav li a {
             font-family: 'Trebuchet MS', sans-serif;
             font-size: 20px;
@@ -163,6 +110,7 @@ hr {
             text-decoration: none;
         }
 
+            /* ссылка при наведении */
             .navbar-collapse .navbar-nav li a:hover {
                 color: #ccc !important;
             }

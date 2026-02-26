@@ -48,12 +48,15 @@
     <Content Include="static\content\bootstrap.min.css" />
     <Content Include="static\content\site.css" />
     <Content Include="static\content\style.css" />
+    <Content Include="static\content\style_cities.css" />
     <Content Include="static\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="static\images\flag.jpg" />
     <Content Include="static\images\florence.jpg" />
     <Content Include="static\images\italy.jpg" />
+    <Content Include="static\images\italy_main.jpg" />
     <Content Include="static\images\rome.jpg" />
     <Content Include="static\images\venice.jpg" />
     <Content Include="static\images\Без названия %283%29.jpg" />

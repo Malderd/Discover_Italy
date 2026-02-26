@@ -1,16 +1,37 @@
-% rebase('layout.tpl', title=title, year=year)
+% rebase('layout.tpl', title=title)
 
-<h2>{{ title }}</h2>
-<h3>{{ message }}</h3>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Города Италии</title>
+    <link rel="stylesheet" href="/static/content/style_cities.css">
+</head>
+<body>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<section class="hero">
+    <div class="hero-overlay"></div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="hero-content">
+        <div class="hero-image">
+            <img src="/static/images/flag.jpg" alt="Рим">
+        </div>
+
+        <div class="hero-text">
+            <h1>Рим • Флоренция • Венеция</h1>
+            <p>
+                Рим — величие Колизея, Ватикан и улочки Трастевере.  
+                Флоренция — искусство Возрождения, собор Санта-Мария-дель-Фьоре и мост Понте-Веккьо.  
+                Венеция — каналы, гондолы и площадь Сан-Марко.  
+                Три города, три истории, три незабываемых впечатления.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="next-section">
+    <h2>Популярные города</h2>
+</section>
+
+</body>
+</html>
