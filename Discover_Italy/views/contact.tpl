@@ -10,8 +10,6 @@
 <body>
 
 <section class="hero">
-    <div class="overlay"></div>
-
     <div class="cards">
         <div class="card green">
             <h3>ПОЗВОНИТЕ НАМ</h3>
@@ -32,6 +30,3 @@
         </div>
     </div>
 </section>
-
-</body>
-</html>
