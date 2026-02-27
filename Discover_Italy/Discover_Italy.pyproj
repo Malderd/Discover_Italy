@@ -56,9 +56,10 @@
     <Content Include="static\images\flag.jpg" />
     <Content Include="static\images\florence.jpg" />
     <Content Include="static\images\italy.jpg" />
-    <Content Include="static\images\italy_main.jpg" />
+    <Content Include="static\images\italy_main.jpeg" />
+    <Content Include="static\images\milan.jpg" />
+    <Content Include="static\images\neapol.jpg" />
     <Content Include="static\images\rome.jpg" />
-    <Content Include="static\images\rome_vert.jpg" />
     <Content Include="static\images\venice.jpg" />
     <Content Include="static\images\Без названия %283%29.jpg" />
     <Content Include="static\scripts\bootstrap.js" />
