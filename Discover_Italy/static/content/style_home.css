@@ -238,3 +238,28 @@ body {
     color: #ce2b37;
     font-weight: 600;
 }
+
+/* Три кнопки навигации */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.nav-btn {
+    flex: 1;
+    min-width: 180px;
+    padding: 12px 20px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+    .nav-btn:hover {
+        transform: translateY(-3px);
+    }
