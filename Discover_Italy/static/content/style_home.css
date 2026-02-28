@@ -8,6 +8,8 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/main_background2.jpg");
     background-attachment: fixed;
+    background-color: #2c3e50;
+    min-height: 100vh;
 }
 
 /* Главная секция */
@@ -57,3 +59,98 @@ body {
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
+
+/* Разделительная линия в цвет флага Италии */
+.italy-flag {
+    width: 960px;
+    height: 4px;
+    background: linear-gradient(90deg, #008C45, #F4F5F0, #CD212A);
+    margin: 30px auto;
+    border-radius: 2px;
+}
+
+/* Секция с карточками */
+.features-section {
+    max-width: 1000px;
+    margin: 70px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2em;
+    color: white;
+    margin-bottom: 40px;
+}
+
+/* Три карточки */
+.features-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+.card-green {
+    background-color: #008C45;
+    color: white;
+}
+
+.card-white {
+    background-color: white;
+    color: #333;
+}
+
+.card-red {
+    background-color: #CD212A;
+    color: white;
+}
+
+.feature-icon {
+    font-size: 4em;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    list-style: none;
+    text-align: left;
+    padding: 0 10px;
+}
+
+    .feature-list li {
+        margin: 8px 0;
+        padding: 3px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        font-size: 0.9em;
+    }
+
+.card-white .feature-list li {
+    border-bottom-color: #ddd;
+}
