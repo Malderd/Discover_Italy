@@ -9,7 +9,10 @@
 </head>
 <body>
 
+<!-- Верхний блок страницы -->
 <section class="hero">
+
+    <!-- Контейнер для карточек с информацией -->
     <div class="cards">
         <div class="card green">
             <h3>ПОЗВОНИТЕ НАМ</h3>
