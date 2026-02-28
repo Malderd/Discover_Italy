@@ -55,3 +55,47 @@
 </div>
 
 <div class="italy-flag"></div>
+
+<!-- Популярные направления -->
+<div class="destinations-section">
+    <h2 class="section-title">Популярные направления</h2>
+    <div class="destinations-grid">
+        <!-- Рим -->
+        <a href="/cities#rome" class="destination-card-link">
+            <div class="destination-card">
+                <img src="/static/images/rome.jpg" alt="Рим" class="destination-img">
+                <div class="destination-overlay">
+                    <h3>Рим</h3>
+                    <p>Вечный город</p>
+                    <span class="destination-tag">Колизей, Ватикан</span>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Флоренция -->
+        <a href="/cities#florence" class="destination-card-link">
+            <div class="destination-card">
+                <img src="/static/images/florence.jpg" alt="Флоренция" class="destination-img">
+                <div class="destination-overlay">
+                    <h3>Флоренция</h3>
+                    <p>Колыбель Ренессанса</p>
+                    <span class="destination-tag">Уффици, Дуомо</span>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Венеция -->
+        <a href="/cities#venice" class="destination-card-link">
+            <div class="destination-card">
+                <img src="/static/images/venice.jpg" alt="Венеция" class="destination-img">
+                <div class="destination-overlay">
+                    <h3>Венеция</h3>
+                    <p>Город на воде</p>
+                    <span class="destination-tag">Каналы, Гранд-канал</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="italy-flag"></div>
