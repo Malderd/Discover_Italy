@@ -1,32 +1,27 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     background-color: #f2f2f2;
+    overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* главный блок */
 .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/italy.jpg");
-    background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-size: 150% auto;
-    transform: scale(1.5);
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
-/* контейнер карточек */
 .cards {
     display: flex;
     gap: 30px;
@@ -55,7 +50,6 @@ body {
         font-weight: normal;
     }
 
-/* цвета */
 .green {
     background-color: #008C45;
 }
@@ -69,7 +63,46 @@ body {
     background-color: #CD212A;
 }
 
-/* hover */
 .card:hover {
     transform: translateY(-8px);
 }
+
+.navbar {
+    background-color: #000;
+    border: none;
+    font-family: 'Trebuchet MS', sans-serif;
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 36px;
+    color: #fff !important;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.navbar-collapse .navbar-nav {
+    float: right;
+    display: flex;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+    .navbar-collapse .navbar-nav li {
+        display: inline-block;
+    }
+
+        .navbar-collapse .navbar-nav li a {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff !important;
+            padding: 12px 25px;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+            .navbar-collapse .navbar-nav li a:hover {
+                color: #ccc !important;
+            }

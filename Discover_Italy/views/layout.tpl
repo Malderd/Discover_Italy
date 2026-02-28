@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <link rel="stylesheet" href="/static/content/style_home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/content/style.css" />
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Италия</a>
+                <a href="/" class="navbar-brand">Discover Italy</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
