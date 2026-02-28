@@ -20,7 +20,7 @@
         <div class="feature-card card-green">
             <div class="feature-icon">🌳</div>
             <h3>Природа</h3>
-            <p>Живописные холмы Тосканы, побережье Амальфи, величественные Доломитовые Альпы и вулканические ландшафты Сицилии.</p>
+            <p>Живописные холмы Тосканы, озеро Комо, Доломитовые Альпы и вулканические ландшафты Сицилии.</p>
             <ul class="feature-list">
                 <li>🏞️ Озеро Комо</li>
                 <li>🏖️ Чинкве-Терре</li>
@@ -48,7 +48,7 @@
             <ul class="feature-list">
                 <li>🍕 Пицца Маргарита</li>
                 <li>🍷 Кьянти</li>
-                <li>🍦 Тирамису</li>
+                <li>🍰 Тирамису</li>
             </ul>
         </div>
     </div>
@@ -87,7 +87,7 @@
         <!-- Венеция -->
         <a href="/cities#venice" class="destination-card-link">
             <div class="destination-card">
-                <img src="/static/images/venice.jpg" alt="Венеция" class="destination-img">
+                <img src="/static/images/venecia.jpg" alt="Венеция" class="destination-img">
                 <div class="destination-overlay">
                     <h3>Венеция</h3>
                     <p>Город на воде</p>
@@ -115,11 +115,4 @@
     <a href="/cities" class="nav-btn" style="background-color: #008C45;">Города Италии</a>
     <a href="/kitchen" class="nav-btn" style="background-color: #F4F5F0; color: #333;">Итальянская кухня</a>
     <a href="/contacts" class="nav-btn" style="background-color: #CD212A;">Контакты</a>
-</div>
-
-
-<div style="text-align: center; margin: 30px 0 20px;">
-    <p style="font-size: 1.3em; color: white; font-weight: 300;">
-        Откройте для себя Италию!
-    </p>
 </div>
