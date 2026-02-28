@@ -99,3 +99,13 @@
 </div>
 
 <div class="italy-flag"></div>
+
+<!-- Цитата -->
+<div class="quote-section">
+    <div class="quote-container">
+        <p class="quote-text">"Италия — это страна, где даже лимоны поют. Место, где искусство дышит в каждом камне."</p>
+        <p class="quote-author">— Итальянская поговорка</p>
+    </div>
+</div>
+
+<div class="italy-flag"></div>
