@@ -29,9 +29,8 @@
 
         <!-- Контейнер городов -->
         <div class="container">
-
             <!-- Рим -->
-            <div class="city-block">
+            <div id="rome" class="city-block">
                 <div class="col col-left">
                     <img src="/static/images/rome-vert.jpg" alt="Рим">
                 </div>
@@ -43,7 +42,7 @@
             </div>
 
             <!-- Венеция -->
-            <div class="city-block">
+            <div id="venice" class="city-block">
                 <div class="col col-left">
                     <img src="/static/images/venecia-vert.jpg" alt="Венеция">
                 </div>
@@ -55,7 +54,7 @@
             </div>
 
             <!-- Флоренция -->
-            <div class="city-block">
+            <div id="florence" class="city-block">
                 <div class="col col-left">
                     <img src="/static/images/florencia-vert.jpg" alt="Флоренция">
                 </div>

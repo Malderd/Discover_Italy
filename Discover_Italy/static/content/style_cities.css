@@ -50,6 +50,7 @@ body {
     width: 100%;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     align-items: stretch;
+    scroll-margin-top: 100px;
     overflow: hidden;
 }
 
