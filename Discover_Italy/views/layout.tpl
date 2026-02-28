@@ -35,7 +35,6 @@
 
     <div class="container body-content">
         {{!base}}
-        <hr />
     </div>
 
     <script src="/static/scripts/jquery-1.10.2.js"></script>

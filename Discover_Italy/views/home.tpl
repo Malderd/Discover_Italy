@@ -117,4 +117,9 @@
     <a href="/contacts" class="nav-btn" style="background-color: #CD212A;">Контакты</a>
 </div>
 
-<div class="italy-flag"></div>
+
+<div style="text-align: center; margin: 30px 0 20px;">
+    <p style="font-size: 1.3em; color: white; font-weight: 300;">
+        Откройте для себя Италию!
+    </p>
+</div>
