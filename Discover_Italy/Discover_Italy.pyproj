@@ -20,7 +20,7 @@
     <RootNamespace>Discover_Italy</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
-    <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +48,7 @@
     <Content Include="static\content\bootstrap.min.css" />
     <Content Include="static\content\site.css" />
     <Content Include="static\content\style.css" />
+    <Content Include="static\content\style_home.css" />
     <Content Include="static\content\style_kitchen.css">
       <SubType>Code</SubType>
     </Content>
@@ -58,6 +59,9 @@
     <Content Include="static\images\food_kitchen.jpg" />
     <Content Include="static\images\boloneze.jpg" />
     <Content Include="static\images\Gelato.jpg" />
+    <Content Include="static\images\main_background.jpg" />
+    <Content Include="static\images\main_background1.jpg" />
+    <Content Include="static\images\main_background2.jpg" />
     <Content Include="static\images\panna_cotta.jpg" />
     <Content Include="static\images\Pizza_napolitaine_maison.jpg" />
     <Content Include="static\images\peperoni.jpg" />
@@ -90,7 +94,7 @@
     </Content>
     <Content Include="views\kitchen.tpl" />
     <Content Include="views\cities.tpl" />
-    <Content Include="views\index.tpl" />
+    <Content Include="views\home.tpl" />
     <Content Include="views\layout.tpl" />
   </ItemGroup>
   <ItemGroup>
