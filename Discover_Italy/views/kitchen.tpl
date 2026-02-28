@@ -141,7 +141,7 @@
     </div>
     
     <!-- Подвал -->
-    <p style="text-align: center; color: black; margin-top: 40px;">
+    <p style="text-align: center; color: black; margin-top: 40px; font-size: 1.4em;">
         Buon appetito!
     </p>
     
