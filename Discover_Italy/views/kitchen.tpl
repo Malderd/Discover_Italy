@@ -1,5 +1,5 @@
 <!-- Подключение базового шаблона с заголовком и годом -->
-% rebase('layout.tpl', title=title, year=year)
+% rebase('layout.tpl', title=title)
 
 <!DOCTYPE html>
 <html lang="ru">
