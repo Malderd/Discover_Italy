@@ -64,8 +64,6 @@
     <Content Include="static\images\boloneze.jpg" />
     <Content Include="static\images\Gelato.jpg" />
     <Content Include="static\images\main_background.jpg" />
-    <Content Include="static\images\main_background1.jpg" />
-    <Content Include="static\images\main_background2.jpg" />
     <Content Include="static\images\milan-vert.jpg" />
     <Content Include="static\images\milan.jpg" />
     <Content Include="static\images\neapol-vert.jpg" />
@@ -84,7 +82,6 @@
     <Content Include="static\images\rome.jpg" />
     <Content Include="static\images\venecia-vert.jpg" />
     <Content Include="static\images\venecia.jpg" />
-    <Content Include="static\images\Без названия %283%29.jpg" />
     <Content Include="static\scripts\bootstrap.js" />
     <Content Include="static\scripts\bootstrap.min.js" />
     <Content Include="static\scripts\jquery-1.10.2.intellisense.js" />
