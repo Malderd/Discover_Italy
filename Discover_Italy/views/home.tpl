@@ -1,4 +1,4 @@
-% rebase('layout.tpl', title='Discover Italy', year=year)
+% rebase('layout.tpl', title='Discover Italy')
 
 <!-- Главная секция -->
 <div class="main-section">
