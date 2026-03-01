@@ -6,6 +6,7 @@
     <title>{{ title }} - My Bottle Application</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" href="/static/content/style_home.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/content/style.css" />
@@ -34,7 +35,6 @@
 
     <div class="container body-content">
         {{!base}}
-        <hr />
     </div>
 
     <script src="/static/scripts/jquery-1.10.2.js"></script>
