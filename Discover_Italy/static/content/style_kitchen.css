@@ -14,6 +14,13 @@ body {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/food_kitchen.jpg");
     background-attachment: fixed;
 }
+.main-title {
+    text-align: center;
+    color: #8B4513; /* тёмно-коричневый */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
 
 /* Белая карточка с меню */
 .menu-container {
@@ -40,14 +47,15 @@ body {
 
 /* Основной заголовок */
 .menu-title {
-    color: #2c3e50;
+    color: black;
     text-align: center;
-    font-size: 2.8em;
+    font-size: 1.8em;
     margin-bottom: 20px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
+    font-family: 'Trebuchet MS';
 }
 
     .menu-title::after {
@@ -90,7 +98,7 @@ h2.menu-title:not(:first-of-type) {
         margin: 15px 0;
     }
 
-/* Разделительные линии МЕЖДУ КАРТОЧКАМИ - ОСТАВЛЯЕМ */
+/* Разделительные линии МЕЖДУ КАРТОЧКАМИ  */
 hr {
     border: 0;
     height: 2px;
@@ -125,5 +133,29 @@ hr {
     }
 
 hr:last-of-type {
+    display: none;
+}
+
+/* Отступы между карточками разделов */
+.menu-container {
+    margin-bottom: 30px; /* Добавляем отступ между бежевыми блоками */
+}
+
+    /* Убираем лишний отступ у последнего контейнера */
+    .menu-container:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Стили для заголовков разделов внутри карточек */
+    .menu-container .menu-title {
+        margin-top: 0; /* Убираем верхний отступ у заголовков внутри карточек */
+        margin-bottom: 30px;
+    }
+
+hr:last-of-type {
+    display: block; 
+}
+
+.menu-item:last-child + hr {
     display: none;
 }
