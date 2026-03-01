@@ -264,4 +264,15 @@ body {
 
     .nav-btn:hover {
         transform: translateY(-3px);
+        color: white;
     }
+
+.white {
+    background-color: #F4F5F0;
+    color: #333;
+}
+
+    .white:hover {
+        color: black;
+    }
+
