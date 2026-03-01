@@ -18,7 +18,7 @@
         <div class="feature-card card-green">
             <div class="feature-icon">🌳</div>
             <h3>Природа</h3>
-            <p>Живописные холмы Тосканы, озеро Комо, Доломитовые Альпы и вулканические ландшафты Сицилии.</p>
+            <p>Живописные холмы Тосканы, озеро Комо, заснеженные Доломитовые Альпы и вулканические ландшафты Сицилии.</p>
             <ul class="feature-list">
                 <li>🏞️ Озеро Комо</li>
                 <li>🏖️ Чинкве-Терре</li>
@@ -111,6 +111,6 @@
 <!-- Три кнопки навигации -->
 <div class="nav-buttons">
     <a href="/cities" class="nav-btn" style="background-color: #008C45;">Города Италии</a>
-    <a href="/kitchen" class="nav-btn" style="background-color: #F4F5F0; color: #333;">Итальянская кухня</a>
-    <a href="/contacts" class="nav-btn" style="background-color: #CD212A;">Контакты</a>
+    <a href="/kitchen" class="nav-btn white">Итальянская кухня</a>
+    <a href="/contact" class="nav-btn" style="background-color: #CD212A;">Контакты</a>
 </div>

@@ -1,5 +1,5 @@
 """
-Routes and views for the bottle application.
+Routes and views for the Discover Italyn.
 """
 
 from bottle import route, view
