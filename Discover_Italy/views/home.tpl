@@ -10,8 +10,6 @@
     </div>
 </div>
 
-<div class="italy-flag"></div>
-
 <!-- Блок с тремя карточками -->
 <div id="discover" class="features-section">
     <h2 class="section-title">Италия в трех красках</h2>

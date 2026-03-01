@@ -24,6 +24,7 @@ body {
     text-align: center;
     color: white;
     margin-top: -20px;
+    border-radius: 50px;
 }
 
 .main-content {
@@ -46,7 +47,7 @@ body {
 .main-btn {
     display: inline-block;
     padding: 12px 35px;
-    background: linear-gradient(90deg, #008C45, #F4F5F0, #CD212A);
+    background: white;
     color: #333;
     font-weight: bold;
     text-decoration: none;
@@ -74,6 +75,7 @@ body {
     max-width: 1000px;
     margin: 70px auto;
     padding: 0 20px;
+    scroll-margin-top: 150px;
 }
 
 .section-title {
