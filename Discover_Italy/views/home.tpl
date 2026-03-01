@@ -112,5 +112,5 @@
 <div class="nav-buttons">
     <a href="/cities" class="nav-btn" style="background-color: #008C45;">Города Италии</a>
     <a href="/kitchen" class="nav-btn white">Итальянская кухня</a>
-    <a href="/contacts" class="nav-btn" style="background-color: #CD212A;">Контакты</a>
+    <a href="/contact" class="nav-btn" style="background-color: #CD212A;">Контакты</a>
 </div>
