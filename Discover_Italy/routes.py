@@ -15,7 +15,7 @@ def home():
     )
 
 @route('/contact')
-@view('contact')
+@view('Контакты')
 def contact():
     """Renders the contact page."""
     return dict(
