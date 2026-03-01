@@ -159,3 +159,33 @@ hr:last-of-type {
 .menu-item:last-child + hr {
     display: none;
 }
+/* Стили для ссылок в названиях блюд */
+.menu-item h3 a {
+    color: #CD212A; /* Красный цвет как в заголовках */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: all 0.3s ease;
+}
+
+    /* При наведении оставляем красным */
+    .menu-item h3 a:hover {
+        color: #CD212A; /* Красный при наведении */
+    }
+
+    /* При нажатии оставляем красным */
+    .menu-item h3 a:active {
+        color: #CD212A; /* Красный при нажатии */
+    }
+
+    /* Посещенные ссылки тоже красные */
+    .menu-item h3 a:visited {
+        color: #CD212A;
+    }
+
+    /*  иконка внешней ссылки */
+    .menu-item h3 a[target="_blank"]::after {
+        content: " ↗";
+        font-size: 0.8em;
+        display: inline-block;
+        margin-left: 3px;
+        opacity: 0.7;
+    }
