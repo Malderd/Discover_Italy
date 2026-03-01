@@ -16,8 +16,8 @@
     <div class="cards">
         <div class="card green">
             <h3>ПОЗВОНИТЕ НАМ</h3>
-            <p>+39 234 567 891</p>
-            <p>+39 987 654 321</p>
+            <p>+7 981 454 65 43</p>
+            <p>+7 921 910 89 89</p>
         </div>
 
         <div class="card white">
