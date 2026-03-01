@@ -15,11 +15,11 @@ def home():
     )
 
 @route('/contact')
-@view('Контакты')
+@view('contact')
 def contact():
     """Renders the contact page."""
     return dict(
-        title='Contact',
+        title='Контакты',
         message='Your contact page.',
         year=datetime.now().year
     )
