@@ -3,7 +3,6 @@ Routes and views for the Discover Italyn.
 """
 
 from bottle import route, view
-from datetime import datetime
 
 @route('/')
 @route('/home')
@@ -11,7 +10,7 @@ from datetime import datetime
 def home():
     """Renders the home page."""
     return dict(
-        year=datetime.now().year
+        title='Главная'
     )
 
 @route('/contact')
@@ -19,9 +18,7 @@ def home():
 def contact():
     """Renders the contact page."""
     return dict(
-        title='Contact',
-        message='Your contact page.',
-        year=datetime.now().year
+        title='Контакты'
     )
 
 @route('/kitchen')
@@ -29,9 +26,7 @@ def contact():
 def kitchen():
     """Renders the kitchen page."""
     return dict(
-        title='Кухня',
-        message='Страница кухни',
-        year=datetime.now().year
+        title='Кухня'
     )
 
 @route('/cities')
@@ -39,7 +34,5 @@ def kitchen():
 def cities():
     """Renders the cities page."""
     return dict(
-        title='Города',
-        message='Города Италии',
-        year=datetime.now().year
+        title='Города'
     )
