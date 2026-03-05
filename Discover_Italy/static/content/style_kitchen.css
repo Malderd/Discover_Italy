@@ -16,7 +16,7 @@ body {
 }
 .main-title {
     text-align: center;
-    color: #8B4513; /* тёмно-коричневый */
+    color: #8B4513; 
     font-size: 2.5em;
     margin-bottom: 20px;
     font-family: 'Arial', sans-serif;
@@ -162,18 +162,18 @@ hr:last-of-type {
 /* Стили для ссылок в названиях блюд */
 .menu-item h3 a {
     color: #CD212A; /* Красный цвет как в заголовках */
-    text-decoration: none; /* Убираем подчеркивание */
+    text-decoration: none;
     transition: all 0.3s ease;
 }
 
     /* При наведении оставляем красным */
     .menu-item h3 a:hover {
-        color: #CD212A; /* Красный при наведении */
+        color: #CD212A; 
     }
 
     /* При нажатии оставляем красным */
     .menu-item h3 a:active {
-        color: #CD212A; /* Красный при нажатии */
+        color: #CD212A;
     }
 
     /* Посещенные ссылки тоже красные */
