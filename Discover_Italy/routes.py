@@ -18,7 +18,7 @@ def home():
 def contact():
     """Renders the contact page."""
     return dict(
-        title='Контакты'
+        title='О разработчиках'
     )
 
 @route('/kitchen')
