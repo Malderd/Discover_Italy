@@ -1,8 +1,3 @@
-/* Универсальный box-sizing для учитывания отступов */
-* {
-    box-sizing: border-box;
-}
-
 /* Базовые стили страницы */
 body {
     font-family: Arial, sans-serif;
@@ -16,69 +11,74 @@ body {
     color: #333;
 }
 
+/* Контейнер для всего содержимого страницы */
 .content-wrapper {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 5px;
+    width: 100%; /* ширина на всю страницу */
+    margin: 0 auto; /* центрирование */
+    padding: 0 5px; /* небольшой внутренний отступ */
 }
 
 /* Верхний блок */
 .top-row {
-    display: flex;
-    gap: 40px;
-    margin: 100px 0 60px 0;
+    display: flex; /* размещаем элементы в одну строку */
+    gap: 40px; /* расстояние между элементами */
+    margin: 100px 0 60px 0; /* внешний отступ сверху и снизу */
 }
 
+/* Общие стили элементов верхнего блока */
 .top-item {
     border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
+    /* Блок с флагом Италии */
     .top-item.flag-italy {
         flex: 2;
         height: 450px;
-        background: linear-gradient(to right, #009246 0%, #009246 33.33%, #ffffff 33.33%, #ffffff 66.66%, #ce2b37 66.66%, #ce2b37 100%);
+        background: linear-gradient( to right, #009246 0%, #009246 33.33%,
+        #ffffff 33.33%, #ffffff 66.66%,
+        #ce2b37 66.66%, #ce2b37 100%
+        );
     }
 
+    /* Блок с вводным текстом */
     .top-item.intro-text {
-        flex: 5;
+        flex: 5; /* занимает большую часть строки */
         height: 450px;
         background-color: rgba(255,255,255,0.98);
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column; /* элементы располагаются вертикально */
+        align-items: center; /* горизонтальное центрирование */
+        justify-content: center; /* вертикальное центрирование */
         padding: 40px 50px;
-        text-align: center;
-        line-height: 1.5;
+        text-align: center; /* текст по центру */
+        line-height: 1.5; /* межстрочный интервал */
     }
 
+/* Заголовок в блоке описания */
 .intro-text h1 {
     font-size: 3.7rem;
     margin: 8px 0 5px 0;
     color: #8B0000;
-    font-weight: 800;
+    font-weight: 800; /* жирный шрифт */
     font-family: 'Trebuchet MS', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 2px; /* расстояние между буквами */
 }
 
+/* Абзацы вводного текста */
 .intro-text p {
     font-size: 2.1rem;
     margin: 5px 0;
     color: black;
 }
 
-
-
-
-/* Ссылки на города сохраняют цвет */
+/* Ссылки внутри названий городов */
 .city-accent a {
-    color: inherit;
-    text-decoration: none;
+    color: inherit; /* наследуют цвет родителя */
+    text-decoration: underline;
 }
 
+    /* Поведение ссылки при наведении */
     .city-accent a:hover {
         color: inherit;
         text-decoration: underline;
@@ -86,44 +86,43 @@ body {
 
 /* Карточка города */
 .city-block {
-    display: flex;
-    gap: 10px;
+    display: flex; /* колонки располагаются рядом */
+    gap: 10px; /* расстояние между колонками */
     margin: 50px 0;
-    background-color: #fff;
+    background-color: #fff; /* белый фон */
     border-radius: 15px;
     width: 100%;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    align-items: stretch;
-    scroll-margin-top: 100px;
-    overflow: hidden;
+    align-items: stretch; /* колонки одинаковой высоты */
+    overflow: hidden; /* скрытие выходящего контента */
 }
 
-/* Левая колонка — картинка */
+/* Левая колонка */
 .col-left {
     flex: 1.5;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* центр по горизонтали */
+    align-items: center; /* центр по вертикали */
     padding: 0;
-    background-color: #000;
 }
 
+    /* Изображение в левой колонке */
     .col-left img {
-        width: 100%;
-        height: 100%;
+        width: 100%; /* занимает всю ширину */
+        height: 100%; /* занимает всю высоту */
         object-fit: cover;
     }
 
-/* Правая колонка — текст + маленькая картинка */
+/* Средняя (правая) колонка */
 .col-middle {
-    flex: 2.5;
+    flex: 2.5; 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* элементы вертикально */
     justify-content: flex-start;
-    padding: 15px 20px;
-    text-align: justify;
+    padding: 15px 20px; /* внутренние отступы */
+    text-align: justify; /* текст выравнивается по ширине */
 }
 
+    /* Абзацы текста о городе */
     .col-middle p {
         margin: 10px 0;
         font-family: 'Segoe UI', Arial, sans-serif;
@@ -132,19 +131,22 @@ body {
         color: #000;
     }
 
+    /* Дополнительная картинка внутри текста */
     .col-middle img {
         width: 100%;
         height: 310px;
-        object-fit: cover;
+        object-fit: cover; /* обрезка изображения */
+
         border-radius: 2%;
         margin-top: 15px;
     }
 
-/* Цветовой акцент для городов */
+/* Общий стиль для названий городов */
 .city-accent {
-    font-weight: 600;
+    font-weight: 600; /* жирнее обычного */
 }
 
+/* Индивидуальные цвета для разных городов */
 .rome {
     color: #8B0000;
 }
@@ -158,7 +160,7 @@ body {
 }
 
 .naples {
-    color: #C0392B;
+    color: #C0392B; 
 }
 
 .milan {
