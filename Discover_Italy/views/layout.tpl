@@ -21,6 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img src="/static/images/logo2.jpg" style="width:80px; height: 70px; float: left; margin-right: 30px; margin-top: 3px;">
                 <a href="/" class="navbar-brand">Discover Italy</a>
             </div>
             <div class="navbar-collapse collapse">
@@ -32,7 +33,6 @@
             </div>
         </div>
     </div>
-
     <div class="container body-content">
         {{!base}}
     </div>
