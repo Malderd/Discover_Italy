@@ -28,7 +28,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/cities">Города</a></li>
                     <li><a href="/kitchen">Кухня</a></li>
-                    <li><a href="/contact">Контакты</a></li>
+                    <li><a href="/contact">О разработчиках</a></li>
                 </ul>
             </div>
         </div>

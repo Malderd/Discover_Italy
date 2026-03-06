@@ -1,4 +1,4 @@
-/* Универсальный box-sizing */
+/* Универсальный box-sizing для учитывания отступов */
 * {
     box-sizing: border-box;
 }
@@ -70,13 +70,8 @@ body {
     color: black;
 }
 
-.intro-text .highlight {
-    font-weight: bold;
-    color: #006400;
-    font-size: 2.2rem;
-    margin-top: 15px;
-    display: block;
-}
+
+
 
 /* Ссылки на города сохраняют цвет */
 .city-accent a {
