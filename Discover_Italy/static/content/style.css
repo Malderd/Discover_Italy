@@ -22,7 +22,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
 }
 
 /* Контейнер карточек */
@@ -46,15 +45,24 @@ body {
     /* Заголовок внутри карточки */
     .card h3 {
         margin-bottom: 15px;
-        font-size: 2.5rem;
+        font-size: 2.7rem;
         font-family: 'Arial', serif;
     }
 
     /* Текст внутри карточки */
     .card p {
-        font-size: 1.3em;
+        font-size: 1.4em;
         margin: 5px 0;
         font-weight: normal;
+    }
+
+    /* Ссылки внутри карточек */
+    .card a,
+    .card a:visited,
+    .card a:hover,
+    .card a:active {
+        color: white;
+        text-decoration: underline;
     }
 
 /* Зеленая карточка */
@@ -65,8 +73,14 @@ body {
 /* Белая карточка */
 .white {
     background-color: #ffffff;
-    color: #222;
+    color: black;
 }
+    .white a,
+    .white a:visited,
+    .white a:hover,
+    .white a:active {
+        color: black;
+    }
 
 /* Красная карточка */
 .red {

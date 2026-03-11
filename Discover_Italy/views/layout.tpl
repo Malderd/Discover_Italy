@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- Логотип/название сайта, ведущее на главную -->
+                <img src="/static/images/logo2.jpg" style="width:80px; height: 70px; float: left; margin-right: 30px; margin-top: 3px;">
                 <a href="/" class="navbar-brand">Discover Italy</a>
             </div>
 
@@ -39,7 +39,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/cities">Города</a></li>
                     <li><a href="/kitchen">Кухня</a></li>
-                    <li><a href="/contact">Контакты</a></li>
+                    <li><a href="/contact">О разработчиках</a></li>
                 </ul>
             </div>
         </div>
