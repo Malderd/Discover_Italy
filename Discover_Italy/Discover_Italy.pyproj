@@ -24,6 +24,7 @@
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
