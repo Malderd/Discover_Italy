@@ -22,6 +22,7 @@
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -65,12 +66,14 @@
     <Content Include="static\images\food_kitchen.jpg" />
     <Content Include="static\images\boloneze.jpg" />
     <Content Include="static\images\Gelato.jpg" />
+    <Content Include="static\images\logo2.jpg" />
     <Content Include="static\images\main_background.jpg" />
     <Content Include="static\images\milan-vert.jpg" />
     <Content Include="static\images\milan.jpg" />
     <Content Include="static\images\neapol-vert.jpg" />
     <Content Include="static\images\neapol.jpg" />
     <Content Include="static\images\panna_cotta.jpg" />
+    <Content Include="static\images\logo.jpg" />
     <Content Include="static\images\Pizza_napolitaine_maison.jpg" />
     <Content Include="static\images\peperoni.jpg" />
     <Content Include="static\images\karbonara.jpg" />
