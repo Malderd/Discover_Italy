@@ -24,7 +24,7 @@ body {
 /* Главная секция */
 .main-section {
     height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/static/images/123.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/123.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -44,7 +44,6 @@ body {
 .main-title {
     font-size: 3.5em;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .main-subtitle {
@@ -63,12 +62,10 @@ body {
     text-decoration: none;
     border-radius: 50px;
     border: 2px solid white;
-    transition: 0.3s;
 }
 
     .main-btn:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         color: black;
     }
 
@@ -99,19 +96,15 @@ body {
 /* Три карточки */
 .features-cards {
     display: flex;
-    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
 }
 
 .feature-card {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
+    width: 300px;
     padding: 30px 20px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
@@ -181,7 +174,6 @@ body {
     height: 220px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
