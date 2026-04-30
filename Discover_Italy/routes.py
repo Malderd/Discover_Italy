@@ -36,3 +36,28 @@ def cities():
     return dict(
         title='Города'
     )
+
+@route('/active_users')
+@view('active_users')
+def active_users():
+    """Renders the active_users page."""
+    return dict(
+        title='Активные пользователи'
+    )
+
+
+@route('/new_items')
+@view('new_items')
+def new_items():
+    """Renders the new_items page."""
+    return dict(
+        title='Новинки'
+    )
+
+@route('/articles')
+@view('articles')
+def articles():
+    """Renders the articles page."""
+    return dict(
+        title='Статьи'
+    )
