@@ -1,18 +1,12 @@
-/* Сброс стандартных отступов для всех элементов */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
-
 /* Стили для всей страницы */
 body {
     min-height: 100vh;
-    padding: 20px;
+    padding: 0;
     font-size: 16px;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/static/images/food_kitchen.jpg");
     background-attachment: fixed;
+    margin: 0;
+    padding: 0;
 }
 .main-title {
     text-align: center;
@@ -89,6 +83,7 @@ h2.menu-title:not(:first-of-type) {
         font-size: 1.7em;
         margin-bottom: 15px;
         font-weight: 600;
+        font-family: 'Segoe UI', Arial, sans-serif;
     }
 
     .menu-item p {
