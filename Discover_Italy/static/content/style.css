@@ -100,10 +100,14 @@ body {
     padding: 15px 0;
 }
 
+.navbar-header {
+    margin-left: 70px;
+}
+
 /* Логотип в навбаре */
 .navbar-brand {
     font-weight: 700;
-    font-size: 36px;
+    font-size: 40px;
     color: #fff !important;
     line-height: 1;
     text-decoration: none;
@@ -113,13 +117,16 @@ body {
 .navbar-collapse .navbar-nav {
     float: right;
     display: flex;
-    gap: 20px;
+    flex-wrap: nowrap;
+    gap: 7px;
     padding: 15px 0;
+    margin-right: 70px;
 }
 
     /* Элемент списка навигации */
     .navbar-collapse .navbar-nav li {
         display: inline-block;
+        white-space: nowrap;
     }
 
         /* Ссылка навигации */
@@ -128,7 +135,7 @@ body {
             font-size: 20px;
             font-weight: 600;
             color: #fff !important;
-            padding: 12px 25px;
+            padding: 12px 12px;
             line-height: 1;
             text-decoration: none;
         }
