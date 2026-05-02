@@ -12,7 +12,6 @@
 
         <!-- Пользовательские стили для сайта -->
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
-    <link rel="stylesheet" href="/static/content/style_home.css">
     <link rel="stylesheet" type="text/css" href="/static/content/style.css" />
 
     <!-- Подключение шрифта Poppins с Google Fonts -->
