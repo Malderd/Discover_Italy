@@ -1,0 +1,209 @@
+/* фон страницы */
+body {
+    margin: 0; /* внешние отступы отсутствуют */
+    background: linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.75)), url("/static/images/map_Italy.jpg"); /* фон с затемнением */
+    background-size: cover; /* растяжение фона */
+    background-position: center; /* центр фона */
+    background-repeat: no-repeat; /* отсутствие повторов */
+    min-height: 100vh; /* минимальная высота экрана */
+    color: white;
+}
+
+/* фиксация Bootstrap-контейнера */
+.container.body-content {
+    width: 100% !important;
+    max-width: none !important; /* ограничение Bootstrap убрано */
+    padding: 0 !important; /* внутренние отступы отсутствуют */
+    margin: 0 !important; /* внешние отступы отсутствуют */
+}
+
+/* основной блок страницы */
+.new-items-page {
+    width: 100%;
+    max-width: 1400px; /* ограничение ширины */
+    margin: 120px auto 0 auto; /* центрирование по горизонтали */
+    padding: 0 40px; /* боковые отступы */
+    color: white;
+}
+
+    /* наследование цвета внутри блока */
+    .new-items-page * {
+        color: inherit; /* единый цвет элементов */
+    }
+
+/* сетка колонок */
+.content-grid {
+    display: grid; /* grid-раскладка */
+    grid-template-columns: 420px 1fr; /* две колонки */
+    gap: 50px;
+    width: 100%;
+}
+
+/* левая колонка */
+.left-panel {
+    position: sticky; /* фиксация при скролле */
+    top: 140px;
+    max-width: 420px;
+}
+
+    /* заголовок */
+    .left-panel h1 {
+        font-size: 2.2em; /* размер текста */
+        font-weight: 700; /* жирность */
+        margin-bottom: 10px;
+    }
+
+/* описание */
+.page-description {
+    font-size: 1.3em;
+    line-height: 1.5; /* межстрочный интервал */
+    margin-bottom: 25px;
+}
+
+/* форма */
+.route-form {
+    display: flex; /* flex-контейнер */
+    flex-direction: column; /* вертикальное направление */
+    gap: 15px;
+    background: rgba(0,0,0,0.75);
+    padding: 20px; /* внутренние отступы */
+    border-radius: 12px;
+    align-items: center; 
+}
+
+    /* поля формы */
+    .route-form input,
+    .route-form textarea,
+    .route-form select {
+        font-size: 1.3em;
+        padding: 10px;
+        border-radius: 8px;
+        border: none; /* отсутствие рамки */
+        outline: none; /* отсутствие обводки */
+        background: rgba(255,255,255,0.12); /* фон поля */
+        color: white;
+        width: 100%;
+        max-width: 360px;
+    }
+
+        /* поле названия */
+        .route-form input{
+            font-size: 1.3em; 
+            height: 50px;
+        }
+
+    /* описание */
+    .route-form textarea {
+        height: 140px;
+        resize:none;
+    }
+
+    /* список */
+    .route-form select {
+        height: 50px; /* высота поля списка */
+    }
+
+        .route-form select option {
+            color: black; /* цвет текста списка */
+        }
+
+/* блок городов */
+.cities-column {
+    display: flex;
+    flex-direction: column; /* вертикальное расположение */
+    gap: 10px; 
+    width: 100%; 
+    align-items: center;
+}
+
+.btn-primary {
+    font-size: 1.2em; 
+    width: 100%; 
+    max-width: 360px; 
+    height: 50px; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0; 
+}
+
+/* правая колонка */
+.right-panel {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+/* карточка */
+.route-item {
+    padding: 22px 24px; 
+    border-bottom: 1px solid rgba(255,255,255,0.2); /* линия снизу */
+    min-height: 120px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    border-radius: 10px; 
+}
+
+    /* наведение на карточку */
+    .route-item:hover {
+        background: rgba(255,255,255,0.05); /* подсветка */
+        transition: 0.2s; /* плавность */
+    }
+
+/* header карточки */
+.route-header {
+    position: relative; /* относительное позиционирование */
+    width: 100%;
+    padding-right: 80px; /* место под дату */
+}
+
+    /* заголовок карточки */
+    .route-header h3 {
+        font-size: 1.5em;
+        font-weight: 700; 
+        margin: 0;
+    }
+
+/* дата */
+.route-date {
+    position: absolute; 
+    top: 0;
+    right: 0; 
+    font-size: 1em; 
+    opacity: 0.8;
+}
+
+/* маршрут */
+.route-path {
+    margin: 12px 0; 
+    font-size: 1.4em; 
+    font-weight: 600; /* жирность */
+    display: flex;
+    gap: 10px;
+}
+
+/* стрелка */
+.arrow {
+    color: #ffd166;
+}
+
+/* описание */
+.route-desc {
+    font-size: 1.3em; 
+    opacity: 0.92; 
+    line-height: 1.5; /* высота строки */
+    overflow-wrap: break-word; /* перенос слов */
+    word-break: break-word; /* разрыв слов */
+    display: -webkit-box; /* ограничение строк */
+    -webkit-line-clamp: 4; /* максимум строк */
+    -webkit-box-orient: vertical; /* вертикальный блок */
+    overflow: hidden; /* скрытие лишнего */
+}
+
+/* ошибка */
+.error {
+    color: #ff6b6b;
+    font-size: 1.3em;
+    height: 26px;
+    visibility: visible;
+}

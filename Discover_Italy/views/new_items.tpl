@@ -1,80 +1,91 @@
 % rebase('layout.tpl', title=title)
 
-<div class="container" style="margin-top:120px;color:white;">
+<link rel="stylesheet" href="/static/content/style_new_items.css">
 
-    <h1>Маршруты по Италии</h1>
+<div class="new-items-page">
 
-    <p>Создавайте свои маршруты и делитесь идеями путешествий.</p>
+    <div class="content-grid">
+        <div class="left-panel">
 
-    % if defined('error'):
-        <p style="color:red;">{{error}}</p>
-    % end
+            <h1>Маршруты по Италии</h1>
 
-    <form action="/new_items" method="post">
+            <p class="page-description">
+                Выбирайте города,создавайте маршруты и делитесь ими с другими.
+            </p>
 
-        <input type="text" name="route_name"
-               placeholder="Название маршрута"
-               class="form-control" required>
+            <p class="error">
+                % if defined('error'):
+                    {{error}}
+                % end
+            </p>
 
-        <br>
+            <form action="/new_items" method="post" class="route-form">
 
-        <textarea name="description"
-                  placeholder="Описание маршрута"
-                  class="form-control"
-                  rows="3" required></textarea>
+                <input type="text" name="route_name"
+                       placeholder="Название маршрута"
+                       class="form-control" required>
 
-        <br>
+                <textarea name="description"
+                          placeholder="Описание маршрута"
+                          class="form-control"
+                          rows="3" required></textarea>
 
-        <select name="city1" class="form-control">
-            % for city in cities:
-                <option>{{city}}</option>
+                <div class="cities-column">
+                    <select name="city1" class="form-control">
+                        % for city in cities:
+                            <option>{{city}}</option>
+                        % end
+                    </select>
+
+                    <select name="city2" class="form-control">
+                        % for city in cities:
+                            <option>{{city}}</option>
+                        % end
+                    </select>
+
+                    <select name="city3" class="form-control">
+                        % for city in cities:
+                            <option>{{city}}</option>
+                        % end
+                    </select>
+                </div>
+
+                <input type="submit"
+                       value="Добавить маршрут"
+                       class="btn btn-primary">
+
+            </form>
+        </div>
+        
+        <div class="right-panel">
+
+            % if routes:
+                % for route in routes:
+                    <div class="route-item">
+
+                        <div class="route-header">
+                            <h3>{{route['name']}}</h3>
+                            <span class="route-date">{{route['date']}}</span>
+                        </div>
+
+                        <div class="route-path">
+                            <span>{{route['city1']}}</span>
+                            <span class="arrow">→</span>
+                            <span>{{route['city2']}}</span>
+                            <span class="arrow">→</span>
+                            <span>{{route['city3']}}</span>
+                        </div>
+
+                        <p class="route-desc">{{route['description']}}</p>
+
+                    </div>
+                % end
+            % else:
+                <p>Маршрутов пока нет</p>
             % end
-        </select>
 
-        <br>
+        </div>
 
-        <select name="city2" class="form-control">
-            % for city in cities:
-                <option>{{city}}</option>
-            % end
-        </select>
-
-        <br>
-
-        <select name="city3" class="form-control">
-            % for city in cities:
-                <option>{{city}}</option>
-            % end
-        </select>
-
-        <br>
-
-        <input type="submit"
-               value="Добавить маршрут"
-               class="btn btn-primary">
-
-    </form>
-
-    <hr>
-
-    % if routes:
-        % for route in routes:
-           <div class="card" style="margin-bottom:20px; padding:15px; color:white;">
-                <h3>{{route['name']}}</h3>
-
-                <p>{{route['description']}}</p>
-
-                <p>
-                    {{route['city1']}} →
-                    {{route['city2']}} →
-                    {{route['city3']}}
-                </p>
-
-                <small>Добавлено: {{route['date']}}</small>
-            </div>
-        % end
-    % else:
-        <p>Маршрутов пока нет</p>
-    % end
+    </div>
 
 </div>
