@@ -60,6 +60,7 @@
     <Content Include="static\content\style_kitchen.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\content\style_new_items.css" />
     <Content Include="static\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="static\fonts\glyphicons-halflings-regular.ttf" />
@@ -72,6 +73,7 @@
     <Content Include="static\images\Gelato.jpg" />
     <Content Include="static\images\logo2.jpg" />
     <Content Include="static\images\main_background.jpg" />
+    <Content Include="static\images\map_Italy.jpg" />
     <Content Include="static\images\milan-vert.jpg" />
     <Content Include="static\images\milan.jpg" />
     <Content Include="static\images\neapol-vert.jpg" />
