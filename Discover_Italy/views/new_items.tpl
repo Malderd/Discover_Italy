@@ -65,7 +65,7 @@
 
                         <div class="route-header">
                             <h3>{{route['name']}}</h3>
-                            <span class="route-date">{{route['date']}}</span>
+                            <span class="route-date">Добавлено: {{route['date']}}</span>
                         </div>
 
                         <div class="route-path">
