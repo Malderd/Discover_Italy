@@ -143,7 +143,7 @@ def new_items():
         # сохранение в файл
         save_routes(routes_list)
 
-        # возврат страницы с отсортированными данными
+        # возврат страницы с отсортированным списком
         return dict(
             title='Новинки',
             routes=routes_list,
