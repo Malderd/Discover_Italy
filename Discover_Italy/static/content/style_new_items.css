@@ -192,12 +192,6 @@ body {
     font-size: 1.3em; 
     opacity: 0.92; 
     line-height: 1.5; /* высота строки */
-    overflow-wrap: break-word; /* перенос слов */
-    word-break: break-word; /* разрыв слов */
-    display: -webkit-box; /* ограничение строк */
-    -webkit-line-clamp: 4; /* максимум строк */
-    -webkit-box-orient: vertical; /* вертикальный блок */
-    overflow: hidden; /* скрытие лишнего */
 }
 
 /* ошибка */
