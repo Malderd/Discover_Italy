@@ -201,3 +201,12 @@ body {
     height: 26px;
     visibility: visible;
 }
+
+/* маршрутов нет */
+.empty-routes {
+    font-size: 1.4em; 
+    font-weight: 600; 
+    text-align: center;
+    opacity: 0.85; 
+    padding: 20px;
+}
