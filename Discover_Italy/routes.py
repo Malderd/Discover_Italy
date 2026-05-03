@@ -139,7 +139,7 @@ def new_items():
         # хотя бы одна буква
         if not re.search(r'[A-Za-zА-Яа-я]', name):
             return dict(title='Новинки', routes=routes_list, cities=cities,
-                        error="Название должно содержать хотя бы одну букву")
+                        error="Название должно содержать одну букву")
 
         # длина описания
         if len(desc) < 10 or len(desc) > 300:
@@ -149,7 +149,7 @@ def new_items():
         # хотя бы одна буква в описании
         if not re.search(r'[A-Za-zА-Яа-я]', desc):
             return dict(title='Новинки', routes=routes_list, cities=cities,
-                        error="Описание должно содержать хотя бы одну букву")
+                        error="Описание должно содержать одну букву")
 
         # проверка одинаковых городов
         if c1 == c2 or c1 == c3 or c2 == c3:
