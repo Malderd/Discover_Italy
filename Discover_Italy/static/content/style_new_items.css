@@ -197,8 +197,8 @@ body {
 /* ошибка */
 .error {
     color: #ff6b6b;
-    font-size: 1.3em;
-    height: 26px;
+    font-size: 1.2em;
+    height: 30px;
     visibility: visible;
 }
 

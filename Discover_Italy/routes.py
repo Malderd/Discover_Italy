@@ -2,12 +2,13 @@
 Routes and views for the Discover Italy.
 """
 
-from bottle import route, view, request
+from bottle import route, view, request, redirect
 import json
 import os
 from datetime import datetime
 import sys
 import io
+import re
 
 # кодировка вывода
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -16,12 +17,17 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROUTES_FILE = 'routes_cities.json'
 CITIES_FILE = 'cities.json'
 
+
 # загрузка маршрутов
 def load_routes():
     if not os.path.exists(ROUTES_FILE):
         return []
     with open(ROUTES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except:
+            return []
+
 
 # сохранение маршрутов
 def save_routes(routes):
@@ -34,14 +40,17 @@ def load_cities():
     if not os.path.exists(CITIES_FILE):
         return []
     with open(CITIES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except:
+            return []
 
 
 # генерация id маршрута
 def generate_id(routes):
     if not routes:
         return 1
-    return max(r['id'] for r in routes) + 1
+    return max(r.get('id', 0) for r in routes) + 1
 
 
 @route('/')
@@ -68,6 +77,7 @@ def kitchen():
 def cities():
     return dict(title='Города')
 
+
 @route('/active_users')
 @view('active_users')
 def active_users():
@@ -79,6 +89,7 @@ def active_users():
 def articles():
     return dict(title='Статьи')
 
+
 # страница маршрутов
 @route('/new_items', method=['GET', 'POST'])
 @view('new_items')
@@ -87,7 +98,7 @@ def new_items():
     # загрузка маршрутов из файла
     routes_list = load_routes()
 
-    # сортировка по дате
+    # сортировка по дате (свежие сверху)
     routes_list = sorted(
         routes_list,
         key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
@@ -97,7 +108,7 @@ def new_items():
     # загрузка списка городов
     cities = load_cities()
 
-    # обработка формы (добавление маршрута)
+    # обработка формы
     if request.method == 'POST':
 
         # получение данных формы
@@ -107,24 +118,43 @@ def new_items():
         c2 = request.forms.getunicode('city2')
         c3 = request.forms.getunicode('city3')
 
-
         # проверка заполнения полей
         if not name or not desc:
-            return dict(
-                title='Новинки',
-                routes=routes_list,
-                cities=cities,
-                error="Заполните все поля"
-            )
+            return dict(title='Новинки', routes=routes_list, cities=cities, error="Заполните все поля")
+
+        # очистка пробелов
+        name = name.strip()
+        desc = desc.strip()
+
+        # длина названия
+        if len(name) < 3 or len(name) > 50:
+            return dict(title='Новинки', routes=routes_list, cities=cities,
+                        error="Название должно быть от 3 до 50 символов")
+
+        # допустимые символы
+        if not re.match(r'^[A-Za-zА-Яа-я0-9\s\-\,]+$', name):
+            return dict(title='Новинки', routes=routes_list, cities=cities,
+                        error="Название может содержать только буквы и цифры")
+
+        # хотя бы одна буква
+        if not re.search(r'[A-Za-zА-Яа-я]', name):
+            return dict(title='Новинки', routes=routes_list, cities=cities,
+                        error="Название должно содержать одну букву")
+
+        # длина описания
+        if len(desc) < 10 or len(desc) > 300:
+            return dict(title='Новинки', routes=routes_list, cities=cities,
+                        error="Описание должно быть от 10 до 300 символов")
+
+        # хотя бы одна буква в описании
+        if not re.search(r'[A-Za-zА-Яа-я]', desc):
+            return dict(title='Новинки', routes=routes_list, cities=cities,
+                        error="Описание должно содержать одну букву")
 
         # проверка одинаковых городов
         if c1 == c2 or c1 == c3 or c2 == c3:
-            return dict(
-                title='Новинки',
-                routes=routes_list,
-                cities=cities,
-                error="Города не должны повторяться"
-            )
+            return dict(title='Новинки', routes=routes_list, cities=cities,
+                        error="Города не должны повторяться")
 
         # создание нового маршрута
         new_route = {
@@ -143,16 +173,7 @@ def new_items():
         # сохранение в файл
         save_routes(routes_list)
 
-        # возврат страницы с отсортированным списком
-        return dict(
-            title='Новинки',
-            routes=routes_list,
-            cities=cities
-        )
+        # функция перенаправления
+        redirect('/new_items')
 
-    # открытие страницы
-    return dict(
-        title='Новинки',
-        routes=routes_list,
-        cities=cities
-    )
+    return dict(title='Новинки', routes=routes_list, cities=cities)
