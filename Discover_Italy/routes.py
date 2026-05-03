@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 import sys
 import io
+import re
 
 # кодировка вывода
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -107,7 +108,6 @@ def new_items():
         c2 = request.forms.getunicode('city2')
         c3 = request.forms.getunicode('city3')
 
-
         # проверка заполнения полей
         if not name or not desc:
             return dict(
@@ -115,6 +115,55 @@ def new_items():
                 routes=routes_list,
                 cities=cities,
                 error="Заполните все поля"
+            )
+
+        # удаление пробелов
+        name = name.strip()
+        desc = desc.strip()
+
+        # длина названия
+        if len(name) < 3 or len(name) > 50:
+            return dict(
+                title='Новинки',
+                routes=routes_list,
+                cities=cities,
+                error="Название должно быть от 3 до 50 символов"
+            )
+
+        # допустимые символы для названия
+        if not re.match(r'^[A-Za-zА-Яа-я0-9\s\-\,]+$', name):
+            return dict(
+                title='Новинки',
+                routes=routes_list,
+                cities=cities,
+                error="Название может содержать только буквы и цифры"
+            )
+
+        # в названии хотя бы одна буква
+        if not re.search(r'[A-Za-zА-Яа-я]', name):
+            return dict(
+                title='Новинки',
+                routes=routes_list,
+                cities=cities,
+                error="Название должно содержать хотя бы одну букву"
+            )
+
+        # длина описания
+        if len(desc) < 10 or len(desc) > 300:
+            return dict(
+                title='Новинки',
+                routes=routes_list,
+                cities=cities,
+                error="Описание должно быть от 10 до 300 символов"
+            )
+
+        # в описании хотя бы одна буква
+        if not re.search(r'[A-Za-zА-Яа-я]', desc):
+            return dict(
+                title='Новинки',
+                routes=routes_list,
+                cities=cities,
+                error="Описание должно содержать хотя бы одну букву"
             )
 
         # проверка одинаковых городов

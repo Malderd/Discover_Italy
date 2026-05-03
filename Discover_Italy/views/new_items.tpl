@@ -19,7 +19,7 @@
                 % end
             </p> <!-- блок ошибки -->
 
-            <form action="/new_items" method="post" class="route-form">
+            <form action="/new_items" method="post" class="route-form" novalidate>
 
                 <input type="text" name="route_name"
                        placeholder="Название маршрута"
