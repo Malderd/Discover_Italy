@@ -1,5 +1,7 @@
 % rebase('layout.tpl', title='Discover Italy')
-
+<head>
+    <link rel="stylesheet" href="/static/content/style_home.css">
+</head>
 <!-- Главная секция -->
 <div class="main-section">
     <div class="main-content">
