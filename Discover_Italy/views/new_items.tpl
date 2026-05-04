@@ -13,11 +13,11 @@
                 Выбирайте города,создавайте маршруты и делитесь ими с другими.
             </p> <!-- описание страницы -->
 
-            <p class="error">
-                % if defined('error'):
-                    {{error}}
+            <div class="error">
+                % if errors:
+                    {{list(errors.values())[0]}}
                 % end
-            </p> <!-- блок ошибки -->
+            </div>
 
             <form action="/new_items" method="post" class="route-form" novalidate>
 

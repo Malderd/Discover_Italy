@@ -198,8 +198,7 @@ body {
 .error {
     color: #ff6b6b;
     font-size: 1.2em;
-    height: 30px;
-    visibility: visible;
+    min-height: 30px;
 }
 
 /* маршрутов нет */
