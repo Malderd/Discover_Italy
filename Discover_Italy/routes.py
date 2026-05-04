@@ -1,14 +1,9 @@
-"""
-Routes and views for the Discover Italy.
-"""
-
-from bottle import route, view, request, redirect
+from bottle import route, view, request
 import json
 import os
 from datetime import datetime
 import sys
 import io
-import re
 
 # кодировка вывода
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -17,8 +12,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROUTES_FILE = 'routes_cities.json'
 CITIES_FILE = 'cities.json'
 
-
-# загрузка маршрутов
+# загрузка
 def load_routes():
     if not os.path.exists(ROUTES_FILE):
         return []
@@ -28,14 +22,12 @@ def load_routes():
         except:
             return []
 
-
-# сохранение маршрутов
+# сохранение
 def save_routes(routes):
     with open(ROUTES_FILE, 'w', encoding='utf-8') as f:
         json.dump(routes, f, ensure_ascii=False, indent=4)
 
 
-# загрузка городов
 def load_cities():
     if not os.path.exists(CITIES_FILE):
         return []
@@ -44,7 +36,6 @@ def load_cities():
             return json.load(f)
         except:
             return []
-
 
 # генерация id маршрута
 def generate_id(routes):
@@ -90,11 +81,13 @@ def articles():
     return dict(title='Статьи')
 
 
-# страница маршрутов
+# страница с маршрутами (GET)
 @route('/new_items')
 @view('new_items')
 def new_items():
     routes_list = load_routes()
+
+    # сортировка маршрутов по дате (новые сверху)
     routes_list.sort(
         key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
         reverse=True
@@ -110,11 +103,14 @@ def new_items():
         form_data={}
     )
 
-# новинки
+
+# обработка добавления нового маршрута (POST)
 @route('/new_items', method='POST')
 @view('new_items')
 def add_route():
     routes_list = load_routes()
+
+    # сортировка перед отображением
     routes_list.sort(
         key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
         reverse=True
@@ -123,42 +119,51 @@ def add_route():
     cities = load_cities()
     errors = {}
 
-    # получение данных
+    # получение данных из формы
     name = request.forms.getunicode('route_name', '').strip()
     desc = request.forms.getunicode('description', '').strip()
+    date = request.forms.getunicode('date', '').strip()
+
     c1 = request.forms.getunicode('city1', '')
     c2 = request.forms.getunicode('city2', '')
     c3 = request.forms.getunicode('city3', '')
 
+    # сохранение введённых данных
     form_data = {
         'route_name': name,
         'description': desc,
+        'date': date,
         'city1': c1,
         'city2': c2,
         'city3': c3
     }
 
-    # валидации
+    # проверка названия маршрута
     if not name:
-        errors['route_name'] = "Введите название маршрута"
+        errors['route_name'] = "Введите название"
     elif len(name) < 3 or len(name) > 50:
-        errors['route_name'] = "Название от 3 до 50 символов"
-    elif not re.match(r'^[A-Za-zА-Яа-я0-9\s\-\,]+$', name):
-        errors['route_name'] = "В названии только буквы и цифры"
-    elif not re.search(r'[A-Za-zА-Яа-я]', name):
-        errors['route_name'] = "В названии должна быть буква"
+        errors['route_name'] = "Название слишком короткое"
 
+    # проверка описания
     if not desc:
         errors['description'] = "Введите описание"
-    elif len(desc) < 10 or len(desc) > 300:
-        errors['description'] = "Описание от 10 до 300 символов"
-    elif not re.search(r'[A-Za-zА-Яа-я]', desc):
-        errors['description'] = "В описании должна быть буква"
+    elif len(desc) < 10:
+        errors['description'] = "Описание слишком короткое"
 
+    # проверка формата даты
+    if not date:
+        errors['date'] = "Введите дату"
+    else:
+        try:
+            datetime.strptime(date, "%Y-%m-%d %H:%M")
+        except ValueError:
+            errors['date'] = "Формат: ГГГГ-ММ-ДД ЧЧ:ММ"
+
+    # проверка городов (не должны повторяться подряд)
     if c1 == c2 or c2 == c3:
         errors['cities'] = "Города не должны идти подряд"
 
-    # если ошибки
+    # если есть ошибки
     if errors:
         return dict(
             title='Новинки',
@@ -168,26 +173,30 @@ def add_route():
             form_data=form_data
         )
 
-    # создание маршрута
+    # создание нового маршрута
     new_route = {
         'id': generate_id(routes_list),
         'name': name,
         'description': desc,
+        'date': date,
         'city1': c1,
         'city2': c2,
-        'city3': c3,
-        'date': datetime.now().strftime("%Y-%m-%d %H:%M")
+        'city3': c3
     }
 
+    # добавление в список
     routes_list.append(new_route)
+
+    # сортировка после добавления
     routes_list.sort(
         key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
         reverse=True
     )
 
+    # сохранение в файл
     save_routes(routes_list)
 
-    # очищение формы после успеха
+    # возврат обновлённой страницы
     return dict(
         title='Новинки',
         routes=routes_list,

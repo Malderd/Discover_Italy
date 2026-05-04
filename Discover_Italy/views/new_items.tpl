@@ -13,66 +13,76 @@
                 Выбирайте города, создавайте маршруты и делитесь ими с другими.
             </p>
 
-            <!-- ошибка над полями -->
             <div class="error">
                 % if errors:
                     {{list(errors.values())[0]}}
                 % end
             </div>
 
-        <form action="/new_items" method="post" class="route-form" novalidate>
+            <form action="/new_items" method="post" class="route-form" novalidate>
 
-            <input type="text" name="route_name"
-                   value="{{form_data.get('route_name','')}}"
-                   placeholder="Название маршрута"
-                   class="form-control" required>
+                <!-- name -->
+                <input type="text" name="route_name"
+                       value="{{form_data.get('route_name','')}}"
+                       placeholder="Название маршрута"
+                       class="form-control % if errors.get('route_name'): input-error % end"
+                       required>
 
-            <textarea name="description"
-                      placeholder="Описание маршрута"
-                      class="form-control"
-                      rows="3" required>{{form_data.get('description','')}}</textarea>
+                <!-- description -->
+                <textarea name="description"
+                          placeholder="Описание маршрута"
+                          class="form-control % if errors.get('description'): input-error % end"
+                          rows="3">{{form_data.get('description','')}}</textarea>
 
-            <div class="cities-column">
+                <!-- date -->
+                <input type="text" name="date"
+                       value="{{form_data.get('date','')}}"
+                       placeholder="Дата (ГГГГ-ММ-ДД ЧЧ:ММ)"
+                       class="form-control % if errors.get('date'): input-error % end"
+                       required>
 
-                <select name="city1" class="form-control">
-                    % for city in cities:
-                        <option value="{{city}}"
-                            % if form_data.get('city1') == city:
-                                selected
-                            % end
-                        >{{city}}</option>
-                    % end
-                </select>
+                <!-- cities -->
+                <div class="cities-column % if errors.get('cities'): input-error % end">
 
-                <select name="city2" class="form-control">
-                    % for city in cities:
-                        <option value="{{city}}"
-                            % if form_data.get('city2') == city:
-                                selected
-                            % end
-                        >{{city}}</option>
-                    % end
-                </select>
+                    <select name="city1" class="form-control">
+                        % for city in cities:
+                            <option value="{{city}}"
+                                % if form_data.get('city1') == city:
+                                    selected
+                                % end
+                            >{{city}}</option>
+                        % end
+                    </select>
 
-                <select name="city3" class="form-control">
-                    % for city in cities:
-                        <option value="{{city}}"
-                            % if form_data.get('city3') == city:
-                                selected
-                            % end
-                        >{{city}}</option>
-                    % end
-                </select>
+                    <select name="city2" class="form-control">
+                        % for city in cities:
+                            <option value="{{city}}"
+                                % if form_data.get('city2') == city:
+                                    selected
+                                % end
+                            >{{city}}</option>
+                        % end
+                    </select>
 
-            </div>
+                    <select name="city3" class="form-control">
+                        % for city in cities:
+                            <option value="{{city}}"
+                                % if form_data.get('city3') == city:
+                                    selected
+                                % end
+                            >{{city}}</option>
+                        % end
+                    </select>
 
-            <input type="submit"
-                   value="Добавить маршрут"
-                   class="btn btn-primary">
+                </div>
 
-        </form>
+                <input type="submit"
+                       value="Добавить маршрут"
+                       class="btn btn-primary">
+
+            </form>
         </div>
-        
+
         <div class="right-panel">
 
             % if routes:
@@ -81,7 +91,7 @@
 
                         <div class="route-header">
                             <h3>{{route['name']}}</h3>
-                            <span class="route-date">Добавлено: {{route['date']}}</span>
+                            <span class="route-date">Дата: {{route['date']}}</span>
                         </div>
 
                         <div class="route-path">
