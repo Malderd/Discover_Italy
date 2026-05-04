@@ -197,8 +197,9 @@ body {
 /* ошибка */
 .error {
     color: #ff6b6b;
-    font-size: 1.2em;
+    font-size: 1.4em;
     min-height: 30px;
+    margin-bottom: 10px;
 }
 
 /* маршрутов нет */

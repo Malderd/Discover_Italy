@@ -142,21 +142,21 @@ def add_route():
     if not name:
         errors['route_name'] = "Введите название маршрута"
     elif len(name) < 3 or len(name) > 50:
-        errors['route_name'] = "От 3 до 50 символов"
+        errors['route_name'] = "Название от 3 до 50 символов"
     elif not re.match(r'^[A-Za-zА-Яа-я0-9\s\-\,]+$', name):
-        errors['route_name'] = "Только буквы и цифры"
+        errors['route_name'] = "В названии только буквы и цифры"
     elif not re.search(r'[A-Za-zА-Яа-я]', name):
-        errors['route_name'] = "Должна быть хотя бы одна буква"
+        errors['route_name'] = "В названии должна быть буква"
 
     if not desc:
         errors['description'] = "Введите описание"
     elif len(desc) < 10 or len(desc) > 300:
-        errors['description'] = "От 10 до 300 символов"
+        errors['description'] = "Описание от 10 до 300 символов"
     elif not re.search(r'[A-Za-zА-Яа-я]', desc):
-        errors['description'] = "Должна быть хотя бы одна буква"
+        errors['description'] = "В описании должна быть буква"
 
-    if c1 == c2 or c1 == c3 or c2 == c3:
-        errors['cities'] = "Города не должны повторяться"
+    if c1 == c2 or c2 == c3:
+        errors['cities'] = "Города не должны идти подряд"
 
     # если ошибки
     if errors:
