@@ -11,7 +11,6 @@ def validate_route(name, desc, date, c1, c2, c3):
     elif len(name) < 3 or len(name) > 50:
         errors['route_name'] = "Название слишком короткое"
 
-
     # проверка описания
     if not desc:
         errors['description'] = "Введите описание маршрута"
