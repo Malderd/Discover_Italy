@@ -54,6 +54,7 @@ def active_users():
 @view('active_users')
 def add_users():
     users = load_users()
+    routes = load_routes()
 
     nickname = request.forms.get('nickname', '').strip()
     email = request.forms.get('email', '').strip()
@@ -69,7 +70,8 @@ def add_users():
         'tour_number': tour_number
     }
 
-    errors = validate_user(nickname, email, birthdate, gender, tour_number, users)
+    errors = validate_user(nickname, email, birthdate, gender,
+                          tour_number, users, routes)
 
     if errors:
         return dict(

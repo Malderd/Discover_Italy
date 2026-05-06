@@ -1,7 +1,7 @@
 from datetime import datetime
 import re
 
-def validate_user(nickname, email, birthdate, gender, tour_number, users):
+def validate_user(nickname, email, birthdate, gender, tour_number, users, routes):
     errors = {}
 
     # Пустые поля
@@ -18,7 +18,7 @@ def validate_user(nickname, email, birthdate, gender, tour_number, users):
         errors['tour_number'] = "Введите номер тура"
 
     # Почта
-    email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
     if email and not re.match(email_pattern, email):
         errors['email'] = "Некорректный email"
 
@@ -30,13 +30,21 @@ def validate_user(nickname, email, birthdate, gender, tour_number, users):
         try:
             datetime.strptime(birthdate, "%d-%m-%Y %H:%M")
         except:
-            errors['birthdate'] = "Формат даты: DD-MM-YYYY HH:MM"
+            errors['birthdate'] = "Формат даты: ДД-ММ-ГГГГ ЧЧ:ММ"
 
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
             errors['email'] = "Этот email уже используется с другим ником"
             break
 
-    
+    found = False
+
+    for r in routes:
+        if str(r['id']) == str(tour_number):
+            found = True
+            break
+
+    if not found:
+        errors['tour_number'] = "Такого тура не существует"
 
     return errors

@@ -37,7 +37,7 @@
 
             <input type="text" name="birthdate"
                    value="{{form_data.get('birthdate','')}}"
-                   placeholder="Дата (DD-MM-YYYY HH:MM")"
+                   placeholder="Дата (ДД-ММ-ГГГГ ЧЧ:ММ")"
                    class="form-control">
 
             % if 'birthdate' in errors:
