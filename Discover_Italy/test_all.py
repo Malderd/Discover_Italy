@@ -48,5 +48,24 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('cities', errors)
 
+    def test_items_name_only_digits(self):
+        errors = validate_route(
+            "12345",
+            "Хорошее описание маршрута",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('route_name', errors)
+
+
+    def test_items_description_only_digits(self):
+        errors = validate_route(
+            "Маршрут 1",
+            "1234567890",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('description', errors)
+
 if __name__ == '__main__':
     unittest.main()
