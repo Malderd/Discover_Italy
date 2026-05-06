@@ -3,7 +3,7 @@ from datetime import datetime
 import sys
 import io
 
-from files_active_users.storage_active_users import load_users, save_users
+from files_active_users.storage_active_users import load_users, save_users, get_active_users
 from files_active_users.validation_active_users import validate_user
 
 # импорт функций для страницы "Новинки"
@@ -44,7 +44,9 @@ def cities():
 def active_users():
     users = load_users()
 
-    users = sorted(users, key=lambda u: len(u['tour_numbers']), reverse = True)
+    users = get_active_users(users)
+
+    users = sorted(users, key=lambda u: len(u['recent_tours']), reverse = True)
 
     return dict(
         title='Активные пользователи',
@@ -60,24 +62,22 @@ def add_users():
     users = load_users()
     routes = load_routes()
 
-    users = sorted(users, key=lambda u: len(u['tour_numbers']), reverse = True)
-
     nickname = request.forms.get('nickname', '').strip()
     email = request.forms.get('email', '').strip()
-    birthdate = request.forms.get('birthdate', '').strip()
     gender = request.forms.get('gender', '').strip()
     tour_number = request.forms.get('tour_number', '').strip()
+    tour_date  = request.forms.get('tour_date ', '').strip()
 
     form_data = {
         'nickname': nickname,
         'email': email,
-        'birthdate': birthdate,
         'gender': gender,
-        'tour_number': tour_number
+        'tour_number': tour_number,
+        'tour_date': tour_date
     }
 
-    errors = validate_user(nickname, email, birthdate, gender,
-                          tour_number, users, routes)
+    errors = validate_user(nickname, email, gender,
+                          tour_number, tour_date, users, routes)
 
     if errors:
         return dict(
@@ -96,19 +96,32 @@ def add_users():
             break
 
     if user:
-        user['tour_numbers'].append(tour_number)
-        user['last_tour_datetime'] = now
+        user['tours'].append({
+            'tour_number': tour_number,
+            'booking_date': now,
+            'tour_date': tour_date
+        })
+
     else:
-        users.append({
-            'nickname': nickname,
-            'email': email,
-            'birthdate': birthdate,
-            'gender': gender,
-            'tour_numbers': [tour_number],
-            'last_tour_datetime': now
+         users.append({
+             'nickname': nickname,
+             'email': email,
+             'gender': gender,
+             'tours': [
+                 {
+                    'tour_number': tour_number,
+                    'booking_date': now,
+                    'tour_date': tour_date
+                 }
+            ]
         })
 
     save_users(users)
+
+    users = get_active_users(users)
+
+    users = sorted(users, key=lambda u: len(u['recent_tours']),
+                  reverse = True)
 
     return dict(
         title='Активные пользователи',

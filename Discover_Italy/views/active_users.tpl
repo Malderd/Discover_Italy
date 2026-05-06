@@ -35,17 +35,6 @@
 
             <br>
 
-            <input type="text" name="birthdate"
-                   value="{{form_data.get('birthdate','')}}"
-                   placeholder="Дата (ГГГГ-ММ-ДД ЧЧ:ММ)")"
-                   class="form-control">
-
-            % if 'birthdate' in errors:
-                <p class="error">{{errors['birthdate']}}</p>
-            % end
-
-            <br>
-
             <select name="gender" class="form-control">
                 <option value="male">Мужской</option>
                 <option value="female">Женский</option>
@@ -64,6 +53,15 @@
 
             % if 'tour_number' in errors:
                 <p class="error">{{errors['tour_number']}}</p>
+            % end
+
+            <input type="text" name="tour_date"
+                   value="{{form_data.get('birtour_datethdate','')}}"
+                   placeholder="Дата тура(ГГГГ-ММ-ДД ЧЧ:ММ)")"
+                   class="form-control">
+
+            % if 'tour_date' in errors:
+                <p class="error">{{errors['tour_date']}}</p>
             % end
 
             <br>
@@ -103,9 +101,9 @@
                                 Женский
                             % end
                         </td>
-                        <td>{{user['tour_numbers'][-1]}}</td>
-                        <td>{{user['last_tour_datetime']}}</td>
-                        <td>{{len(user['tour_numbers'])}}</td>
+                        <td>{{user['recent_tours'][-1]['tour_number']}}</td>
+                        <td>{{user['recent_tours'][-1]['booking_date']}}</td>
+                        <td>{{len(user['recent_tours'])}}</td>
                     </tr>
                 % end
             </tbody>

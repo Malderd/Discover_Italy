@@ -20,3 +20,24 @@ def load_users():
 def save_users(users):
     with open(user_file, 'w', encoding='utf-8') as f:
         json.dump(users, f, ensure_ascii=False, indent=4)
+
+def get_active_users(users):
+    active_users = []
+    now = datetime.now()
+    month_ago = now - timedelta(days=30)
+
+    for user in users:
+        recent_tours = []
+        for tour in user['tours']:
+            booking_date = datetime.strptime(
+                tour['booking_date'],
+                "%Y-%m-%d %H:%M"
+            )
+            if booking_date >= month_ago:
+                recent_tours.append(tour)
+
+        if recent_tours:
+            user['recent_tours'] = recent_tours
+            active_users.append(user)
+
+    return active_users
