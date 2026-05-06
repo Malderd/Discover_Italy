@@ -1,7 +1,7 @@
 from datetime import datetime
 import re
 
-def validate_user(nickname, email, birthdate, gender, tour_number, users, routes):
+def validate_user(nickname, email, gender, tour_number, tour_date, users, routes):
     errors = {}
 
     # Пустые поля
@@ -11,11 +11,11 @@ def validate_user(nickname, email, birthdate, gender, tour_number, users, routes
     if not email:
         errors['email'] = "Введите email"
 
-    if not birthdate:
-        errors['birthdate'] = "Введите дату"
-
     if not tour_number:
         errors['tour_number'] = "Введите номер тура"
+
+    if not tour_date:
+        errors['tour_date'] = "Введите дату тура"
 
     # Почта
     email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
@@ -23,19 +23,22 @@ def validate_user(nickname, email, birthdate, gender, tour_number, users, routes
         errors['email'] = "Некорректный email"
 
 
-    if not birthdate:
-        errors['birthdate'] = "Введите дату"
-    # дата
-    else:
+    if tour_date:
         try:
-            datetime.strptime(birthdate, "%d-%m-%Y %H:%M")
+            datetime.strptime(tour_date, "%Y-%m-%d %H:%M")
         except:
-            errors['birthdate'] = "Формат даты: ДД-ММ-ГГГГ ЧЧ:ММ"
+            errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
             errors['email'] = "Этот email уже используется с другим ником"
             break
+
+    for u in users:
+        if u['email'] == email and u['nickname'] == nickname:
+            if u['gender'] != gender:
+                errors['gender'] = "Нельзя изменить пол для существующего пользователя"
+                break
 
     found = False
 

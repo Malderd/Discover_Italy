@@ -1,5 +1,5 @@
 % rebase('layout.tpl', title=title)
-
+<link rel="stylesheet" href="/static/content/style_active_user.css">
 <div class="container" style="margin-top:120px;">
 
     <h1 style="text-align:center;">Бронирование тура</h1>
@@ -35,21 +35,14 @@
 
             <br>
 
-            <input type="text" name="birthdate"
-                   value="{{form_data.get('birthdate','')}}"
-                   placeholder="Дата (ДД-ММ-ГГГГ ЧЧ:ММ")"
-                   class="form-control">
-
-            % if 'birthdate' in errors:
-                <p class="error">{{errors['birthdate']}}</p>
-            % end
-
-            <br>
-
             <select name="gender" class="form-control">
                 <option value="male">Мужской</option>
                 <option value="female">Женский</option>
             </select>
+
+            % if 'gender' in errors:
+                <p class="error">{{errors['gender']}}</p>
+            % end
 
             <br>
 
@@ -60,6 +53,17 @@
 
             % if 'tour_number' in errors:
                 <p class="error">{{errors['tour_number']}}</p>
+            % end
+
+            <br>
+
+            <input type="text" name="tour_date"
+                   value="{{form_data.get('tour_date','')}}"
+                   placeholder="Дата тура (ГГГГ-ММ-ДД ЧЧ:ММ)")"
+                   class="form-control">
+
+            % if 'tour_date' in errors:
+                <p class="error">{{errors['tour_date']}}</p>
             % end
 
             <br>
@@ -84,7 +88,7 @@
                     <th>Ник</th>
                     <th>Пол</th>
                     <th>№ последнего тура</th>
-                    <th>Дата последнего тура</th>
+                    <th>Дата последнего бронирования</th>
                     <th>Всего туров</th>
                 </tr>
             </thead>
@@ -92,10 +96,28 @@
                 % for user in users:
                     <tr>
                         <td>{{user['nickname']}}</td>
-                        <td>{{user['gender']}}</td>
-                        <td>{{user['tour_numbers'][-1]}}</td>
-                        <td>{{user['last_tour_datetime']}}</td>
-                        <td>{{len(user['tour_numbers'])}}</td>
+                        <td>
+                            % if user['gender'] == 'male':
+                                Мужской
+                            % else:
+                                Женский
+                            % end
+                        </td>
+                        <td>
+                            % if user.get('recent_tours'):
+                                {{user['recent_tours'][-1]['tour_number']}}
+                            % else:
+                                -
+                            % end
+                        </td>
+                        <td>
+                            % if user.get('recent_tours'):
+                                {{user['recent_tours'][-1]['booking_date']}}
+                            % else:
+                                -
+                            % end
+                        </td>
+                        <td>{{len(user.get('recent_tours', []))}}</td>
                     </tr>
                 % end
             </tbody>
