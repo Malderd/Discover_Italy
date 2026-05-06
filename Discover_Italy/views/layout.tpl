@@ -12,7 +12,6 @@
 
         <!-- Пользовательские стили для сайта -->
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
-    <link rel="stylesheet" href="/static/content/style_home.css">
     <link rel="stylesheet" type="text/css" href="/static/content/style.css" />
 
     <!-- Подключение шрифта Poppins с Google Fonts -->
@@ -30,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="/static/images/logo2.jpg" style="width:80px; height: 70px; float: left; margin-right: 10px; margin-top: 3px;">
+                <img src="/static/images/logo2.jpg" style="width:80px; height: 70px; float: left; margin-right: 0px; margin-top: 3px;">
                 <a href="/" class="navbar-brand">Discover Italy</a>
             </div>
 

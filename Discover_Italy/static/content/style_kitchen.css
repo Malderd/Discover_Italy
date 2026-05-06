@@ -1,3 +1,14 @@
+/* Сброс стандартных отступов для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
 /* Стили для всей страницы */
 body {
     min-height: 100vh;
