@@ -15,13 +15,14 @@
 
 .booking-btn {
     width: 100%;
-    background-color: #2c3e50;
+    background-color: #008C45;
     color: white;
     border-radius: 10px;
 }
 
     .booking-btn:hover {
-        background-color: #34495e;
+        background-color: #054525;
+        color: white;
     }
 
 .users-table {

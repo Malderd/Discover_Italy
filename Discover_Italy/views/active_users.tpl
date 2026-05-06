@@ -37,7 +37,7 @@
 
             <input type="text" name="birthdate"
                    value="{{form_data.get('birthdate','')}}"
-                   placeholder="Дата (ДД-ММ-ГГГГ ЧЧ:ММ")"
+                   placeholder="Дата (ГГ-ММ-ДД ЧЧ:ММ)")"
                    class="form-control">
 
             % if 'birthdate' in errors:
@@ -50,6 +50,10 @@
                 <option value="male">Мужской</option>
                 <option value="female">Женский</option>
             </select>
+
+            % if 'birthdate' in errors:
+                <p class="error">{{errors['gender']}}</p>
+            % end
 
             <br>
 

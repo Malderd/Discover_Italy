@@ -28,14 +28,19 @@ def validate_user(nickname, email, birthdate, gender, tour_number, users, routes
     # дата
     else:
         try:
-            datetime.strptime(birthdate, "%d-%m-%Y %H:%M")
+            datetime.strptime(birthdate, "%Y-%m-%d %H:%M")
         except:
-            errors['birthdate'] = "Формат даты: ДД-ММ-ГГГГ ЧЧ:ММ"
+            errors['birthdate'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
             errors['email'] = "Этот email уже используется с другим ником"
             break
+
+        if u['email'] == email and u['nickname'] == nickname:
+            if u['gender'] != gender:
+                errors['gender'] = "Нельзя изменить пол для существующего пользователя"
+                break
 
     found = False
 

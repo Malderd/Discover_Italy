@@ -43,6 +43,9 @@ def cities():
 @view('active_users')
 def active_users():
     users = load_users()
+
+    users = sorted(users, key=lambda u: len(u['tour_numbers']), reverse = True)
+
     return dict(
         title='Активные пользователи',
         users=users,
@@ -56,6 +59,8 @@ def active_users():
 def add_users():
     users = load_users()
     routes = load_routes()
+
+    users = sorted(users, key=lambda u: len(u['tour_numbers']), reverse = True)
 
     nickname = request.forms.get('nickname', '').strip()
     email = request.forms.get('email', '').strip()
@@ -82,7 +87,7 @@ def add_users():
             form_data=form_data
         )
 
-    now = datetime.now().strftime("%d-%m-%Y %H:%M")
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     user = None
     for u in users:
