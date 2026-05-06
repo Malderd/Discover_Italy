@@ -3,10 +3,8 @@ import os
 
 # файлы с информацией
 BASE_DIR = os.path.dirname(__file__)
-
 ROUTES_FILE = os.path.join(BASE_DIR, 'routes_cities.json')
 CITIES_FILE = os.path.join(BASE_DIR, 'cities.json')
-
 
 # загрузка маршрутов
 def load_routes():
@@ -18,12 +16,10 @@ def load_routes():
         except:
             return []
 
-
 # сохранение маршрутов
 def save_routes(routes):
     with open(ROUTES_FILE, 'w', encoding='utf-8') as f:
         json.dump(routes, f, ensure_ascii=False, indent=4)
-
 
 # загрузка городов
 def load_cities():
