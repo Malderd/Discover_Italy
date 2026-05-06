@@ -46,7 +46,7 @@
     <Compile Include="files_new_items\storage_activity_users.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="files_new_items\validation_activity_user.py">
+    <Compile Include="files_new_items\validation_activity_users.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes.py" />
