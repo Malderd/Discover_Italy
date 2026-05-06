@@ -3,8 +3,8 @@ from datetime import datetime
 import sys
 import io
 
-from files_new_items.storage_active_users import load_users, save_users
-from files_new_items.validation_active_users import validate_user
+from files_active_users.storage_active_users import load_users, save_users
+from files_active_users.validation_active_users import validate_user
 
 # импорт функций для страницы "Новинки"
 from files_new_items.validation_new_items import validate_route
