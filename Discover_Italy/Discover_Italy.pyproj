@@ -53,6 +53,9 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="articles.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="cities.json" />
     <Content Include="requirements.txt" />
     <Content Include="routes_cities.json" />

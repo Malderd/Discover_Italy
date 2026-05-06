@@ -2,7 +2,7 @@
 Routes and views for the Discover Italy.
 """
 
-from bottle import route, view, request
+from bottle import route, view, request, redirect
 import json
 import os
 from datetime import datetime
@@ -15,6 +15,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # файлы данных
 ROUTES_FILE = 'routes_cities.json'
 CITIES_FILE = 'cities.json'
+ARTICLES_FILE = 'articles.json'
 
 # загрузка маршрутов
 def load_routes():
@@ -28,6 +29,17 @@ def save_routes(routes):
     with open(ROUTES_FILE, 'w', encoding='utf-8') as f:
         json.dump(routes, f, ensure_ascii=False, indent=4)
 
+# загрузка статей
+def load_articles():
+    if not os.path.exists(ARTICLES_FILE):
+        return []
+    with open(ARTICLES_FILE, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+# сохранение статей
+def save_articles(articles):
+    with open(ARTICLES_FILE, 'w', encoding='utf-8') as f:
+        json.dump(articles, f, ensure_ascii=False, indent=4)
 
 # загрузка городов
 def load_cities():
@@ -36,13 +48,11 @@ def load_cities():
     with open(CITIES_FILE, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-
 # генерация id маршрута
 def generate_id(routes):
     if not routes:
         return 1
     return max(r['id'] for r in routes) + 1
-
 
 @route('/')
 @route('/home')
@@ -50,18 +60,15 @@ def generate_id(routes):
 def home():
     return dict(title='Главная')
 
-
 @route('/contact')
 @view('contact')
 def contact():
     return dict(title='О разработчиках')
 
-
 @route('/kitchen')
 @view('kitchen')
 def kitchen():
     return dict(title='Кухня')
-
 
 @route('/cities')
 @view('cities')
@@ -73,41 +80,90 @@ def cities():
 def active_users():
     return dict(title='Активные пользователи')
 
-
-@route('/articles')
+@route('/articles', method=['GET', 'POST'])
 @view('articles')
 def articles():
-    return dict(title='Статьи')
+    articles_list = load_articles()
+    
+    # сортировка: новые сверху
+    articles_list = sorted(
+        articles_list,
+        key=lambda x: x.get('date', ''),
+        reverse=True
+    )
+    
+    error = None
+    old = {}
+    
+    if request.method == 'POST':
+        author = request.forms.getunicode('author', '')
+        title = request.forms.getunicode('title', '')
+        content = request.forms.getunicode('content', '')
+        date = request.forms.getunicode('date', '')
+        
+        old = {
+            'author': author,
+            'title': title,
+            'content': content,
+            'date': date
+        }
+        
+        if not author or not title or not content:
+            error = "Заполните все поля"
+        else:
+            if not date:
+                date = datetime.now().strftime("%Y-%m-%d")
+            
+            new_article = {
+                "author": author,
+                "title": title,
+                "content": content,
+                "date": date
+            }
+            
+            articles_list.insert(0, new_article)
+            save_articles(articles_list)
+            
+            # перенаправление для очистки формы
+            return redirect('/articles')
+    
+    return dict(
+        title='Статьи',
+        articles=articles_list,
+        error=error,
+        old=old
+    )
 
 # страница маршрутов
 @route('/new_items', method=['GET', 'POST'])
 @view('new_items')
 def new_items():
-
     # загрузка маршрутов из файла
     routes_list = load_routes()
-
+    
     # сортировка по дате
-    routes_list = sorted(
-        routes_list,
-        key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
-        reverse=True
-    )
-
+    if routes_list:
+        try:
+            routes_list = sorted(
+                routes_list,
+                key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
+                reverse=True
+            )
+        except:
+            pass
+    
     # загрузка списка городов
     cities = load_cities()
-
+    
     # обработка формы (добавление маршрута)
     if request.method == 'POST':
-
         # получение данных формы
         name = request.forms.getunicode('route_name')
         desc = request.forms.getunicode('description')
         c1 = request.forms.getunicode('city1')
         c2 = request.forms.getunicode('city2')
         c3 = request.forms.getunicode('city3')
-
-
+        
         # проверка заполнения полей
         if not name or not desc:
             return dict(
@@ -116,7 +172,7 @@ def new_items():
                 cities=cities,
                 error="Заполните все поля"
             )
-
+        
         # проверка одинаковых городов
         if c1 == c2 or c1 == c3 or c2 == c3:
             return dict(
@@ -125,7 +181,7 @@ def new_items():
                 cities=cities,
                 error="Города не должны повторяться"
             )
-
+        
         # создание нового маршрута
         new_route = {
             'id': generate_id(routes_list),
@@ -136,20 +192,20 @@ def new_items():
             'city3': c3,
             'date': datetime.now().strftime("%Y-%m-%d %H:%M")
         }
-
+        
         # добавление в список
         routes_list.append(new_route)
-
+        
         # сохранение в файл
         save_routes(routes_list)
-
+        
         # возврат страницы с отсортированным списком
         return dict(
             title='Новинки',
             routes=routes_list,
             cities=cities
         )
-
+    
     # открытие страницы
     return dict(
         title='Новинки',
