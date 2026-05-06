@@ -66,7 +66,7 @@ def add_users():
     email = request.forms.get('email', '').strip()
     gender = request.forms.get('gender', '').strip()
     tour_number = request.forms.get('tour_number', '').strip()
-    tour_date  = request.forms.get('tour_date ', '').strip()
+    tour_date  = request.forms.get('tour_date', '').strip()
 
     form_data = {
         'nickname': nickname,

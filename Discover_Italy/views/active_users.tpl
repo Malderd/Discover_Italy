@@ -55,9 +55,11 @@
                 <p class="error">{{errors['tour_number']}}</p>
             % end
 
+            <br>
+
             <input type="text" name="tour_date"
-                   value="{{form_data.get('birtour_datethdate','')}}"
-                   placeholder="Дата тура(ГГГГ-ММ-ДД ЧЧ:ММ)")"
+                   value="{{form_data.get('tour_date','')}}"
+                   placeholder="Дата тура (ГГГГ-ММ-ДД ЧЧ:ММ)")"
                    class="form-control">
 
             % if 'tour_date' in errors:
@@ -86,7 +88,7 @@
                     <th>Ник</th>
                     <th>Пол</th>
                     <th>№ последнего тура</th>
-                    <th>Дата последнего тура</th>
+                    <th>Дата последнего бронирования</th>
                     <th>Всего туров</th>
                 </tr>
             </thead>
@@ -101,9 +103,21 @@
                                 Женский
                             % end
                         </td>
-                        <td>{{user['recent_tours'][-1]['tour_number']}}</td>
-                        <td>{{user['recent_tours'][-1]['booking_date']}}</td>
-                        <td>{{len(user['recent_tours'])}}</td>
+                        <td>
+                            % if user.get('recent_tours'):
+                                {{user['recent_tours'][-1]['tour_number']}}
+                            % else:
+                                -
+                            % end
+                        </td>
+                        <td>
+                            % if user.get('recent_tours'):
+                                {{user['recent_tours'][-1]['booking_date']}}
+                            % else:
+                                -
+                            % end
+                        </td>
+                        <td>{{len(user.get('recent_tours', []))}}</td>
                     </tr>
                 % end
             </tbody>
