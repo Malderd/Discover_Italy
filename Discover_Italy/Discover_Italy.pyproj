@@ -46,6 +46,9 @@
     <Compile Include="articles.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="files_new_items\storage_activity_users.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes.py" />
     <Compile Include="files_new_items\storage_new_items.py">
       <SubType>Code</SubType>
