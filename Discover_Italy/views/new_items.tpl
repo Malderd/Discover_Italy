@@ -1,1 +1,1 @@
-% rebase('layout.tpl', title=title)
+% rebase('layout.tpl', title='Discover Italy')
