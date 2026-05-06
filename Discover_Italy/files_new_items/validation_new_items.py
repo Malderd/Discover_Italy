@@ -1,4 +1,8 @@
 from datetime import datetime
+import re
+
+# проверка на латиницу
+latin_pattern = r'[A-Za-z]'
 
 def validate_route(name, desc, date, c1, c2, c3):
     errors = {}
@@ -6,6 +10,8 @@ def validate_route(name, desc, date, c1, c2, c3):
     # проверка названия маршрута
     if not name:
         errors['route_name'] = "Введите название маршрута"
+    elif re.search(latin_pattern, name):
+        errors['route_name'] = "Английские буквы запрещены"
     elif name.isdigit():
         errors['route_name'] = "Название должно содержать буквы"
     elif len(name) < 3 or len(name) > 50:
@@ -14,12 +20,14 @@ def validate_route(name, desc, date, c1, c2, c3):
     # проверка описания
     if not desc:
         errors['description'] = "Введите описание маршрута"
+    elif re.search(latin_pattern, desc):
+        errors['description'] = "Английские буквы запрещены"
     elif desc.isdigit():
         errors['description'] = "Описание должно содержать буквы"
     elif len(desc) < 10:
         errors['description'] = "Описание слишком короткое"
 
-    # проверка формата даты
+    # дата
     if not date:
         errors['date'] = "Введите дату"
     else:
@@ -28,7 +36,7 @@ def validate_route(name, desc, date, c1, c2, c3):
         except ValueError:
             errors['date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
-    # проверка городов
+    # города
     if c1 == c2 or c2 == c3:
         errors['cities'] = "Города не должны идти подряд"
 
