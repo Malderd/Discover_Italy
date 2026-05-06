@@ -26,6 +26,9 @@
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>unittest</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>.</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,8 +44,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes.py" />
+    <Compile Include="files_new_items\storage_new_items.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test_all.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="files_new_items\validation_new_items.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="files_new_items\" />
     <Folder Include="static\" />
     <Folder Include="static\content\" />
     <Folder Include="static\fonts\" />
@@ -51,9 +64,9 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cities.json" />
+    <Content Include="files_new_items\cities.json" />
     <Content Include="requirements.txt" />
-    <Content Include="routes_cities.json" />
+    <Content Include="files_new_items\routes_cities.json" />
     <Content Include="static\content\bootstrap.css" />
     <Content Include="static\content\bootstrap.min.css" />
     <Content Include="static\content\site.css" />
