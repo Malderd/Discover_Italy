@@ -6,6 +6,7 @@ import io
 from files_new_items.storage_active_users import load_users, save_users
 from files_new_items.validation_active_users import validate_user
 
+# импорт функций для страницы "Новинки"
 from files_new_items.validation_new_items import validate_route
 from files_new_items.storage_new_items import load_routes, save_routes, load_cities, generate_id
 
@@ -130,8 +131,9 @@ def new_items():
         reverse=True
     )
 
-    cities = load_cities()
+    cities = load_cities() # загрузка городов
 
+    # отображение страницы
     return dict(
         title='Новинки',
         routes=routes_list,
@@ -139,7 +141,6 @@ def new_items():
         errors={},
         form_data={}
     )
-
 
 # обработка добавления нового маршрута (POST)
 @route('/new_items', method='POST')
