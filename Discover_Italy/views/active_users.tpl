@@ -1,66 +1,104 @@
 % rebase('layout.tpl', title=title)
 
-<div class="container booking-container" style="margin-top:120px;">
+<div class="container" style="margin-top:120px;">
 
-    <h1>Бронирование тура</h1>
+    <h1 style="text-align:center;">Бронирование тура</h1>
 
-    <p>Заполните форму, чтобы забронировать тур по Италии.</p>
+    <p style="text-align:center;">
+        Заполните форму, чтобы забронировать тур по Италии.
+    </p>
 
-    % if defined('error'):
-        <p class="error">{{error}}</p>
-    % end
+    <!-- ФОРМА ПО ЦЕНТРУ -->
+    <div class="booking-wrapper">
 
-    <form action="/active_users" method="post" class="booking-form">
+        <form action="/active_users" method="post" class="booking-form">
 
-        <input type="text" name="nickname"
-               placeholder="Ник"
-               class="form-control" required>
+            <input type="text" name="nickname"
+                   value="{{form_data.get('nickname','')}}"
+                   placeholder="Ник"
+                   class="form-control">
 
-        <br>
+            % if 'nickname' in errors:
+                <p class="error">{{errors['nickname']}}</p>
+            % end
 
-        <input type="email" name="email"
-               placeholder="Почта"
-               class="form-control" required>
+            <br>
 
-        <br>
+            <input type="text" name="email"
+                   value="{{form_data.get('email','')}}"
+                   placeholder="Почта"
+                   class="form-control">
 
-       <input type="text" name="birthdate"
-                placeholder="Дата (DD-MM-YYYY HH:MM)"
-                class="form-control" required>
+            % if 'email' in errors:
+                <p class="error">{{errors['email']}}</p>
+            % end
 
-        <br>
+            <br>
 
-        <select name="gender" class="form-control">
-            <option value="male">Мужской</option>
-            <option value="female">Женский</option>
-        </select>
+            <input type="text" name="birthdate"
+                   value="{{form_data.get('birthdate','')}}"
+                   placeholder="Дата (DD-MM-YYYY HH:MM")"
+                   class="form-control">
 
-        <br>
+            % if 'birthdate' in errors:
+                <p class="error">{{errors['birthdate']}}</p>
+            % end
 
-        <input type="number" name="tour_number"
-               placeholder="Номер тура"
-               class="form-control" required>
+            <br>
 
-        <br>
+            <select name="gender" class="form-control">
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
 
-        <input type="submit"
-               value="Забронировать"
-               class="btn btn-primary booking-btn">
+            <br>
 
-    </form>
+            <input type="number" name="tour_number"
+                   value="{{form_data.get('tour_number','')}}"
+                   placeholder="Номер тура"
+                   class="form-control">
 
+            % if 'tour_number' in errors:
+                <p class="error">{{errors['tour_number']}}</p>
+            % end
+
+            <br>
+
+            <input type="submit"
+                   value="Забронировать"
+                   class="btn booking-btn">
+
+        </form>
+    </div>
     <hr>
 
-    <h2>Список пользователей</h2>
+    <!-- СПИСОК ПОЛЬЗОВАТЕЛЕЙ -->
+    <h2 style="text-align:center;">
+        Список активных пользователей за последний месяц
+    </h2>
 
-    % for user in users:
-        <div class="user-card">
-            <h3>{{user['nickname']}}</h3>
-            <p>Email: {{user['email']}}</p>
-            <p>Дата рождения: {{user['birthdate']}}</p>
-            <p>Пол: {{user['gender']}}</p>
-            <p>Тур №{{user['tour_number']}}</p>
-        </div>
-    % end
-
+    <div class="users-table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ник</th>
+                    <th>Пол</th>
+                    <th>№ последнего тура</th>
+                    <th>Дата последнего тура</th>
+                    <th>Всего туров</th>
+                </tr>
+            </thead>
+            <tbody>
+                % for user in users:
+                    <tr>
+                        <td>{{user['nickname']}}</td>
+                        <td>{{user['gender']}}</td>
+                        <td>{{user['tour_numbers'][-1]}}</td>
+                        <td>{{user['last_tour_datetime']}}</td>
+                        <td>{{len(user['tour_numbers'])}}</td>
+                    </tr>
+                % end
+            </tbody>
+        </table>
+    </div>
 </div>

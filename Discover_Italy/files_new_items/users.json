@@ -2,8 +2,14 @@
     {
         "nickname": "maderdss",
         "email": "dmitrii.kulikov2015@gmail.com",
-        "birthdate": "04-05-2026 13:0",
+        "birthdate": "12-12-2000",
         "gender": "male",
-        "tour_number": "1"
+        "tour_numbers": [
+            "1",
+            "3",
+            "7",
+            "1"
+        ],
+        "last_tour_datetime": "06-05-2026 23:26"
     }
 ]

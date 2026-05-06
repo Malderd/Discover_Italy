@@ -3,8 +3,8 @@ from datetime import datetime
 import sys
 import io
 
-from files_new_items.storage_activity_users import load_users, save_users
-from files_new_items.validation_activity_users import validate_user
+from files_new_items.storage_active_users import load_users, save_users
+from files_new_items.validation_active_users import validate_user
 
 from files_new_items.validation_new_items import validate_route
 from files_new_items.storage_new_items import load_routes, save_routes, load_cities, generate_id
@@ -44,20 +44,22 @@ def active_users():
     users = load_users()
     return dict(
         title='Активные пользователи',
-        users=users
+        users=users,
+        errors={},
+        form_data={}
     )
 
 # Страница с маршрутами (POST)
 @route('/active_users', method='POST')
 @view('active_users')
-def active_users():
+def add_users():
     users = load_users()
 
-    nickname = request.forms.get('nickname').strip()
-    email = request.forms.get('email').strip()
-    birthdate = request.forms.get('birthdate').strip()
-    gender = request.forms.get('gender').strip()
-    tour_number = request.forms.get('tour_number').strip()
+    nickname = request.forms.get('nickname', '').strip()
+    email = request.forms.get('email', '').strip()
+    birthdate = request.forms.get('birthdate', '').strip()
+    gender = request.forms.get('gender', '').strip()
+    tour_number = request.forms.get('tour_number', '').strip()
 
     form_data = {
         'nickname': nickname,
@@ -67,7 +69,7 @@ def active_users():
         'tour_number': tour_number
     }
 
-    errors = validate_user(nickname, email, birthdate, gender, tour_number)
+    errors = validate_user(nickname, email, birthdate, gender, tour_number, users)
 
     if errors:
         return dict(
@@ -77,15 +79,26 @@ def active_users():
             form_data=form_data
         )
 
-    new_user = {
-        'nickname': nickname,
-        'email': email,
-        'birthdate': birthdate,
-        'gender': gender,
-        'tour_number': tour_number
-    }
+    now = datetime.now().strftime("%d-%m-%Y %H:%M")
 
-    users.append(new_user)
+    user = None
+    for u in users:
+        if u['email'] == email:
+            user = u
+            break
+
+    if user:
+        user['tour_numbers'].append(tour_number)
+        user['last_tour_datetime'] = now
+    else:
+        users.append({
+            'nickname': nickname,
+            'email': email,
+            'birthdate': birthdate,
+            'gender': gender,
+            'tour_numbers': [tour_number],
+            'last_tour_datetime': now
+        })
 
     save_users(users)
 

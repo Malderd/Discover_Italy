@@ -1,7 +1,7 @@
 from datetime import datetime
 import re
 
-def validate_user(nickname, email, birthdate, gender, tour_number):
+def validate_user(nickname, email, birthdate, gender, tour_number, users):
     errors = {}
 
     # Пустые поля
@@ -31,5 +31,12 @@ def validate_user(nickname, email, birthdate, gender, tour_number):
             datetime.strptime(birthdate, "%d-%m-%Y %H:%M")
         except:
             errors['birthdate'] = "Формат даты: DD-MM-YYYY HH:MM"
+
+    for u in users:
+        if u['email'] == email and u['nickname'] != nickname:
+            errors['email'] = "Этот email уже используется с другим ником"
+            break
+
+    
 
     return errors
