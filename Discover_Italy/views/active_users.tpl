@@ -1,10 +1,66 @@
 % rebase('layout.tpl', title=title)
 
-<h3> Бронирование </h3>
-<form action="/home" method="post">
-        <p><textarea rows="2" cols="50" name="Имя" placeholder="Ваше имя" style="resize: none;"></textarea></p> 
-        <p><input type="text" size="30" name="Почта" placeholder="Ваша почта"></p>
-        <p><input type="text" size="50" name="Номер телефон" placeholder="Ваш номер телефон"></p>
-         <p><input type="text" size="50" name="Номер тура" placeholder="Ваш номер тура"></p>
-        <p><input type="submit" value="Забронированить"></p>
-</form>
+<div class="container booking-container" style="margin-top:120px;">
+
+    <h1>Бронирование тура</h1>
+
+    <p>Заполните форму, чтобы забронировать тур по Италии.</p>
+
+    % if defined('error'):
+        <p class="error">{{error}}</p>
+    % end
+
+    <form action="/active_users" method="post" class="booking-form">
+
+        <input type="text" name="nickname"
+               placeholder="Ник"
+               class="form-control" required>
+
+        <br>
+
+        <input type="email" name="email"
+               placeholder="Почта"
+               class="form-control" required>
+
+        <br>
+
+       <input type="text" name="birthdate"
+                placeholder="Дата (DD-MM-YYYY HH:MM)"
+                class="form-control" required>
+
+        <br>
+
+        <select name="gender" class="form-control">
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+        </select>
+
+        <br>
+
+        <input type="number" name="tour_number"
+               placeholder="Номер тура"
+               class="form-control" required>
+
+        <br>
+
+        <input type="submit"
+               value="Забронировать"
+               class="btn btn-primary booking-btn">
+
+    </form>
+
+    <hr>
+
+    <h2>Список пользователей</h2>
+
+    % for user in users:
+        <div class="user-card">
+            <h3>{{user['nickname']}}</h3>
+            <p>Email: {{user['email']}}</p>
+            <p>Дата рождения: {{user['birthdate']}}</p>
+            <p>Пол: {{user['gender']}}</p>
+            <p>Тур №{{user['tour_number']}}</p>
+        </div>
+    % end
+
+</div>
