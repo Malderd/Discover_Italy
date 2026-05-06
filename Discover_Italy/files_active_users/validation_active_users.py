@@ -37,6 +37,7 @@ def validate_user(nickname, email, birthdate, gender, tour_number, users, routes
             errors['email'] = "Этот email уже используется с другим ником"
             break
 
+    for u in users:
         if u['email'] == email and u['nickname'] == nickname:
             if u['gender'] != gender:
                 errors['gender'] = "Нельзя изменить пол для существующего пользователя"

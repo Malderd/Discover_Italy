@@ -37,7 +37,7 @@
 
             <input type="text" name="birthdate"
                    value="{{form_data.get('birthdate','')}}"
-                   placeholder="Дата (ГГ-ММ-ДД ЧЧ:ММ)")"
+                   placeholder="Дата (ГГГГ-ММ-ДД ЧЧ:ММ)")"
                    class="form-control">
 
             % if 'birthdate' in errors:
@@ -51,7 +51,7 @@
                 <option value="female">Женский</option>
             </select>
 
-            % if 'birthdate' in errors:
+            % if 'gender' in errors:
                 <p class="error">{{errors['gender']}}</p>
             % end
 
@@ -96,7 +96,13 @@
                 % for user in users:
                     <tr>
                         <td>{{user['nickname']}}</td>
-                        <td>{{user['gender']}}</td>
+                        <td>
+                            % if user['gender'] == 'male':
+                                Мужской
+                            % else:
+                                Женский
+                            % end
+                        </td>
                         <td>{{user['tour_numbers'][-1]}}</td>
                         <td>{{user['last_tour_datetime']}}</td>
                         <td>{{len(user['tour_numbers'])}}</td>
