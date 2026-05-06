@@ -1,9 +1,9 @@
 import unittest
-from validation_new_items import validate_route
+from files_new_items.validation_new_items import validate_route
 
 class Test_test_all(unittest.TestCase):
     # Тесты для страницы "Новинки"
-    def test_valid_data(self):
+    def test_items_valid_data(self):
         errors = validate_route(
             "Маршрут 1",
             "Хорошее описание маршрута",
@@ -12,7 +12,7 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertEqual(errors, {})
 
-    def test_empty_name(self):
+    def test_items_empty_name(self):
         errors = validate_route(
             "",
             "Хорошее описание маршрута",
@@ -21,7 +21,7 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('route_name', errors)
 
-    def test_short_description(self):
+    def test_items_short_description(self):
         errors = validate_route(
             "Маршрут",
             "Коротко",
@@ -30,7 +30,7 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('description', errors)
 
-    def test_invalid_date(self):
+    def test_items_invalid_date(self):
         errors = validate_route(
             "Маршрут",
             "Хорошее описание маршрута",
@@ -39,7 +39,7 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('date', errors)
 
-    def test_same_cities(self):
+    def test_items_same_cities(self):
         errors = validate_route(
             "Маршрут",
             "Хорошее описание маршрута",

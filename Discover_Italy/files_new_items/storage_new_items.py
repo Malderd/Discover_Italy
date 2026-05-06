@@ -1,9 +1,11 @@
 import json
 import os
 
-# файлы данных
-ROUTES_FILE = 'routes_cities.json'
-CITIES_FILE = 'cities.json'
+# файлы с информацией
+BASE_DIR = os.path.dirname(__file__)
+
+ROUTES_FILE = os.path.join(BASE_DIR, 'routes_cities.json')
+CITIES_FILE = os.path.join(BASE_DIR, 'cities.json')
 
 
 # загрузка маршрутов

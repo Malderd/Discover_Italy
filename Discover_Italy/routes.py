@@ -3,8 +3,8 @@ from datetime import datetime
 import sys
 import io
 
-from validation_new_items import validate_route
-from storage_new_items import load_routes, save_routes, load_cities, generate_id
+from files_new_items.validation_new_items import validate_route
+from files_new_items.storage_new_items import load_routes, save_routes, load_cities, generate_id
 
 # кодировка вывода
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
