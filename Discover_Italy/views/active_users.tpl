@@ -1,5 +1,5 @@
 % rebase('layout.tpl', title=title)
-
+<link rel="stylesheet" href="/static/content/style_active_user.css">
 <div class="container" style="margin-top:120px;">
 
     <h1 style="text-align:center;">Бронирование тура</h1>
