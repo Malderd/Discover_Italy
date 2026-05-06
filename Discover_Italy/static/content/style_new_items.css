@@ -1,12 +1,12 @@
 /* фон страницы */
 body {
-    margin: 0; /* внешние отступы отсутствуют */
-    background: linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.75)), url("/static/images/map_Italy.jpg"); /* фон с затемнением */
-    background-size: cover; /* растяжение фона */
-    background-position: center; /* центр фона */
-    background-repeat: no-repeat; /* отсутствие повторов */
-    min-height: 100vh; /* минимальная высота экрана */
-    color: white;
+    margin: 0;
+    min-height: 100vh; /* растягивание страницы на всю высоту окна */
+    background: linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.75)), url("/static/images/map_Italy.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* фиксирование фона, чтобы он не двигался при скролле */
 }
 
 /* фиксация Bootstrap-контейнера */
@@ -117,6 +117,7 @@ body {
     align-items: center;
 }
 
+/* кнопка добавления */
 .btn-primary {
     font-size: 1.2em; 
     width: 100%; 
