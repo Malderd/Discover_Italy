@@ -70,10 +70,10 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="files_new_items\activity_users.json">
+    <Content Include="files_new_items\cities.json" />
+    <Content Include="files_new_items\users.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="files_new_items\cities.json" />
     <Content Include="requirements.txt" />
     <Content Include="files_new_items\routes_cities.json" />
     <Content Include="static\content\bootstrap.css" />
