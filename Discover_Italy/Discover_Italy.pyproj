@@ -41,6 +41,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes.py" />
+    <Compile Include="storage_new_items.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="validation_new_items.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
