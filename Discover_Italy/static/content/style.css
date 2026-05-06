@@ -32,7 +32,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-left: 0;
+    margin-left: 10px;
 }
 
 /* бренд */
@@ -54,7 +54,7 @@ body {
     /* список меню */
     .navbar-collapse .navbar-nav {
         display: flex;
-        gap: 25px;
+        gap: 30px;
         margin: 0;
         padding: 0;
     }
@@ -68,7 +68,7 @@ body {
             /* ссылки */
             .navbar-collapse .navbar-nav li a {
                 font-family: 'Trebuchet MS', sans-serif;
-                font-size: 20px;
+                font-size: 23px;
                 font-weight: 600;
                 color: #fff !important;
                 padding: 12px;

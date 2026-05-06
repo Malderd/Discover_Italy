@@ -39,8 +39,8 @@
                     <li><a href="/cities">Города</a></li>
                     <li><a href="/kitchen">Кухня</a></li>
                     <li><a href="/new_items">Новинки</a></li>
+                    <li><a href="/active_users">Бронирование</a></li>
                     <li><a href="/articles">Статьи</a></li>
-                    <li><a href="/active_users">Активные пользователи</a></li>
                     <li><a href="/contact">О разработчиках</a></li>
                 </ul>
             </div>
