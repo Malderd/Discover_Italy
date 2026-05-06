@@ -67,6 +67,9 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="files_new_items\activity_users.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="files_new_items\cities.json" />
     <Content Include="requirements.txt" />
     <Content Include="files_new_items\routes_cities.json" />
