@@ -39,14 +39,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="active_users.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="app.py" />
     <Compile Include="articles.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="files_new_items\storage_activity_users.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="files_new_items\validation_activity_user.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes.py" />
