@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 def validate_user(nickname, email, birthdate, gender, tour_number):
     errors = {}

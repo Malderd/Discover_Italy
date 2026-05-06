@@ -1,7 +1,10 @@
-import os, json
+import os
+import json
+
+
 
 # файлы с информацией
-base_dir = os.path.dirname(file)
+base_dir = os.path.dirname(__file__)
 user_file = os.path.join(base_dir, 'users.json')
 
 def load_users():
