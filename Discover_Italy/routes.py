@@ -3,6 +3,9 @@ from datetime import datetime
 import sys
 import io
 
+from files_new_items.storage_activity_users import load_users, save_users
+from files_new_items.validation_activity_users import validate_user
+
 from files_new_items.validation_new_items import validate_route
 from files_new_items.storage_new_items import load_routes, save_routes, load_cities, generate_id
 
@@ -34,10 +37,64 @@ def cities():
     return dict(title='Города')
 
 
+# Страница с маршрутами (GET)
 @route('/active_users')
 @view('active_users')
 def active_users():
-    return dict(title='Активные пользователи')
+    users = load_users()
+    return dict(
+        title='Активные пользователи',
+        users=users
+    )
+
+# Страница с маршрутами (POST)
+@route('/active_users', method='POST')
+@view('active_users')
+def active_users():
+    users = load_users()
+
+    nickname = request.forms.get('nickname').strip()
+    email = request.forms.get('email').strip()
+    birthdate = request.forms.get('birthdate').strip()
+    gender = request.forms.get('gender').strip()
+    tour_number = request.forms.get('tour_number').strip()
+
+    form_data = {
+        'nickname': nickname,
+        'email': email,
+        'birthdate': birthdate,
+        'gender': gender,
+        'tour_number': tour_number
+    }
+
+    errors = validate_user(nickname, email, birthdate, gender, tour_number)
+
+    if errors:
+        return dict(
+            title='Активные пользователи',
+            users=users,
+            errors=errors,
+            form_data=form_data
+        )
+
+    new_user = {
+        'nickname': nickname,
+        'email': email,
+        'birthdate': birthdate,
+        'gender': gender,
+        'tour_number': tour_number
+    }
+
+    users.append(new_user)
+
+    save_users(users)
+
+    return dict(
+        title='Активные пользователи',
+        users=users,
+        errors={},
+        form_data={}
+    )
 
 
 @route('/articles')
