@@ -107,6 +107,7 @@
     <Content Include="static\images\milan.jpg" />
     <Content Include="static\images\neapol-vert.jpg" />
     <Content Include="static\images\neapol.jpg" />
+    <Content Include="static\images\nigth_rome.jpg" />
     <Content Include="static\images\panna_cotta.jpg" />
     <Content Include="static\images\logo.jpg" />
     <Content Include="static\images\Pizza_napolitaine_maison.jpg" />
