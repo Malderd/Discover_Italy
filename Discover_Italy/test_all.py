@@ -8,6 +8,7 @@ from files_new_items.storage_new_items import load_routes
 
 # импорт валидации для новинок
 from files_new_items.validation_new_items import validate_route
+# импорт валидации для статей 
 from files_articles.validation_articles import validate_articles
 
 class Test_test_all(unittest.TestCase):
@@ -114,101 +115,161 @@ class Test_test_all(unittest.TestCase):
               "Рим", "Флоренция", "Милан"
         )
         self.assertIn('description', errors)
-    #----------------------------
-    # Тесты для страницы "Статьи"
-    #----------------------------
-    #тест, все данные корректные
+#----------------------------
+# Тесты для страницы "Статьи"
+#----------------------------
+
+    # тест, все данные корректные
     def test_articles_valid_data(self):
         errors = validate_articles(
             "Дорогов",
             "Путешествие по солевой Италии",
-            "Отличное путешествие, с замечательными людьми ",
+            "Отличное путешествие с замечательными людьми",
             "2026-05-09"
         )
         self.assertEqual(errors, {})
-    #неккоректный автор
-    def test_articles_author_uncorrect(self):
-        errors=validate_articles
-        (
+    
+    # некорректный автор (спецсимволы)
+    def test_articles_author_incorrect(self):
+        errors = validate_articles(
             "!!!!@#ljdkkf",
             "Путешествие по красивой Италии",
-            "Отличное путешествие, с замечательными людьми ",
+            "Отличное путешествие с замечательными людьми",
             "2026-05-09"
         )
-    #неккоректный заголовок
-    def test_articles_title_uncorrect(self):
-        errors=validate_articles
-        (
+        self.assertIn('author', errors)
+    
+    # некорректный заголовок (только цифры)
+    def test_articles_title_incorrect(self):
+        errors = validate_articles(
             "Ладушка67",
             "12312312312312",
-            "Отличное путешествие, с замечательными людьми ",
+            "Отличное путешествие с замечательными людьми",
             "2026-05-09"
         )
-    #неккоректная статья
-    def test_articles_content_uncorrect(self):
-        errors=validate_articles
-        (
+        self.assertIn('title', errors)
+    
+    # некорректная статья (только цифры)
+    def test_articles_content_incorrect(self):
+        errors = validate_articles(
             "Ладушка67",
             "Поездка по Италии",
-            "23423433423434 ",
+            "23423433423434",
             "2026-05-09"
         )
-    #неккоректная дата
-    def test_articles_date_uncorrect(self):
-        errors=validate_articles
-        (
+        self.assertIn('content', errors)
+    
+    # некорректная дата (прошлое)
+    def test_articles_date_incorrect(self):
+        errors = validate_articles(
             "Ладушка67",
             "Поездка по Италии",
-            "Отличная поездка всем все понравилось ",
+            "Отличная поездка всем все понравилось",
             "2024-05-09"
         )
-    #автор только из чисел
+        self.assertIn('date', errors)
+    
+    # автор только из цифр
     def test_articles_author_only_digits(self):
-        errors=validate_articles
-        (
+        errors = validate_articles(
             "6767676767",
             "Поездка по Италии",
-            "Отличная поездка всем все понравилось ",
+            "Отличная поездка всем все понравилось",
             "2026-05-09"
         )
-     #заголовок только из чисел
+        self.assertIn('author', errors)
+    
+    # заголовок только из цифр
     def test_articles_title_only_digits(self):
-        errors=validate_articles
-        (
+        errors = validate_articles(
             "Ладушка6767",
             "6767676767",
-            "Отличная поездка всем все понравилось ",
+            "Отличная поездка всем все понравилось",
             "2026-05-09"
         )
-    #Пустая статья
+        self.assertIn('title', errors)
+    
+    # пустая статья
     def test_articles_content_is_empty(self):
-        errors=validate_articles
-        (
+        errors = validate_articles(
             "Ладушка6767",
             "Италия это очень круто!",
             "",
             "2026-05-09"
         )
-    #короткое имя
+        self.assertIn('content', errors)
+    
+    # короткое имя
     def test_articles_short_author(self):
-        errors=validate_articles
-        (
+        errors = validate_articles(
             "7",
             "Италия это очень круто!",
-            "замечательная страна",
+            "замечательная страна для путешествий",
             "2026-05-09"
         )
-    #короткая статья
+        self.assertIn('author', errors)
+    
+    # короткая статья
     def test_articles_short_content(self):
-        errors=validate_articles
-        (
+        errors = validate_articles(
             "Дудоня1",
             "Италия это очень круто!",
             "з",
             "2026-05-09"
         )
-
-
+        self.assertIn('content', errors)
+    
+    # ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ
+    
+    # пустой автор
+    def test_articles_author_empty(self):
+        errors = validate_articles(
+            "",
+            "Путешествие",
+            "Длинный текст статьи для проверки",
+            "2026-05-09"
+        )
+        self.assertIn('author', errors)
+    
+    # пустой заголовок
+    def test_articles_title_empty(self):
+        errors = validate_articles(
+            "Автор",
+            "",
+            "Длинный текст статьи для проверки",
+            "2026-05-09"
+        )
+        self.assertIn('title', errors)
+    
+    # длинное имя
+    def test_articles_author_too_long(self):
+        errors = validate_articles(
+            "А" * 50,  # 50 символов
+            "Название",
+            "Длинный текст статьи для проверки",
+            "2026-05-09"
+        )
+        self.assertIn('author', errors)
+    
+    # длинный заголовок
+    def test_articles_title_too_long(self):
+        errors = validate_articles(
+            "Автор",
+            "Н" * 150,  # 150 символов
+            "Длинный текст статьи для проверки",
+            "2026-05-09"
+        )
+        self.assertIn('title', errors)
+    
+    # некорректный формат даты
+    def test_articles_date_invalid_format(self):
+        errors = validate_articles(
+            "Автор",
+            "Название",
+            "Длинный текст статьи для проверки",
+            "31.12.2025"  # неправильный формат
+        )
+        self.assertIn('date', errors)
 
     #----------------------------
     # Тесты для страницы "Бронирование"
