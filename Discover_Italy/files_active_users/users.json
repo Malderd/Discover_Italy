@@ -39,7 +39,7 @@
         ]
     },
     {
-        "nickname": "maderdss",
+        "nickname": "malderdss",
         "email": "dmitrii.kulikov2015@gmail.com",
         "gender": "male",
         "tours": [
@@ -72,6 +72,11 @@
                 "tour_number": "14",
                 "booking_date": "2026-05-07 10:36",
                 "tour_date": "2026-07-05 11:30"
+            },
+            {
+                "tour_number": "6",
+                "booking_date": "2026-05-07 10:45",
+                "tour_date": "2026-05-09 23:59"
             }
         ]
     },

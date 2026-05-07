@@ -140,6 +140,18 @@ class Test_test_all(unittest.TestCase):
             routes = load_routes())
         self.assertIn('email', errors)
 
+    # У созданного пользователя должен быть тот же пол
+    def test_users_gender_notequal_user(self):
+        errors = validate_route(
+            "malderdss",
+            "dmitrii.kulikov2015@gmail.com",
+            "Женский",
+            "5",
+            "2026-07-09 10:30",
+            users = load_users(),
+            routes = load_routes())
+        self.assertIn('gender', errors)
+
     # Проверка некорректных почт
     def test_users_emails_assertFalse(self):
         list_mail_uncor = [
@@ -188,6 +200,11 @@ class Test_test_all(unittest.TestCase):
             "2026.06.01 23:59",
             "07-05-2026 20:00",
             "2026-12-31 23:00:00"
+            "1",
+            "20-20-20 20:20",
+            "2026-13-30 15:00",
+            "2026-01-32 1:00"
+            "20th-02-30 1:30"
             ]
         # Цикл для проверки корректной даты тура
         for tour_date in list_date_ture_cor:
@@ -200,7 +217,12 @@ class Test_test_all(unittest.TestCase):
             "2030-12-12 12:00",
             "2026-06-01 23:59",
             "2027-01-01 0:01",
-            "2026-12-31 23:00"
+            "2029-9-9 13:20",
+            "2026-10-10 10:10",
+            "2027-06-03 16:56",
+            "2028-09-27 22:50",
+            "2026-11-23 07:35"
+            "2027-01-10 08:05"
             ]
         # Цикл для проверки корректной даты тура
         for tour_date in list_date_ture_cor:

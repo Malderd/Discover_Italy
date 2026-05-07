@@ -24,7 +24,7 @@ def save_users(users):
 def get_active_users(users):
     active_users = []
     now = datetime.now()
-    month_ago = now - timedelta(days=182)
+    month6_ago = now - timedelta(days=182)
 
     for user in users:
         recent_tours = []
@@ -33,7 +33,7 @@ def get_active_users(users):
                 tour['booking_date'],
                 "%Y-%m-%d %H:%M"
             )
-            if booking_date >= month_ago:
+            if booking_date >= month6_ago:
                 recent_tours.append(tour)
 
         if recent_tours:
