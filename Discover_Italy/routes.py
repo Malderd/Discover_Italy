@@ -10,6 +10,9 @@ from datetime import datetime
 import sys
 import io
 
+from files_active_users.storage_active_users import load_users, save_users, get_active_users
+from files_active_users.validation_active_users import validate_user
+
 # импорт функций для страницы "Новинки"
 from files_new_items.validation_new_items import validate_route
 from files_new_items.storage_new_items import load_routes, save_routes, load_cities, generate_id
@@ -81,10 +84,97 @@ def cities():
     return dict(title='Города')
 
 
+# Страница с маршрутами (GET)
 @route('/active_users')
 @view('active_users')
 def active_users():
-    return dict(title='Активные пользователи')
+    users = load_users()
+
+    users = get_active_users(users)
+
+    users = sorted(users, key=lambda u: len(u['recent_tours']), reverse = True)
+
+    return dict(
+        title='Активные пользователи',
+        users=users,
+        errors={},
+        form_data={}
+    )
+
+# Страница с маршрутами (POST)
+@route('/active_users', method='POST')
+@view('active_users')
+def add_users():
+    users = load_users()
+    routes = load_routes()
+
+    nickname = request.forms.get('nickname', '').strip()
+    email = request.forms.get('email', '').strip()
+    gender = request.forms.get('gender', '').strip()
+    tour_number = request.forms.get('tour_number', '').strip()
+    tour_date  = request.forms.get('tour_date', '').strip()
+
+    form_data = {
+        'nickname': nickname,
+        'email': email,
+        'gender': gender,
+        'tour_number': tour_number,
+        'tour_date': tour_date
+    }
+
+    errors = validate_user(nickname, email, gender,
+                          tour_number, tour_date, users, routes)
+
+    if errors:
+        return dict(
+            title='Активные пользователи',
+            users=users,
+            errors=errors,
+            form_data=form_data
+        )
+
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    user = None
+    for u in users:
+        if u['email'] == email:
+            user = u
+            break
+
+    if user:
+        user['tours'].append({
+            'tour_number': tour_number,
+            'booking_date': now,
+            'tour_date': tour_date
+        })
+
+    else:
+         users.append({
+             'nickname': nickname,
+             'email': email,
+             'gender': gender,
+             'tours': [
+                 {
+                    'tour_number': tour_number,
+                    'booking_date': now,
+                    'tour_date': tour_date
+                 }
+            ]
+        })
+
+    save_users(users)
+
+    users = get_active_users(users)
+
+    users = sorted(users, key=lambda u: len(u['recent_tours']),
+                  reverse = True)
+
+    return dict(
+        title='Активные пользователи',
+        users=users,
+        errors={},
+        form_data={}
+    )
 
 @route('/articles', method=['GET', 'POST'])
 @view('articles')

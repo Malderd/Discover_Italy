@@ -38,7 +38,7 @@ body {
 /* бренд */
 .navbar-brand {
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     color: #fff !important;
     line-height: 1;
     text-decoration: none;
@@ -49,6 +49,7 @@ body {
     flex: 1;
     display: flex !important;
     justify-content: flex-end;
+    margin-left: 40px;
 }
 
     /* список меню */

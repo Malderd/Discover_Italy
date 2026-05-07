@@ -49,6 +49,12 @@
     <Compile Include="files_articles\validation_articles.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="files_active_users\storage_active_users.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="files_active_users\validation_active_users.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes.py" />
     <Compile Include="files_new_items\storage_new_items.py">
       <SubType>Code</SubType>
@@ -63,6 +69,7 @@
   <ItemGroup>
     <Folder Include="files_new_items\" />
     <Folder Include="files_articles\" />
+    <Folder Include="files_active_users\" />
     <Folder Include="static\" />
     <Folder Include="static\content\" />
     <Folder Include="static\fonts\" />
@@ -76,6 +83,9 @@
     </Content>
     <Content Include="cities.json" />
     <Content Include="files_new_items\cities.json" />
+    <Content Include="files_active_users\users.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="requirements.txt" />
     <Content Include="files_new_items\routes_cities.json" />
     <Content Include="static\content\bootstrap.css" />
@@ -86,6 +96,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\content\style_contact.css" />
+    <Content Include="static\content\style_active_user.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\content\style_home.css" />
     <Content Include="static\content\style_cities.css" />
     <Content Include="static\content\style_kitchen.css">
