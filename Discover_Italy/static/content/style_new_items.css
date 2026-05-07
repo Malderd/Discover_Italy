@@ -1,12 +1,12 @@
 /* фон страницы */
 body {
-    margin: 0; /* внешние отступы отсутствуют */
-    background: linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.75)), url("/static/images/map_Italy.jpg"); /* фон с затемнением */
-    background-size: cover; /* растяжение фона */
-    background-position: center; /* центр фона */
-    background-repeat: no-repeat; /* отсутствие повторов */
-    min-height: 100vh; /* минимальная высота экрана */
-    color: white;
+    margin: 0;
+    min-height: 100vh; /* растягивание страницы на всю высоту окна */
+    background: linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.75)), url("/static/images/map_Italy.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* фиксирование фона, чтобы он не двигался при скролле */
 }
 
 /* фиксация Bootstrap-контейнера */
@@ -48,16 +48,17 @@ body {
 
     /* заголовок */
     .left-panel h1 {
+        margin-top: 5px;
         font-size: 2.2em; /* размер текста */
         font-weight: 700; /* жирность */
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
 /* описание */
 .page-description {
-    font-size: 1.3em;
+    font-size: 1.4em;
     line-height: 1.5; /* межстрочный интервал */
-    margin-bottom: 25px;
+    margin-bottom: 8px;
 }
 
 /* форма */
@@ -94,7 +95,7 @@ body {
 
     /* описание */
     .route-form textarea {
-        height: 140px;
+        height: 100px;
         resize:none;
     }
 
@@ -116,6 +117,7 @@ body {
     align-items: center;
 }
 
+/* кнопка добавления */
 .btn-primary {
     font-size: 1.2em; 
     width: 100%; 
@@ -197,9 +199,11 @@ body {
 /* ошибка */
 .error {
     color: #ff6b6b;
-    font-size: 1.3em;
-    height: 26px;
-    visibility: visible;
+    font-size: 1.4em;
+    min-height: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 /* маршрутов нет */
