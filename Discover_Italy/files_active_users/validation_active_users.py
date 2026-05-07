@@ -2,7 +2,7 @@ from datetime import datetime
 import re
 
 email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
-nickname_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9]{4,30}'
+nickname_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9_-]{4,30}'
 
 def validate_user(nickname, email, gender, tour_number, tour_date, users, routes):
     errors = {}

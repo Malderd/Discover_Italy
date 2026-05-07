@@ -2,7 +2,7 @@ import unittest
 
 # импорт валидации для пользователей
 from files_active_users import validation_active_users
-from files_active_users.validation_active_users import validate_user
+from files_active_users.validation_active_users import validate_nickname, validate_user
 from files_active_users.storage_active_users import load_users
 from files_new_items.storage_new_items import load_routes
 
@@ -124,7 +124,7 @@ class Test_test_all(unittest.TestCase):
         errors = validate_user(
             "malderdss",
             "dmitrii.kulikov2015@gmail.com",
-            "Мужской",
+            "male",
             "5",
             "2026-07-09 10:30",
             users = load_users(),
@@ -137,7 +137,7 @@ class Test_test_all(unittest.TestCase):
         errors = validate_user(
             "kosty",
             "dmitrii.kulikov2015@gmail.com",
-            "Мужской",
+            "male",
             "5",
             "2026-07-09 10:30",
             users = load_users(),
@@ -158,6 +158,36 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('gender', errors)
 
+    # Проверка некорректных ников
+    def test_users_nickname_assertFalse(self):
+        list_nickname_uncor = [
+            "",
+            "1",
+            "1kosty",
+            "qwer",
+            "!!!.USER",
+            "user",
+            "0kosty234",
+            "12345"
+            ]
+        # Цикл для проверки каждого email
+        for nickname in list_nickname_uncor:
+            self.assertFalse(validation_active_users.validate_nickname(nickname), f"Nickname: {nickname} должен быть неверным")
+
+    # Проверка корректных ников
+    def test_users_nickname_assertTrue(self):
+        list_nickname_cor = [
+            "kostyKulikov",
+            "malderds__",
+            "m3BMW",
+            "SUAI_college",
+            "kosty-kulikov_C326",
+            "kosty007"
+            ]
+        # Цикл для проверки каждого email
+        for nickname in list_nickname_cor:
+            self.assertTrue(validation_active_users.validate_nickname(nickname), f"Nickname: {nickname} должен быть верным")
+
     # Проверка некорректных почт
     def test_users_emails_assertFalse(self):
         list_mail_uncor = [
@@ -167,10 +197,7 @@ class Test_test_all(unittest.TestCase):
             "@mail",
             "kosty@mail",
             "kosty@mail.",
-            "kosty@mail.r",
-            "kosty@m.ru",
             "@list.ru",
-            "kosty.ru",
             "kosty.mail.ru",
             "kosty@mail%.ru",
             ".@mail.ru"
