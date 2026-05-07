@@ -2,9 +2,12 @@
 
 <link rel="stylesheet" href="/static/content/style_articles.css">
 
+<!-- Добавляем блок с затемнённым фоном -->
+<div class="background-overlay"></div>
+
 <div class="article-page">
-    <h1 class="article-front">Интересные статьи</h1>
-    <h4 class="article-front">Пишите статьи, добавляйте фотографии</h4>
+    <big><h1 class="article-front">Интересные статьи</h1></big>
+    <big><h4 class="article-front">Пишите интересные статьи, делитель впечатлениями и интересными местами</h4></big>
 
     % if error:
     <div class="errors">
@@ -28,6 +31,7 @@
                     </p>
                     <p>
                         <textarea name="content" placeholder="Текст статьи">{{old.get('content','')}}</textarea>
+                    </p>
                     <p>
                         <input type="date" name="date"
                         value="{{old.get('date','')}}">

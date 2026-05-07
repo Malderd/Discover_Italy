@@ -1,18 +1,49 @@
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+    .background-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/static/images/articles.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .background-overlay::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
 body {
+    position: relative;
     padding-top: 90px !important;
     background: #f5f3ef;
     font-family: Arial, sans-serif;
 }
 
-/* контейнер страницы */
 .article-page {
     max-width: 100%;
     padding: 20px 40px;
 }
 
-/* заголовки */
 h1.article-front {
-    color: #6b4f3b;
+    color: #DDD2C2;
     margin-bottom: 10px;
     font-weight: bold;
     align-items: center;
@@ -22,7 +53,7 @@ h1.article-front {
 }
 
 h4.article-front {
-    color: #6b4f3b;
+    color: #DDD2C2;
     font-weight: normal;
     margin-bottom: 30px;
     align-items: center;
@@ -31,54 +62,51 @@ h4.article-front {
     margin-right: auto;
 }
 
-/* ДВЕ КОЛОНКИ */
 .two-columns {
     display: flex;
     gap: 40px;
     align-items: flex-start;
 }
 
-/* левая колонка — форма (теперь будет справа) */
 .form-column {
     flex: 0 0 420px;
-    order: 2; /* ставим на второе место */
+    order: 2;
 }
 
-/* правая колонка — карусель (теперь будет слева) */
 .carousel-column {
     flex: 1;
     min-width: 0;
-    order: 1; /* ставим на первое место */
+    order: 1;
 }
 
-/* карточка формы */
 .menu-container {
-    max-width: 420px;
+    max-width: 600px;
     margin: 20px 0;
     padding: 30px;
-    background: #e7dccb;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    background: rgba(231, 220, 203, 0.95);
 }
 
-/* input */
 .article-form input {
-    width: 90%;
-    padding: 10px 12px;
+    width: 100% !important;
+    min-width: 400px !important;
+    padding: 12px 15px;
     margin-top: 12px;
     border-radius: 12px;
     border: 1px solid #d2c4b3;
     outline: none;
     box-sizing: border-box;
     background: #fff;
+    font-size: 14px;
 }
 
-/* textarea */
 .article-form textarea {
-    width: 90%;
+    width: 100% !important;
+    min-width: 400px !important;
     height: 200px;
     resize: none;
     overflow-y: auto;
@@ -97,7 +125,6 @@ h4.article-front {
         box-shadow: 0 0 0 2px rgba(184,155,122,0.2);
     }
 
-/* кнопка */
 .article-form button {
     display: block;
     margin: 20px auto 0;
@@ -115,7 +142,6 @@ h4.article-front {
         transform: translateY(-2px);
     }
 
-/* ошибки */
 .errors {
     background: #ffdddd;
     padding: 10px;
@@ -124,7 +150,6 @@ h4.article-front {
     color: #a33;
 }
 
-/* КАРУСЕЛЬ - обертка со стрелками */
 .carousel-wrapper {
     display: flex;
     align-items: center;
@@ -132,7 +157,6 @@ h4.article-front {
     margin: 30px 0;
 }
 
-/* контейнер с карточками */
 .carousel-container {
     flex: 1;
     overflow: hidden;
@@ -147,7 +171,6 @@ h4.article-front {
 .card-item {
     min-width: 100%;
     box-sizing: border-box;
-    background: #e7dccb;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -155,10 +178,10 @@ h4.article-front {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background: rgba(231, 220, 203, 0.95);
 }
 
     .card-item h3 {
-       
         color: #6b4f3b;
         font-size: 22px;
         flex-shrink: 0;
@@ -167,12 +190,15 @@ h4.article-front {
 
     .card-item p {
         margin: 0 0 10px 0;
-        overflow-y: auto; /* СКРОЛЛ СПРАВА */
+        overflow-y: auto; /* полоса только когда нужно */
         flex: 1;
         padding-right: 8px;
+        direction: ltr;
+        text-align: left;
+        word-wrap: break-word; /* перенос длинных слов */
+        overflow-x: hidden; /* убираем горизонтальную прокрутку */
+        white-space: normal; /* нормальный перенос строк */
     }
-
-        /* КАСТОМИЗАЦИЯ СКРОЛЛА (справа) */
         .card-item p::-webkit-scrollbar {
             width: 8px;
         }
@@ -191,6 +217,11 @@ h4.article-front {
                 background: #a38463;
             }
 
+    .card-item p {
+        scrollbar-width: thin;
+        scrollbar-color: #b89b7a #d2c4b3;
+    }
+
     .card-item small {
         display: block;
         margin-top: 8px;
@@ -199,7 +230,6 @@ h4.article-front {
         font-size: 12px;
     }
 
-/* СТРЕЛКИ */
 .arrow-btn {
     background: #b89b7a;
     color: white;
@@ -222,12 +252,12 @@ h4.article-front {
     }
 
 .empty-message {
-    background: #e7dccb;
     padding: 40px;
     border-radius: 15px;
     text-align: center;
     color: #8b7355;
     margin: 30px 0;
+    background: rgba(231, 220, 203, 0.95);
 }
 
 @media (max-width: 900px) {
