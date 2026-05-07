@@ -30,7 +30,7 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
 
     # Проверка формата даты тура
     if validate_tour_date(tour_date) == False:
-            errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
+            errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД"
 
     # Проверка, что дата тура больше текущего дня
     if validate_tour_date_after_now(tour_date) == False:
@@ -72,7 +72,7 @@ def validate_nickname(nickname):
         return False
 
 def validate_tour_date_after_now(tour_date):
-    if str(tour_date) > datetime.now().strftime("%Y-%m-%d %H:%M"):
+    if str(tour_date) > datetime.now().strftime("%Y-%m-%d"):
         return True
     else:
         return False
@@ -80,7 +80,7 @@ def validate_tour_date_after_now(tour_date):
 
 def validate_tour_date(tour_date):
     try:
-        datetime.strptime(tour_date, "%Y-%m-%d %H:%M")
+        datetime.strptime(tour_date, "%Y-%m-%d")
         return True
     except:
         return False

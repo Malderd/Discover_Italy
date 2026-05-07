@@ -87,7 +87,7 @@ def add_users():
             form_data=form_data
         )
 
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+    now = datetime.now().strftime("%Y-%m-%d")
 
     user = None
     for u in users:

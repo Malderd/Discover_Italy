@@ -31,7 +31,7 @@ def get_active_users(users):
         for tour in user['tours']:
             booking_date = datetime.strptime(
                 tour['booking_date'],
-                "%Y-%m-%d %H:%M"
+                "%Y-%m-%d"
             )
             if booking_date >= month6_ago:
                 recent_tours.append(tour)
