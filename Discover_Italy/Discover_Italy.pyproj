@@ -25,7 +25,10 @@
     <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>unittest</TestFramework>
     <UnitTestPattern>test*.py</UnitTestPattern>
     <UnitTestRootDirectory>.</UnitTestRootDirectory>
@@ -40,7 +43,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
-    <Compile Include="articles.py">
+    <Compile Include="files_articles\storage_articles.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="files_articles\validation_articles.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="files_active_users\storage_active_users.py">
@@ -62,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="files_new_items\" />
+    <Folder Include="files_articles\" />
     <Folder Include="files_active_users\" />
     <Folder Include="static\" />
     <Folder Include="static\content\" />
@@ -71,6 +78,10 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="files_articles\articles.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="cities.json" />
     <Content Include="files_new_items\cities.json" />
     <Content Include="files_active_users\users.json">
       <SubType>Code</SubType>
@@ -81,6 +92,10 @@
     <Content Include="static\content\bootstrap.min.css" />
     <Content Include="static\content\site.css" />
     <Content Include="static\content\style.css" />
+    <Content Include="static\content\style_articles.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\content\style_contact.css" />
     <Content Include="static\content\style_active_user.css">
       <SubType>Code</SubType>
     </Content>
