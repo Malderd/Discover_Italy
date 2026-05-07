@@ -62,7 +62,7 @@
 
             <input type="text" name="tour_date"
                    value="{{form_data.get('tour_date','')}}"
-                   placeholder="Дата тура (ГГГГ-ММ-ДД ЧЧ:ММ)")"
+                   placeholder="Дата тура (ГГГГ-ММ-ДД)"
                    class="form-control">
 
             % if 'tour_date' in errors:
@@ -79,7 +79,6 @@
 
         </form>
     </div>
-    <hr>
 
     <!-- СПИСОК ПОЛЬЗОВАТЕЛЕЙ -->
     <h2 style="text-align:center;">

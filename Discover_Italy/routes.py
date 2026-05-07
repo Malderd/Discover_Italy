@@ -126,6 +126,12 @@ def add_users():
                           tour_number, tour_date, users, routes)
 
     if errors:
+
+        users = get_active_users(users)
+
+        users = sorted(users, key=lambda u: len(u['recent_tours']),
+                  reverse = True)
+
         return dict(
             title='Активные пользователи',
             users=users,
@@ -168,6 +174,7 @@ def add_users():
 
     users = sorted(users, key=lambda u: len(u['recent_tours']),
                   reverse = True)
+
 
     return dict(
         title='Активные пользователи',
