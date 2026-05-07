@@ -14,7 +14,7 @@
 
     <div class="two-columns">
         
-        <!-- ЛЕВАЯ КОЛОНКА: ФОРМА -->
+        <!-- ПРАВАЯ КОЛОНКА: ФОРМА -->
         <div class="form-column">
             <div class="menu-container">
                 <form action="/articles" method="post" class="article-form">
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <!-- ПРАВАЯ КОЛОНКА: КАРУСЕЛЬ -->
+        <!-- ЛЕВАЯ КОЛОНКА: КАРУСЕЛЬ -->
         <div class="carousel-column">
             % if articles:
             <div class="carousel-wrapper">

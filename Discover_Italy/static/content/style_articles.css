@@ -16,6 +16,9 @@ h1.article-front {
     margin-bottom: 10px;
     font-weight: bold;
     align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h4.article-front {
@@ -23,6 +26,9 @@ h4.article-front {
     font-weight: normal;
     margin-bottom: 30px;
     align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ДВЕ КОЛОНКИ */
@@ -32,15 +38,17 @@ h4.article-front {
     align-items: flex-start;
 }
 
-/* левая колонка - форма */
+/* левая колонка — форма (теперь будет справа) */
 .form-column {
     flex: 0 0 420px;
+    order: 2; /* ставим на второе место */
 }
 
-/* правая колонка - карусель */
+/* правая колонка — карусель (теперь будет слева) */
 .carousel-column {
     flex: 1;
     min-width: 0;
+    order: 1; /* ставим на первое место */
 }
 
 /* карточка формы */
@@ -51,6 +59,9 @@ h4.article-front {
     background: #e7dccb;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* input */
