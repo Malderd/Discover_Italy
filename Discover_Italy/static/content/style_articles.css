@@ -14,12 +14,15 @@ body {
 h1.article-front {
     color: #6b4f3b;
     margin-bottom: 10px;
+    font-weight: bold;
+    align-items: center;
 }
 
 h4.article-front {
     color: #6b4f3b;
     font-weight: normal;
     margin-bottom: 30px;
+    align-items: center;
 }
 
 /* ДВЕ КОЛОНКИ */
@@ -144,7 +147,7 @@ h4.article-front {
 }
 
     .card-item h3 {
-        margin-top: 0 0 8px 0;
+       
         color: #6b4f3b;
         font-size: 22px;
         flex-shrink: 0;

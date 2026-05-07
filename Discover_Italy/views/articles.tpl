@@ -28,7 +28,6 @@
                     </p>
                     <p>
                         <textarea name="content" placeholder="Текст статьи">{{old.get('content','')}}</textarea>
-                    </p>
                     <p>
                         <input type="date" name="date"
                         value="{{old.get('date','')}}">
@@ -51,7 +50,7 @@
                         % for a in articles:
                         <div class="card-item">
                             <h3>{{a['title']}}</h3>
-                            <p><b>{{a['author']}}</b></p>
+                            <big><big><b>{{a['author']}}</b></big></big>
                             <p>{{a['content']}}</p>
                             <small>{{a['date']}}</small>
                         </div>

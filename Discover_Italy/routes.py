@@ -102,11 +102,13 @@ def articles():
     old = {}
     
     if request.method == 'POST':
-        author = request.forms.getunicode('author', '')
-        title = request.forms.getunicode('title', '')
-        content = request.forms.getunicode('content', '')
-        date = request.forms.getunicode('date', '')
+        # получение данных из формы + очистка пробелов
+        author = request.forms.getunicode('author', '').strip()
+        title = request.forms.getunicode('title', '').strip()
+        content = request.forms.getunicode('content', '').strip()
+        date = request.forms.getunicode('date', '').strip()
         
+        # сохранение введённых данных
         old = {
             'author': author,
             'title': title,
@@ -114,11 +116,15 @@ def articles():
             'date': date
         }
         
+        # валидация
         if not author or not title or not content:
-            error = "Заполните все поля"
-        else:
+            error = "Заполните все поля (автор, заголовок, содержание)"
+        
+        # если ошибок нет — создаём статью
+        if not error:
+            # если дата не указана, используем текущую
             if not date:
-                date = datetime.now().strftime("%Y-%m-%d")
+                date = datetime.now().strftime("%Y-%m-%d %H:%M")
             
             new_article = {
                 "author": author,
@@ -127,11 +133,22 @@ def articles():
                 "date": date
             }
             
+            # добавляем в начало списка (новые сверху)
             articles_list.insert(0, new_article)
+            
+            # сохраняем в JSON-файл
             save_articles(articles_list)
             
-            # перенаправление для очистки формы
-            return redirect('/articles')
+            # очищаем форму после успешного добавления
+            old = {}
+            error = None
+            
+            # повторная сортировка
+            articles_list = sorted(
+                articles_list,
+                key=lambda x: x.get('date', ''),
+                reverse=True
+            )
     
     return dict(
         title='Статьи',
