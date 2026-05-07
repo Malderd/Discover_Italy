@@ -2,7 +2,7 @@
     {
         "nickname": "maderdss",
         "email": "test@gmail.com",
-        "gender": "male",
+        "gender": "Мужской",
         "tours": [
             {
                 "tour_number": "1",
@@ -19,7 +19,7 @@
     {
         "nickname": "kosty",
         "email": "Kosty-k1980@list.ru",
-        "gender": "male",
+        "gender": "Мужской",
         "tours": [
             {
                 "tour_number": "5",
@@ -41,7 +41,7 @@
     {
         "nickname": "malderdss",
         "email": "dmitrii.kulikov2015@gmail.com",
-        "gender": "male",
+        "gender": "Мужской",
         "tours": [
             {
                 "tour_number": "5",
@@ -90,28 +90,16 @@
             }
         ]
     },
-    {
-        "nickname": "kosty",
-        "email": "43",
-        "gender": "male",
-        "tours": [
-            {
-                "tour_number": "3",
-                "booking_date": "2026-05-07 10:13",
-                "tour_date": "2026-07-05 11:30"
-            }
-        ]
-    },
-    {
-        "nickname": "kosty",
-        "email": "kosty@list.ru",
-        "gender": "male",
-        "tours": [
-            {
-                "tour_number": "3",
-                "booking_date": "2026-05-07 10:15",
-                "tour_date": "2026-05-07 1:00"
-            }
-        ]
-    }
+  {
+    "nickname": "kosty",
+    "email": "43",
+    "gender": "Мужской",
+    "tours": [
+      {
+        "tour_number": "3",
+        "booking_date": "2026-05-07 10:13",
+        "tour_date": "2026-07-05 11:30"
+      }
+    ]
+  }
 ]

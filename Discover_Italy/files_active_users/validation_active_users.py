@@ -28,7 +28,7 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
             errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
     # Проверка, что дата тура больше текущего дня
-    if validate_tour_date_more_now(tour_date) == False:
+    if validate_tour_date_after_now(tour_date) == False:
         errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
 
     for u in users:
@@ -60,7 +60,7 @@ def validate_email(email):
     else:
         return False
 
-def validate_tour_date_more_now(tour_date):
+def validate_tour_date_after_now(tour_date):
     if str(tour_date) > datetime.now().strftime("%Y-%m-%d %H:%M"):
         return True
     else:
