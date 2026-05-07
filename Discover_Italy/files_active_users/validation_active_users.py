@@ -1,6 +1,8 @@
 from datetime import datetime
 import re
 
+email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
+
 def validate_user(nickname, email, gender, tour_number, tour_date, users, routes):
     errors = {}
 
@@ -18,18 +20,15 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
         errors['tour_date'] = "Введите дату тура"
 
     # Почта
-    email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
-    if email and not re.match(email_pattern, email):
+    if validate_email(email) == False:
         errors['email'] = "Некорректный email"
 
-
-    if tour_date:
-        try:
-            datetime.strptime(tour_date, "%Y-%m-%d %H:%M")
-        except:
+    # Проверка формата даты тура
+    if validate_tour_date(tour_date) == False:
             errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
-    if str(tour_date) <= datetime.now().strftime("%Y-%m-%d %H:%M"):
+    # Проверка, что дата тура больше текущего дня
+    if validate_tour_date_more_now(tour_date) == False:
         errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
 
     for u in users:
@@ -54,3 +53,23 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
         errors['tour_number'] = "Такого тура не существует"
 
     return errors
+
+def validate_email(email):
+    if (re.match(email_pattern, email)):
+        return True
+    else:
+        return False
+
+def validate_tour_date_more_now(tour_date):
+    if str(tour_date) > datetime.now().strftime("%Y-%m-%d %H:%M"):
+        return True
+    else:
+        return False
+
+
+def validate_tour_date(tour_date):
+    try:
+        datetime.strptime(tour_date, "%Y-%m-%d %H:%M")
+        return True
+    except:
+        return False
