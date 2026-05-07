@@ -1,5 +1,8 @@
 % rebase('layout.tpl', title=title)
-<link rel="stylesheet" href="/static/content/style_active_user.css">
+% from files_active_users.storage_active_users import get_active_users
+<head>
+    <link rel="stylesheet" href="/static/content/style_active_user.css">
+</head>
 <div class="container" style="margin-top:120px;">
 
     <h1 style="text-align:center;">Бронирование тура</h1>
@@ -71,6 +74,8 @@
             <input type="submit"
                    value="Забронировать"
                    class="btn booking-btn">
+
+            % users = get_active_users(users)
 
         </form>
     </div>
