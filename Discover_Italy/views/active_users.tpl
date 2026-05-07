@@ -39,8 +39,8 @@
             <br>
 
             <select name="gender" class="form-control">
-                <option value="Мужской">Мужской</option>
-                <option value="Женский">Женский</option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
             </select>
 
             % if 'gender' in errors:

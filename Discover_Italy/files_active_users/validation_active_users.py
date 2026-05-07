@@ -2,6 +2,7 @@ from datetime import datetime
 import re
 
 email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
+nickname_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9]{4,30}'
 
 def validate_user(nickname, email, gender, tour_number, tour_date, users, routes):
     errors = {}
@@ -19,7 +20,11 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
     if not tour_date:
         errors['tour_date'] = "Введите дату тура"
 
-    # Почта
+    # Проверка ника
+    if validate_nickname(nickname) == False:
+        errors['nickname'] = "Некорректный ник"
+
+    # Проверка почты
     if validate_email(email) == False:
         errors['email'] = "Некорректный email"
 
@@ -56,6 +61,12 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
 
 def validate_email(email):
     if (re.match(email_pattern, email)):
+        return True
+    else:
+        return False
+
+def validate_nickname(nickname):
+    if (re.match(nickname_pattern, nickname)):
         return True
     else:
         return False

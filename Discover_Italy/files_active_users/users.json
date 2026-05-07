@@ -2,7 +2,7 @@
     {
         "nickname": "maderdss",
         "email": "test@gmail.com",
-        "gender": "Мужской",
+        "gender": "male",
         "tours": [
             {
                 "tour_number": "1",
@@ -19,7 +19,7 @@
     {
         "nickname": "kosty",
         "email": "Kosty-k1980@list.ru",
-        "gender": "Мужской",
+        "gender": "male",
         "tours": [
             {
                 "tour_number": "5",
@@ -41,7 +41,7 @@
     {
         "nickname": "malderdss",
         "email": "dmitrii.kulikov2015@gmail.com",
-        "gender": "Мужской",
+        "gender": "male",
         "tours": [
             {
                 "tour_number": "5",
@@ -90,16 +90,64 @@
             }
         ]
     },
-  {
-    "nickname": "kosty",
-    "email": "43",
-    "gender": "Мужской",
-    "tours": [
-      {
-        "tour_number": "3",
-        "booking_date": "2026-05-07 10:13",
-        "tour_date": "2026-07-05 11:30"
-      }
-    ]
-  }
+    {
+        "nickname": "kosty",
+        "email": "43",
+        "gender": "male",
+        "tours": [
+            {
+                "tour_number": "3",
+                "booking_date": "2026-05-07 10:13",
+                "tour_date": "2026-07-05 11:30"
+            }
+        ]
+    },
+    {
+        "nickname": "kosty",
+        "email": "d2kosty@list.ru",
+        "gender": "female",
+        "tours": [
+            {
+                "tour_number": "3",
+                "booking_date": "2026-05-07 14:04",
+                "tour_date": "2026-07-05 14:40"
+            }
+        ]
+    },
+    {
+        "nickname": "123",
+        "email": "dmitrii.kulik1ov2015@gmail.com",
+        "gender": "ÐÐµÐ½ÑÐºÐ¸Ð¹",
+        "tours": [
+            {
+                "tour_number": "4",
+                "booking_date": "2026-05-07 14:04",
+                "tour_date": "2026-07-05 11:30"
+            }
+        ]
+    },
+    {
+        "nickname": "45",
+        "email": "f4342@list.ru",
+        "gender": "male",
+        "tours": [
+            {
+                "tour_number": "1",
+                "booking_date": "2026-05-07 14:06",
+                "tour_date": "2026-05-08 0:00"
+            }
+        ]
+    },
+    {
+        "nickname": "43",
+        "email": "dfWDFFWE@LIST.RU",
+        "gender": "female",
+        "tours": [
+            {
+                "tour_number": "3",
+                "booking_date": "2026-05-07 14:07",
+                "tour_date": "2026-05-08 0:00"
+            }
+        ]
+    }
 ]
