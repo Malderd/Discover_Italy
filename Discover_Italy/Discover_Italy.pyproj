@@ -43,7 +43,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
-    <Compile Include="articles.py">
+    <Compile Include="files_articles\storage_articles.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="files_articles\validation_articles.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes.py" />
@@ -59,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="files_new_items\" />
+    <Folder Include="files_articles\" />
     <Folder Include="static\" />
     <Folder Include="static\content\" />
     <Folder Include="static\fonts\" />
@@ -67,7 +71,7 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="articles.json">
+    <Content Include="files_articles\articles.json">
       <SubType>Code</SubType>
     </Content>
     <Content Include="cities.json" />
