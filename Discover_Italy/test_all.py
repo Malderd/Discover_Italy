@@ -107,5 +107,9 @@ class Test_test_all(unittest.TestCase):
               "Рим", "Флоренция", "Милан"
         )
         self.assertIn('description', errors)
+
+    #----------------------------
+    # Тесты для страницы "Бронирование"
+    #----------------------------
 if __name__ == '__main__':
     unittest.main()

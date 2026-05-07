@@ -24,7 +24,7 @@ def save_users(users):
 def get_active_users(users):
     active_users = []
     now = datetime.now()
-    month_ago = now - timedelta(days=30)
+    month_ago = now - timedelta(days=182)
 
     for user in users:
         recent_tours = []

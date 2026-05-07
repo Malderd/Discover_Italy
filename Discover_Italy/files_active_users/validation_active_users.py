@@ -29,6 +29,9 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
         except:
             errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
+    if str(tour_date) <= datetime.now().strftime("%Y-%m-%d %H:%M"):
+        errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
+
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
             errors['email'] = "Этот email уже используется с другим ником"
