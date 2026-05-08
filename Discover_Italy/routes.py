@@ -10,6 +10,11 @@ from datetime import datetime
 import sys
 import io
 
+# импорт для "Статьи"
+from files_articles.validation_articles import validate_articles
+from files_articles.storage_articles import load_articles,save_articles
+
+# импорт для "Бронирование"
 from files_active_users.storage_active_users import load_users, save_users, get_active_users
 from files_active_users.validation_active_users import validate_user
 
@@ -24,43 +29,6 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROUTES_FILE = 'routes_cities.json'
 CITIES_FILE = 'cities.json'
 ARTICLES_FILE = 'articles.json'
-
-# загрузка маршрутов
-def load_routes():
-    if not os.path.exists(ROUTES_FILE):
-        return []
-    with open(ROUTES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-# сохранение маршрутов
-def save_routes(routes):
-    with open(ROUTES_FILE, 'w', encoding='utf-8') as f:
-        json.dump(routes, f, ensure_ascii=False, indent=4)
-
-# загрузка статей
-def load_articles():
-    if not os.path.exists(ARTICLES_FILE):
-        return []
-    with open(ARTICLES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-# сохранение статей
-def save_articles(articles):
-    with open(ARTICLES_FILE, 'w', encoding='utf-8') as f:
-        json.dump(articles, f, ensure_ascii=False, indent=4)
-
-# загрузка городов
-def load_cities():
-    if not os.path.exists(CITIES_FILE):
-        return []
-    with open(CITIES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-# генерация id маршрута
-def generate_id(routes):
-    if not routes:
-        return 1
-    return max(r['id'] for r in routes) + 1
 
 @route('/')
 @route('/home')

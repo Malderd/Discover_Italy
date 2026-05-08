@@ -3,7 +3,7 @@ import os
 
 # файлы с информацией
 BASE_DIR = os.path.dirname(__file__)
-ARTICLES_FILE = os.path.join(BASE_DIR, 'routes_cities.json')
+ARTICLES_FILE = os.path.join(BASE_DIR, 'articles.json')
 
 # загрузка статей
 def load_articles():
