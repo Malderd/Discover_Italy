@@ -52,7 +52,7 @@ def cities():
     return dict(title='Города')
 
 
-# Страница с маршрутами (GET)
+# Страница с бронью (GET)
 @route('/active_users')
 @view('active_users')
 def active_users():
@@ -69,7 +69,7 @@ def active_users():
         form_data={}
     )
 
-# Страница с маршрутами (POST)
+# Страница с бронью (POST)
 @route('/active_users', method='POST')
 @view('active_users')
 def add_users():
@@ -259,18 +259,6 @@ def add_route():
         reverse=True
     )
 
-    
-    # сортировка по дате
-    if routes_list:
-        try:
-            routes_list = sorted(
-                routes_list,
-                key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
-                reverse=True
-            )
-        except:
-            pass
-    
     # загрузка списка городов
     cities = load_cities()
 
@@ -294,59 +282,6 @@ def add_route():
         'city3': c3
     }
 
-    
-    # обработка формы (добавление маршрута)
-    if request.method == 'POST':
-        # получение данных формы
-        name = request.forms.getunicode('route_name')
-        desc = request.forms.getunicode('description')
-        c1 = request.forms.getunicode('city1')
-        c2 = request.forms.getunicode('city2')
-        c3 = request.forms.getunicode('city3')
-        
-        # проверка заполнения полей
-        if not name or not desc:
-            return dict(
-                title='Новинки',
-                routes=routes_list,
-                cities=cities,
-                error="Заполните все поля"
-            )
-        
-        # проверка одинаковых городов
-        if c1 == c2 or c1 == c3 or c2 == c3:
-            return dict(
-                title='Новинки',
-                routes=routes_list,
-                cities=cities,
-                error="Города не должны повторяться"
-            )
-        
-        # создание нового маршрута
-        new_route = {
-            'id': generate_id(routes_list),
-            'name': name,
-            'description': desc,
-            'city1': c1,
-            'city2': c2,
-            'city3': c3,
-            'date': datetime.now().strftime("%Y-%m-%d %H:%M")
-        }
-        
-        # добавление в список
-        routes_list.append(new_route)
-        
-        # сохранение в файл
-        save_routes(routes_list)
-        
-        # возврат страницы с отсортированным списком
-        return dict(
-            title='Новинки',
-            routes=routes_list,
-            cities=cities
-        )
-    
-    # открытие страницы
     # вызов проверки данных
     errors = validate_route(name, desc, date, c1, c2, c3)
 
