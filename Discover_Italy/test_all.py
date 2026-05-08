@@ -8,14 +8,16 @@ from files_new_items.storage_new_items import load_routes
 
 # импорт валидации для новинок
 from files_new_items.validation_new_items import validate_route
+
 # импорт валидации для статей 
 from files_articles.validation_articles import validate_articles
 
-class Test_test_all(unittest.TestCase):
-    #----------------------------
-    # Тесты для страницы "Новинки"
-    #----------------------------
-    # корректные данные — ошибок быть не должно
+
+# =========================================
+# НОВИНКИ
+# =========================================
+class TestItems(unittest.TestCase):
+
     def test_items_valid_data(self):
         errors = validate_route(
             "Маршрут 1",
@@ -25,7 +27,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertEqual(errors, {})
 
-    # пустое название маршрута
     def test_items_empty_name(self):
         errors = validate_route(
             "",
@@ -35,7 +36,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('route_name', errors)
 
-    # слишком короткое описание
     def test_items_short_description(self):
         errors = validate_route(
             "Маршрут",
@@ -45,7 +45,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('description', errors)
 
-    # неверная дата - не указано время
     def test_items_invalid_date(self):
         errors = validate_route(
             "Маршрут",
@@ -55,7 +54,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('date', errors)
 
-    # неверная дата - время указано в неверном формате
     def test_items_invalid_time(self):
         errors = validate_route(
             "Маршрут",
@@ -65,7 +63,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('date', errors)
 
-    # одинаковые города подряд
     def test_items_same_cities(self):
         errors = validate_route(
             "Маршрут",
@@ -75,7 +72,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('cities', errors)
 
-    # в названии только числа
     def test_items_name_only_digits(self):
         errors = validate_route(
             "12345",
@@ -85,7 +81,6 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('route_name', errors)
 
-    # в описании только цифры
     def test_items_description_only_digits(self):
         errors = validate_route(
             "Маршрут 1",
@@ -95,31 +90,30 @@ class Test_test_all(unittest.TestCase):
         )
         self.assertIn('description', errors)
 
-        # английские буквы в названии
     def test_items_name_with_latin(self):
         errors = validate_route(
-             "Route 1",
-             "Хорошее описание маршрута",
-             "2026-05-06 12:00",
-             "Рим", "Флоренция", "Милан"
+            "Route 1",
+            "Хорошее описание маршрута",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
         )
         self.assertIn('route_name', errors)
 
-
-        # английские буквы в описании
     def test_items_description_with_latin(self):
         errors = validate_route(
-              "Маршрут 1",
-              "Nice trip in Italy",
-              "2026-05-06 12:00",
-              "Рим", "Флоренция", "Милан"
+            "Маршрут 1",
+            "Nice trip in Italy",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
         )
         self.assertIn('description', errors)
-#----------------------------
-# Тесты для страницы "Статьи"
-#----------------------------
 
-    # тест, все данные корректные
+
+# =========================================
+# СТАТЬИ
+# =========================================
+class TestArticles(unittest.TestCase):
+
     def test_articles_valid_data(self):
         errors = validate_articles(
             "Дорогов",
@@ -128,8 +122,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertEqual(errors, {})
-    
-    # некорректный автор (спецсимволы)
+
     def test_articles_author_incorrect(self):
         errors = validate_articles(
             "!!!!@#ljdkkf",
@@ -138,8 +131,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-    
-    # некорректный заголовок (только цифры)
+
     def test_articles_title_incorrect(self):
         errors = validate_articles(
             "Ладушка67",
@@ -148,8 +140,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-    
-    # некорректная статья (только цифры)
+
     def test_articles_content_incorrect(self):
         errors = validate_articles(
             "Ладушка67",
@@ -158,8 +149,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('content', errors)
-    
-    # некорректная дата (прошлое)
+
     def test_articles_date_incorrect(self):
         errors = validate_articles(
             "Ладушка67",
@@ -168,8 +158,7 @@ class Test_test_all(unittest.TestCase):
             "2024-05-09"
         )
         self.assertIn('date', errors)
-    
-    # автор только из цифр
+
     def test_articles_author_only_digits(self):
         errors = validate_articles(
             "6767676767",
@@ -178,8 +167,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-    
-    # заголовок только из цифр
+
     def test_articles_title_only_digits(self):
         errors = validate_articles(
             "Ладушка6767",
@@ -188,8 +176,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-    
-    # пустая статья
+
     def test_articles_content_is_empty(self):
         errors = validate_articles(
             "Ладушка6767",
@@ -198,8 +185,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('content', errors)
-    
-    # короткое имя
+
     def test_articles_short_author(self):
         errors = validate_articles(
             "7",
@@ -208,8 +194,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-    
-    # короткая статья
+
     def test_articles_short_content(self):
         errors = validate_articles(
             "Дудоня1",
@@ -218,10 +203,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('content', errors)
-    
-    # ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ
-    
-    # пустой автор
+
     def test_articles_author_empty(self):
         errors = validate_articles(
             "",
@@ -230,8 +212,7 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-    
-    # пустой заголовок
+
     def test_articles_title_empty(self):
         errors = validate_articles(
             "Автор",
@@ -240,41 +221,40 @@ class Test_test_all(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-    
-    # длинное имя
+
     def test_articles_author_too_long(self):
         errors = validate_articles(
-            "А" * 50,  # 50 символов
+            "А" * 50,
             "Название",
             "Длинный текст статьи для проверки",
             "2026-05-09"
         )
         self.assertIn('author', errors)
-    
-    # длинный заголовок
+
     def test_articles_title_too_long(self):
         errors = validate_articles(
             "Автор",
-            "Н" * 150,  # 150 символов
+            "Н" * 150,
             "Длинный текст статьи для проверки",
             "2026-05-09"
         )
         self.assertIn('title', errors)
-    
-    # некорректный формат даты
+
     def test_articles_date_invalid_format(self):
         errors = validate_articles(
             "Автор",
             "Название",
             "Длинный текст статьи для проверки",
-            "31.12.2025"  # неправильный формат
+            "31.12.2025"
         )
         self.assertIn('date', errors)
 
-    #----------------------------
-    # Тесты для страницы "Бронирование"
-    #----------------------------
-    # Корректные данные — ошибок быть не должно
+
+# =========================================
+# ПОЛЬЗОВАТЕЛИ
+# =========================================
+class TestUsers(unittest.TestCase):
+
     def test_users_valid_data(self):
         errors = validate_user(
             "malderdss",
@@ -282,12 +262,11 @@ class Test_test_all(unittest.TestCase):
             "male",
             "5",
             "2026-07-09",
-            users = load_users(),
-            routes = load_routes()
+            users=load_users(),
+            routes=load_routes()
         )
         self.assertEqual(errors, {})
 
-    # У почты может быть только 1 ник пользователя
     def test_users_nickname_notequal_email(self):
         errors = validate_user(
             "kosty",
@@ -295,12 +274,11 @@ class Test_test_all(unittest.TestCase):
             "male",
             "5",
             "2026-07-09",
-            users = load_users(),
-            routes = load_routes()
+            users=load_users(),
+            routes=load_routes()
         )
         self.assertIn('email', errors)
 
-    # У созданного пользователя должен быть тот же пол
     def test_users_gender_notequal_user(self):
         errors = validate_user(
             "malderdss",
@@ -308,12 +286,11 @@ class Test_test_all(unittest.TestCase):
             "Женский",
             "5",
             "2026-07-09",
-            users = load_users(),
-            routes = load_routes()
+            users=load_users(),
+            routes=load_routes()
         )
         self.assertIn('gender', errors)
 
-    # Проверка некорректных ников
     def test_users_nickname_assertFalse(self):
         list_nickname_uncor = [
             "",
@@ -324,12 +301,10 @@ class Test_test_all(unittest.TestCase):
             "user",
             "0kosty234",
             "12345"
-            ]
-        # Цикл для проверки каждого email
+        ]
         for nickname in list_nickname_uncor:
-            self.assertFalse(validation_active_users.validate_nickname(nickname), f"Nickname: {nickname} должен быть неверным")
+            self.assertFalse(validation_active_users.validate_nickname(nickname))
 
-    # Проверка корректных ников
     def test_users_nickname_assertTrue(self):
         list_nickname_cor = [
             "kostyKulikov",
@@ -338,12 +313,10 @@ class Test_test_all(unittest.TestCase):
             "SUAI_college",
             "kosty-kulikov_C326",
             "kosty007"
-            ]
-        # Цикл для проверки каждого email
+        ]
         for nickname in list_nickname_cor:
-            self.assertTrue(validation_active_users.validate_nickname(nickname), f"Nickname: {nickname} должен быть верным")
+            self.assertTrue(validation_active_users.validate_nickname(nickname))
 
-    # Проверка некорректных почт
     def test_users_emails_assertFalse(self):
         list_mail_uncor = [
             "",
@@ -356,12 +329,10 @@ class Test_test_all(unittest.TestCase):
             "kosty.mail.ru",
             "kosty@mail%.ru",
             ".@mail.ru"
-            ]
-        # Цикл для проверки каждого email
+        ]
         for email in list_mail_uncor:
-            self.assertFalse(validation_active_users.validate_email(email), f"Email: {email} должен быть неверным")
+            self.assertFalse(validation_active_users.validate_email(email))
 
-    # Проверка корректных почт
     def test_users_emails_assertTrue(self):
         list_mail_cor = [
             "kulikov@list.ru",
@@ -374,13 +345,10 @@ class Test_test_all(unittest.TestCase):
             "kulikov07@list.ru",
             "road_loooooooooong3424@gmail.com",
             "email_address%+-@list.ru"
-         ]
-        # Цикл для проверки каждого email
+        ]
         for email in list_mail_cor:
-            self.assertTrue(validation_active_users.validate_email(email), f"Email: {email} должен быть верным")
+            self.assertTrue(validation_active_users.validate_email(email))
 
-
-    # Проверка соответствия некорректных даты_тура по формату ГГГГ-ММ-ДД ЧЧ:ММ
     def test_users_date_tour_assertFalse(self):
         list_date_ture_uncor = [
             "Две тысячи двадцать шестой-05-15",
@@ -393,12 +361,10 @@ class Test_test_all(unittest.TestCase):
             "2026-13-30",
             "2026-01-32",
             "20th-02-30"
-            ]
-        # Цикл для проверки некорректной даты тура
+        ]
         for tour_date in list_date_ture_uncor:
-            self.assertFalse(validation_active_users.validate_tour_date(tour_date), f"Дата тура: {tour_date} должна быть неверной")
+            self.assertFalse(validation_active_users.validate_tour_date(tour_date))
 
-    # Проверка соответствия корректных даты_тура по формату ГГГГ-ММ-ДД ЧЧ:ММ
     def test_users_date_tour_assertTrue(self):
         list_date_ture_cor = [
             "2026-05-15",
@@ -411,12 +377,10 @@ class Test_test_all(unittest.TestCase):
             "2028-09-27",
             "2026-11-23",
             "2027-01-10"
-            ]
-        # Цикл для проверки корректной даты тура
+        ]
         for tour_date in list_date_ture_cor:
-            self.assertTrue(validation_active_users.validate_tour_date(tour_date), f"Дата тура: {tour_date} должна быть верной")
+            self.assertTrue(validation_active_users.validate_tour_date(tour_date))
 
-    # Проверка некорректной даты тура, которая в прошлом
     def test_users_date_tour_before_now_assertFalse(self):
         list_date_ture_uncor = [
             "2025-05-15",
@@ -429,12 +393,10 @@ class Test_test_all(unittest.TestCase):
             "2010-09-27",
             "1980-12-25",
             "2021-01-10"
-            ]
-        # Цикл для проверки некорректной даты тура
+        ]
         for tour_date in list_date_ture_uncor:
-            self.assertFalse(validation_active_users.validate_tour_date_after_now(tour_date), f"Дата тура: {tour_date} должна быть неверной")
+            self.assertFalse(validation_active_users.validate_tour_date_after_now(tour_date))
 
-     # Проверка корректной даты тура, которая в будущем
     def test_users_date_tour_after_now_assertTrue(self):
         list_date_ture_cor = [
             "2026-05-15",
@@ -447,10 +409,10 @@ class Test_test_all(unittest.TestCase):
             "2028-09-27",
             "2026-11-23",
             "2027-01-10"
-            ]
-        # Цикл для проверки корректной даты тура
+        ]
         for tour_date in list_date_ture_cor:
-            self.assertTrue(validation_active_users.validate_tour_date_after_now(tour_date), f"Дата тура: {tour_date} должна быть верной")
+            self.assertTrue(validation_active_users.validate_tour_date_after_now(tour_date))
+
 
 if __name__ == '__main__':
     unittest.main()

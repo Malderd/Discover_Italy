@@ -10,6 +10,11 @@ from datetime import datetime
 import sys
 import io
 
+# импорт для "Статьи"
+from files_articles.validation_articles import validate_articles
+from files_articles.storage_articles import load_articles,save_articles
+
+# импорт для "Бронирование"
 from files_active_users.storage_active_users import load_users, save_users, get_active_users
 from files_active_users.validation_active_users import validate_user
 
@@ -24,43 +29,6 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROUTES_FILE = 'routes_cities.json'
 CITIES_FILE = 'cities.json'
 ARTICLES_FILE = 'articles.json'
-
-# загрузка маршрутов
-def load_routes():
-    if not os.path.exists(ROUTES_FILE):
-        return []
-    with open(ROUTES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-# сохранение маршрутов
-def save_routes(routes):
-    with open(ROUTES_FILE, 'w', encoding='utf-8') as f:
-        json.dump(routes, f, ensure_ascii=False, indent=4)
-
-# загрузка статей
-def load_articles():
-    if not os.path.exists(ARTICLES_FILE):
-        return []
-    with open(ARTICLES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-# сохранение статей
-def save_articles(articles):
-    with open(ARTICLES_FILE, 'w', encoding='utf-8') as f:
-        json.dump(articles, f, ensure_ascii=False, indent=4)
-
-# загрузка городов
-def load_cities():
-    if not os.path.exists(CITIES_FILE):
-        return []
-    with open(CITIES_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-# генерация id маршрута
-def generate_id(routes):
-    if not routes:
-        return 1
-    return max(r['id'] for r in routes) + 1
 
 @route('/')
 @route('/home')
@@ -84,7 +52,7 @@ def cities():
     return dict(title='Города')
 
 
-# Страница с маршрутами (GET)
+# Страница с бронью (GET)
 @route('/active_users')
 @view('active_users')
 def active_users():
@@ -101,7 +69,7 @@ def active_users():
         form_data={}
     )
 
-# Страница с маршрутами (POST)
+# Страница с бронью (POST)
 @route('/active_users', method='POST')
 @view('active_users')
 def add_users():
@@ -291,18 +259,6 @@ def add_route():
         reverse=True
     )
 
-    
-    # сортировка по дате
-    if routes_list:
-        try:
-            routes_list = sorted(
-                routes_list,
-                key=lambda x: datetime.strptime(x['date'], "%Y-%m-%d %H:%M"),
-                reverse=True
-            )
-        except:
-            pass
-    
     # загрузка списка городов
     cities = load_cities()
 
@@ -326,59 +282,6 @@ def add_route():
         'city3': c3
     }
 
-    
-    # обработка формы (добавление маршрута)
-    if request.method == 'POST':
-        # получение данных формы
-        name = request.forms.getunicode('route_name')
-        desc = request.forms.getunicode('description')
-        c1 = request.forms.getunicode('city1')
-        c2 = request.forms.getunicode('city2')
-        c3 = request.forms.getunicode('city3')
-        
-        # проверка заполнения полей
-        if not name or not desc:
-            return dict(
-                title='Новинки',
-                routes=routes_list,
-                cities=cities,
-                error="Заполните все поля"
-            )
-        
-        # проверка одинаковых городов
-        if c1 == c2 or c1 == c3 or c2 == c3:
-            return dict(
-                title='Новинки',
-                routes=routes_list,
-                cities=cities,
-                error="Города не должны повторяться"
-            )
-        
-        # создание нового маршрута
-        new_route = {
-            'id': generate_id(routes_list),
-            'name': name,
-            'description': desc,
-            'city1': c1,
-            'city2': c2,
-            'city3': c3,
-            'date': datetime.now().strftime("%Y-%m-%d %H:%M")
-        }
-        
-        # добавление в список
-        routes_list.append(new_route)
-        
-        # сохранение в файл
-        save_routes(routes_list)
-        
-        # возврат страницы с отсортированным списком
-        return dict(
-            title='Новинки',
-            routes=routes_list,
-            cities=cities
-        )
-    
-    # открытие страницы
     # вызов проверки данных
     errors = validate_route(name, desc, date, c1, c2, c3)
 
