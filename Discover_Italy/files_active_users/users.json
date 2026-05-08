@@ -87,18 +87,11 @@
                 "tour_number": "4",
                 "booking_date": "2026-05-07 11:34",
                 "tour_date": "2026-05-08"
-            }
-        ]
-    },
-    {
-        "nickname": "kosty",
-        "email": "43",
-        "gender": "male",
-        "tours": [
+            },
             {
-                "tour_number": "3",
-                "booking_date": "2026-05-07 10:13",
-                "tour_date": "2026-07-05"
+                "tour_number": "10",
+                "booking_date": "2026-05-08 12:31",
+                "tour_date": "2026-10-08"
             }
         ]
     },
@@ -115,24 +108,7 @@
         ]
     },
     {
-        "nickname": "fgd3r345",
-        "email": "d1mitrii.kulikov2015@gmail.com",
-        "gender": "male",
-        "tours": [
-            {
-                "tour_number": "10",
-                "booking_date": "2026-05-07 22:12",
-                "tour_date": "2026-05-08"
-            },
-            {
-                "tour_number": "4",
-                "booking_date": "2026-05-07 22:13",
-                "tour_date": "2026-06-30"
-            }
-        ]
-    },
-    {
-        "nickname": "kosty",
+        "nickname": "gf4535",
         "email": "dm1itrii.kulikov2015@gmail.com",
         "gender": "male",
         "tours": [
