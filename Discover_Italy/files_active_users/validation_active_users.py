@@ -34,7 +34,7 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
 
     # Проверка, что дата тура больше текущего дня
     if validate_tour_date_after_now(tour_date) == False:
-        errors['tour_date'] = "Дата тура должна быть позже текущего дня"
+        errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
 
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
