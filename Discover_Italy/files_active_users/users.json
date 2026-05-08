@@ -130,5 +130,17 @@
                 "tour_date": "2026-06-30"
             }
         ]
+    },
+    {
+        "nickname": "kosty",
+        "email": "dm1itrii.kulikov2015@gmail.com",
+        "gender": "male",
+        "tours": [
+            {
+                "tour_number": "5",
+                "booking_date": "2026-05-08 11:57",
+                "tour_date": "2026-05-09"
+            }
+        ]
     }
 ]
