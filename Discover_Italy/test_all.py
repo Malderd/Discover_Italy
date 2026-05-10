@@ -12,7 +12,6 @@ from files_new_items.validation_new_items import validate_route
 # импорт валидации для статей 
 from files_articles.validation_articles import validate_articles
 
-
 # =========================================
 # НОВИНКИ
 # =========================================
@@ -107,8 +106,6 @@ class TestItems(unittest.TestCase):
             "Рим", "Флоренция", "Милан"
         )
         self.assertIn('description', errors)
-
-
 # =========================================
 # СТАТЬИ
 # =========================================
@@ -119,7 +116,7 @@ class TestArticles(unittest.TestCase):
             "Дорогов",
             "Путешествие по солевой Италии",
             "Отличное путешествие с замечательными людьми",
-            "2026-05-09"
+            "2026-05-16"
         )
         self.assertEqual(errors, {})
 
@@ -146,7 +143,7 @@ class TestArticles(unittest.TestCase):
             "Ладушка67",
             "Поездка по Италии",
             "23423433423434",
-            "2026-05-09"
+            "2026-05-17"
         )
         self.assertIn('content', errors)
 
@@ -248,8 +245,6 @@ class TestArticles(unittest.TestCase):
             "31.12.2025"
         )
         self.assertIn('date', errors)
-
-
 # =========================================
 # ПОЛЬЗОВАТЕЛИ
 # =========================================
