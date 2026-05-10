@@ -18,7 +18,7 @@
 
             <input type="text" name="nickname"
                    value="{{form_data.get('nickname','')}}"
-                   placeholder="Ник"
+                   placeholder="Ник (латиница)"
                    class="form-control">
 
             % if 'nickname' in errors:
