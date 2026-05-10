@@ -2,8 +2,9 @@ from datetime import datetime
 import re
 import unittest
 
-special_symbols_pattern = r'^[а-яА-ЯёЁa-zA-Z0-9\s]+$'  # Исправлено: добавил + и начало/конец строки
-puncuation_pattern = r'^[a-zA-Z0-9\s.,!?\'"-]+$'
+special_symbols_pattern = r'^(?!.*([.,!?\'"-])\1)[а-яА-ЯёЁa-zA-Z0-9\s]+$'
+
+puncuation_pattern = r'^(?!.*([.,!?\'"-:;])\1)[а-яА-ЯёЁa-zA-Z0-9\s.,!?\'"-:;]+$'
 digits_pattern = r'^\d+$'
 
 def validate_articles(author, title, content, date):
@@ -22,8 +23,8 @@ def validate_articles(author, title, content, date):
     # проверка названия статьи
     if not title:
         errors['title'] = "Введите название статьи"
-    elif not re.match(special_symbols_pattern, title):  # Исправлено: должно быть not re.match
-        errors['title'] = "Название статьи может содержать только английские и русские буквы, цифры и пробелы"
+    elif not re.match(puncuation_pattern, title):
+        errors['title'] = "Название статьи может содержать только английские и русские буквы, цифры, пробелы и пунктуационные символы"
     elif len(title) < 3 or len(title) > 100:
         errors['title'] = "Название статьи не может быть короче 3 символов и не длиннее 100"
     elif re.match(digits_pattern, title):
@@ -32,12 +33,12 @@ def validate_articles(author, title, content, date):
     # проверка статьи
     if not content:
         errors['content'] = "Введите текст статьи"
-    elif not re.match(special_symbols_pattern, content):  # Исправлено
-        errors['content'] = "Статья может содержать только английские и русские буквы, цифры и пробелы"
-    elif len(content) < 20:
-        errors['content'] = "Статья не может быть короче 20 символов"
+    elif not re.match(puncuation_pattern, content): 
+        errors['content'] = "Текст статьи может содержать только английские и русские буквы, цифры, пробелы и пунктуационные символы"
     elif re.match(digits_pattern, content):
         errors['content'] = "Статья не может содержать только цифры"
+    elif len(content) < 20:
+        errors['content'] = "Статья не может быть короче 20 символов"
 
     # проверка даты
     if not date:
@@ -49,5 +50,4 @@ def validate_articles(author, title, content, date):
                 errors['date'] = "Дата не может быть в прошлом"
         except ValueError:
             errors['date'] = "Неверный формат даты. Используйте ГГГГ-ММ-ДД"
-
     return errors
