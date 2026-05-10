@@ -70,7 +70,7 @@
 
         <!-- ЛЕВАЯ КОЛОНКА: КАРУСЕЛЬ СТАТЕЙ -->
         <div class="carousel-column">
-            % if articles:  <!-- Проверяем: есть ли статьи в списке -->
+            % if articles:
             <div class="carousel-wrapper">
                 <!-- Кнопка "влево" для прокрутки карусели -->
                 <button class="arrow-btn" onclick="move(-1)">&#10094;</button>
@@ -94,7 +94,7 @@
                 <!-- Кнопка "вправо" для прокрутки карусели -->
                 <button class="arrow-btn" onclick="move(1)">&#10095;</button>
             </div>
-            % else:  <!-- Если статей нет - выводим сообщение -->
+            % else:
             <div class="empty-message">
                 <p>Пока нет статей</p>
                 <p>Добавьте первую статью!</p>
