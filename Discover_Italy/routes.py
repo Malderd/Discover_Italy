@@ -171,7 +171,7 @@ def articles():
         reverse=True
     )
     
-    error = None
+    field_errors = {} 
     old = {}
     
     if request.method == 'POST':
@@ -189,13 +189,10 @@ def articles():
             'date': date
         }
         
-        # валидация
-        if not author or not title or not content:
-            error = "Заполните все поля (автор, заголовок, содержание)"
+        field_errors = validate_articles(author, title, content, date)
         
         # если ошибок нет — создаём статью
-        if not error:
-            # если дата не указана, используем текущую
+        if not field_errors:
             if not date:
                 date = datetime.now().strftime("%Y-%m-%d %H:%M")
             
@@ -214,7 +211,7 @@ def articles():
             
             # очищаем форму после успешного добавления
             old = {}
-            error = None
+            field_errors = {}  # ← ИЗМЕНИТЬ С error НА field_errors
             
             # повторная сортировка
             articles_list = sorted(
@@ -226,10 +223,9 @@ def articles():
     return dict(
         title='Статьи',
         articles=articles_list,
-        error=error,
+        field_errors=field_errors, 
         old=old
     )
-
 
 # страница с маршрутами (GET)
 @route('/new_items')
