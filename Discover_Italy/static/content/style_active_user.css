@@ -1,17 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient( rgba(0,0,0,0.72), rgba(0,0,0,0.72) ), url("/static/images/nigth_rome.jpg");
+    background-image: linear-gradient( rgba(0,0,0,0.7)), url("/static/images/nigth_rome.jpg");
     background-size: cover;
     background-position: center;
     font-family: Arial, sans-serif;
-    color: black;
-}
-
-/* Контейнер */
-.container {
-    position: relative;
-    z-index: 2;
 }
 
 /* Заголовки */
@@ -55,12 +48,10 @@ p {
         transition: 0.3s;
     }
 
-        /* Focus */
+        /* Фокус */
         .booking-form input:focus,
         .booking-form select:focus {
-            outline: none;
             border-color: #008C45;
-            box-shadow: 0 0 10px rgba(0,140,69,0.6);
         }
 
 /* Кнопка */
@@ -73,14 +64,12 @@ p {
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
-    transition: 0.3s;
 }
 
     .booking-btn:hover {
         background-color: #054525;
         color: white;
         transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.35);
     }
 
 /* Таблица */
@@ -99,15 +88,7 @@ p {
 
     /* Заголовки таблицы */
     .table thead th {
-        border-bottom: 2px solid rgba(255,255,255,0.2);
         font-size: 18px;
-    }
-
-    /* Ячейки */
-    .table td {
-        color: #333;
-        border-top: 1px solid rgba(255,255,255,0.08);
-        vertical-align: middle;
     }
 
 /* Ошибки */
@@ -116,5 +97,4 @@ p {
     font-size: 14px;
     margin-top: 5px;
     margin-bottom: 1px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
 }

@@ -28,6 +28,9 @@
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|KazEnv|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <InterpreterId>MSBuild|dorxyna|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>unittest</TestFramework>
     <UnitTestPattern>test*.py</UnitTestPattern>

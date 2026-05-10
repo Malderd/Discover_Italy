@@ -56,10 +56,13 @@ def cities():
 @route('/active_users')
 @view('active_users')
 def active_users():
+    # Загрузка всех пользователей из json
     users = load_users()
 
+    # Только активные пользователи
     users = get_active_users(users)
 
+    # Сортировка
     users = sorted(users, key=lambda u: len(u['recent_tours']), reverse = True)
 
     return dict(
@@ -73,9 +76,11 @@ def active_users():
 @route('/active_users', method='POST')
 @view('active_users')
 def add_users():
+    # Загрузка пользователей и туров
     users = load_users()
     routes = load_routes()
 
+    # Получение данных из формы
     nickname = request.forms.get('nickname', '').strip()
     email = request.forms.get('email', '').strip()
     gender = request.forms.get('gender', '').strip()
@@ -90,13 +95,15 @@ def add_users():
         'tour_date': tour_date
     }
 
+    # Валидация
     errors = validate_user(nickname, email, gender,
                           tour_number, tour_date, users, routes)
 
+    # Проверка, есть ли ошибки при вводе
     if errors:
 
+        # Получение и сортировка активных пользователей
         users = get_active_users(users)
-
         users = sorted(users, key=lambda u: len(u['recent_tours']),
                   reverse = True)
 
@@ -136,10 +143,11 @@ def add_users():
             ]
         })
 
+    # Сохранение пользователей
     save_users(users)
 
+     # Получение и сортировка активных пользователей
     users = get_active_users(users)
-
     users = sorted(users, key=lambda u: len(u['recent_tours']),
                   reverse = True)
 
