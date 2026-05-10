@@ -1,8 +1,8 @@
 from datetime import datetime
 import re
 
-email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
-nickname_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9_-]{4,30}'
+email_pattern = r'^(?!.*[._%+-]{2})(?!.*[._%+-]@)[a-zA-Z]{1}[a-zA-Z0-9._%+-]{3,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
+nickname_pattern = r'^(?!.*[_-]{2})[a-zA-Z]{1}[a-zA-Z0-9_-]{4,30}$'
 
 def validate_user(nickname, email, gender, tour_number, tour_date, users, routes):
     errors = {}
@@ -31,11 +31,11 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
     # Проверка формата даты тура
     if validate_tour_date(tour_date) == False:
             errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД"
-
     # Проверка, что дата тура больше текущего дня
-    if validate_tour_date_after_now(tour_date) == False:
-        errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
+    elif validate_tour_date_after_now(tour_date) == False:
+                 errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
 
+   
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
             errors['email'] = "Этот email уже используется с другим ником"
@@ -72,7 +72,7 @@ def validate_nickname(nickname):
         return False
 
 def validate_tour_date_after_now(tour_date):
-    if str(tour_date) > datetime.now().strftime("%Y-%m-%d"):
+    if str(tour_date) >= datetime.now().strftime("%Y-%m-%d"):
         return True
     else:
         return False
