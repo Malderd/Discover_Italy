@@ -82,7 +82,7 @@
                         <!-- Цикл по всем статьям: выводим каждую как отдельную карточку -->
                         % for a in articles:
                         <div class="card-item">
-                            <h3>{{a['title']}}</h3>                      
+                            <h3><b>{{a['title']}}</b></h3>                      
                             <big><big><b>{{a['author']}}</b></big></big> 
                             <p>{{a['content']}}</p>                       
                             <small>{{a['date']}}</small>                  

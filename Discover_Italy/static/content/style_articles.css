@@ -1,28 +1,26 @@
-/* Затемнённый фон-оверлей*/
+/* Затемнённый фон-оверлей */
 .background-overlay {
-    position: fixed; /* фиксированное положение относительно окна браузера */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2; /* располагается позади всего контента */
+    z-index: -2; /* Отправляем на задний план, чтобы контент был сверху */
 }
 
-    /* Псевдоэлемент для фонового изображения */
     .background-overlay::before {
-        content: ''; /* обязательное свойство для псевдоэлементов */
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('/static/images/articles.jpg'); /* путь к изображению */
-        background-size: cover; /* изображение покрывает всю область */
-        background-position: center; /* центрируем изображение */
-        background-attachment: fixed; /* фиксируем фон при скролле */
+        background-image: url('/static/images/articles.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Фон не двигается при скролле */
     }
 
-    /* Псевдоэлемент для затемнения (чёрная полупрозрачная плёнка) */
     .background-overlay::after {
         content: '';
         position: absolute;
@@ -30,109 +28,107 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.7); /* чёрный цвет с прозрачностью 70% */
+        background: rgba(0, 0, 0, 0.7); /* Затемнение 70% */
     }
 
-/* ===== ОСНОВНЫЕ СТИЛИ СТРАНИЦЫ ===== */
-
-/* Тело страницы */
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
 body {
-    position: relative;
-    padding-top: 90px !important; /* отступ сверху (под шапку сайта) */
-    background: #f5f3ef; /* цвет фона (запасной, если не загрузится изображение) */
-    font-family: Arial, sans-serif; /* шрифт текста */
+    padding-top: 90px !important; /* Отступ под шапку сайта */
+    background: #f5f3ef;
+    font-family: Arial, sans-serif;
 }
 
-/* Основной контейнер страницы статей */
 .article-page {
-    max-width: 100%; /* максимальная ширина 100% */
-    padding: 20px 40px; /* внутренние отступы: сверху/снизу 20px, слева/справа 40px */
+    max-width: 100%;
+    padding: 20px 40px;
 }
 
-/* ===== ЗАГОЛОВКИ СТРАНИЦЫ ===== */
-
-/* Главный заголовок h1 */
+/* ===== ЗАГОЛОВКИ ===== */
 h1.article-front {
-    color: #DDD2C2; 
-    margin-bottom: 10px; /* отступ снизу */
-    font-weight: bold; /* жирное начертание */
-    align-items: center; /* вертикальное центрирование (для flex) */
-    text-align: center; /* горизонтальное центрирование текста */
-    margin-left: auto; /* автоматические отступы для центрирования */
-    margin-right: auto;
-}
-
-/* Подзаголовок h4 */
-h4.article-front {
     color: #DDD2C2;
-    font-weight: normal; /* обычное начертание (не жирное) */
-    margin-bottom: 30px;
-    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* ===== ДВЕ КОЛОНКИ (ФОРМА + КАРУСЕЛЬ) ===== */
-
-/* Контейнер для двух колонок */
-.two-columns {
-    display: flex; /* гибкая раскладка (flexbox) */
-    gap: 40px; /* расстояние между колонками */
-    align-items: flex-start; /* выравнивание по верхнему краю */
-}
-
-/* Правая колонка с формой */
-.form-column {
-    flex: 0 0 420px; /* фиксированная ширина 420px */
-    order: 2; /* порядок отображения: вторая (справа) */
-}
-
-/* Левая колонка с каруселью */
-.carousel-column {
-    flex: 1; /* занимает всё оставшееся пространство */
-    min-width: 0; /* позволяет сжиматься меньше содержимого */
-    order: 1; /* порядок отображения: первая (слева) */
-}
-
-/* ===== КОНТЕЙНЕР ФОРМЫ ===== */
-
-/* Обёртка для формы */
-.menu-container {
-    max-width: 600px; /* максимальная ширина */
-    margin: 20px 0; /* внешние отступы: сверху/снизу 20px, слева/справа 0 */
-    padding: 30px; /* внутренние отступы 30px со всех сторон */
-    border-radius: 20px; /* скругление углов */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* тень: смещение, размытие, цвет */
-    text-align: center; /* центрирование текста внутри */
-    margin-left: auto; /* автоматические отступы для центрирования */
+h4.article-front {
+    color: #DDD2C2;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: auto;
     margin-right: auto;
-    background: rgba(231, 220, 203, 0.95); /* бежевый полупрозрачный фон */
 }
 
-/* ===== СТИЛИ ПОЛЕЙ ФОРМЫ ===== */
+/* ===== ПЛЕЙСХОЛДЕРЫ ===== */
+.article-form input::placeholder,
+.article-form textarea::placeholder {
+    font-size: 16px;
+    color: #999;
+    font-weight: normal;
+}
 
-/* Поля ввода (текстовые поля) */
+/* Поле даты */
+.article-form input[type="date"] {
+    font-size: 16px !important;
+    font-family: Arial, sans-serif;
+}
+
+    .article-form input[type="date"]::placeholder {
+        font-size: 16px;
+        color: #999;
+    }
+
+/* ===== ДВЕ КОЛОНКИ ===== */
+.two-columns {
+    display: flex; /* Гибкая раскладка */
+    gap: 40px; /* Расстояние между колонками */
+    align-items: flex-start;
+}
+
+.form-column {
+    flex: 0 0 500px; /* Фиксированная ширина 500px, не сжимается и не растягивается */
+    order: 2; /* Порядок: вторая колонка (справа) */
+}
+
+.carousel-column {
+    flex: 1; /* Занимает всё оставшееся место */
+    min-width: 0; /* Позволяет сжиматься */
+    order: 1; /* Порядок: первая колонка (слева) */
+}
+
+/* ===== ФОРМА ===== */
+.menu-container {
+    width: 100%;
+    margin: 20px 0;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    background: rgba(231, 220, 203, 0.95); /* Бежевый полупрозрачный фон */
+}
+
 .article-form input {
-    width: 100% !important; /* ширина 100% (с приоритетом над другими стилями) */
-    min-width: 400px !important; /* минимальная ширина 400px */
-    padding: 12px 15px; /* внутренние отступы: сверху/снизу 12px, слева/справа 15px */
-    margin-top: 12px; /* отступ сверху */
-    border-radius: 12px; /* скругление углов */
-    border: 1px solid #d2c4b3; /* рамка бежевого цвета */
-    outline: none; /* убираем стандартную подсветку при фокусе */
-    box-sizing: border-box; /* ширина включает padding и border */
-    background: #fff; /* белый фон */
-    font-size: 14px; /* размер шрифта */
+    width: 100% !important;
+    min-width: 450px !important; /* Минимальная ширина поля */
+    padding: 12px 15px;
+    margin-top: 12px;
+    border-radius: 12px;
+    border: 1px solid #d2c4b3;
+    outline: none;
+    box-sizing: border-box;
+    background: #fff;
+    font-size: 14px;
 }
 
-/* Текстовое поле (многострочное) */
 .article-form textarea {
     width: 100% !important;
-    min-width: 400px !important;
-    height: 200px; /* фиксированная высота 200px */
-    resize: none; /* запрещаем изменение размера пользователем */
-    overflow-y: auto; /* вертикальная прокрутка при необходимости */
+    height: 200px;
+    min-width: 450px !important;
+    resize: none; /* Запрещаем изменение размера */
+    overflow-y: auto; /* Вертикальная прокрутка при необходимости */
     padding: 10px 12px;
     margin-top: 12px;
     border-radius: 12px;
@@ -142,134 +138,127 @@ h4.article-front {
     background: #fff;
 }
 
-    /* Состояние фокуса (когда поле активно) */
     .article-form input:focus,
     .article-form textarea:focus {
-        border-color: #b89b7a; /* меняем цвет рамки */
-        box-shadow: 0 0 0 2px rgba(184,155,122,0.2); /* внешняя подсветка */
+        border-color: #b89b7a;
+        box-shadow: 0 0 0 2px rgba(184,155,122,0.2); /* Подсветка при фокусе */
     }
 
-/* Кнопка отправки формы */
 .article-form button {
-    display: block; /* блочный элемент */
-    margin: 20px auto 0; /* центрирование: отступ сверху 20px, слева/справа авто */
-    padding: 10px 25px; /* внутренние отступы */
-    border: none; /* убираем стандартную рамку */
-    border-radius: 25px; /* сильное скругление (пилюля) */
-    background: #b89b7a; /* бежевый фон */
-    color: white; /* белый цвет текста */
-    cursor: pointer; /* курсор-указатель при наведении */
-    transition: 0.2s; /* плавная анимация при наведении */
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #b89b7a;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s; /* Плавный переход при наведении */
 }
 
-    /* Кнопка при наведении мыши */
     .article-form button:hover {
-        background: #a38463; /* более тёмный оттенок */
-        transform: translateY(-2px); /* небольшой подъём вверх */
+        background: #a38463;
+        transform: translateY(-2px); /* Эффект подъёма при наведении */
     }
-
-/* Блок с общими ошибками (устаревший, может не использоваться) */
-.errors {
-    background: #ffdddd; /* светло-красный фон */
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    color: #a33; /* тёмно-красный текст */
-}
 
 /* ===== КАРУСЕЛЬ ===== */
-
-/* Обёртка карусели (кнопки + контейнер) */
 .carousel-wrapper {
     display: flex;
-    align-items: center; /* вертикальное центрирование */
-    gap: 15px; /* расстояние между кнопками и контейнером */
-    margin: 30px 0; /* внешние отступы */
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
 }
 
-/* Контейнер карусели (видимая область одной статьи) */
 .carousel-container {
-    flex: 1; /* занимает всё доступное пространство */
-    overflow: hidden; /* скрываем всё, что выходит за пределы */
+    flex: 1;
+    overflow: hidden; /* Скрываем всё, что выходит за границы */
     position: relative;
 }
 
-/* Трек карусели (все статьи в ряд) */
 .carousel-track {
-    display: flex; /* горизонтальное расположение карточек */
-    transition: transform 0.5s ease; /* плавное перемещение при смене статьи */
-}
-
-/* Карточка статьи (одна статья) */
-.card-item {
-    min-width: 100%; /* каждая карточка занимает 100% ширины контейнера */
-    box-sizing: border-box;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* лёгкая тень */
-    height: 400px; /* фиксированная высота */
     display: flex;
-    flex-direction: column; /* вертикальное расположение содержимого */
-    overflow: hidden; /* скрываем выходящее за пределы */
-    background: rgba(231, 220, 203, 0.95); /* полупрозрачный бежевый фон */
+    transition: transform 0.5s ease; /* Плавное переключение статей */
 }
 
-    /* Заголовок статьи в карточке */
+/* КАРТОЧКА СТАТЬИ */
+.card-item {
+    min-width: 100%; /* Каждая карточка на всю ширину контейнера */
+    box-sizing: border-box;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    height: 450px;
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение содержимого */
+    overflow: hidden;
+    background: rgba(231, 220, 203, 0.95);
+}
+
     .card-item h3 {
-        color: #6b4f3b; /* тёмно-коричневый */
-        font-size: 22px;
-        flex-shrink: 0; /* запрещаем сжатие */
-        margin-bottom: 10px;
+        color: #6b4f3b;
+        font-size: 24px;
+        flex-shrink: 0; /* Запрещаем сжатие заголовка */
+        margin-bottom: 0px;
+        text-align: center;
     }
 
-    /* Текст статьи в карточке */
+    .card-item big {
+        display: block;
+        flex-shrink: 0;
+        margin-bottom: 5px;
+        text-align: center;
+        color: #4B2B21;
+        font-size: 25px;
+    }
+
     .card-item p {
         margin: 0 0 10px 0;
-        overflow-y: auto; /* вертикальная прокрутка при длинном тексте */
-        flex: 1; /* занимает всё оставшееся пространство */
+        overflow-y: auto; /* Скролл для длинного текста */
+        flex: 1; /* Растягивается на всё свободное место */
         padding-right: 8px;
-        direction: ltr; /* направление текста слева направо */
         text-align: left;
-        word-wrap: break-word; /* перенос длинных слов */
-        overflow-x: hidden; /* скрываем горизонтальную прокрутку */
-        white-space: normal; /* разрешаем перенос строк */
+        word-wrap: break-word; /* Перенос длинных слов */
+        overflow-x: hidden;
+        white-space: normal;
+        font-size: 20px;
+        line-height: 1.6;
     }
 
-        /* Стилизация полосы прокрутки для WebKit-браузеров (Chrome, Safari, Edge) */
+        /* Стилизация полосы прокрутки для Chrome/Safari/Edge */
         .card-item p::-webkit-scrollbar {
-            width: 8px; /* ширина полосы прокрутки */
+            width: 8px;
         }
 
         .card-item p::-webkit-scrollbar-track {
-            background: #d2c4b3; /* цвет дорожки */
+            background: #d2c4b3;
             border-radius: 10px;
         }
 
         .card-item p::-webkit-scrollbar-thumb {
-            background: #b89b7a; /* цвет бегунка */
+            background: #b89b7a;
             border-radius: 10px;
         }
 
             .card-item p::-webkit-scrollbar-thumb:hover {
-                background: #a38463; /* цвет бегунка при наведении */
+                background: #a38463;
             }
 
     /* Стилизация полосы прокрутки для Firefox */
     .card-item p {
-        scrollbar-width: thin; /* тонкая полоса прокрутки */
-        scrollbar-color: #b89b7a #d2c4b3; /* цвет бегунка и дорожки */
+        scrollbar-width: thin;
+        scrollbar-color: #b89b7a #d2c4b3;
     }
 
-    /* Дата статьи в карточке */
     .card-item small {
         display: block;
-        margin-top: 8px;
-        color: #8b7355; /* коричневатый оттенок */
+        margin-top: 10px;
+        color: #8b7355;
         flex-shrink: 0;
         font-size: 12px;
+        text-align: right;
     }
 
-/* Кнопки навигации карусели (влево/вправо) */
+/* КНОПКИ КАРУСЕЛИ */
 .arrow-btn {
     background: #b89b7a;
     color: white;
@@ -277,21 +266,21 @@ h4.article-front {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    border-radius: 50%; /* круглая форма */
+    border-radius: 50%; /* Круглая форма */
     font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.2s;
-    flex-shrink: 0; /* запрещаем сжатие */
+    flex-shrink: 0;
 }
 
     .arrow-btn:hover {
         background: #a38463;
-        transform: scale(1.05); /* небольшое увеличение при наведении */
+        transform: scale(1.05); /* Увеличение при наведении */
     }
 
-/* Сообщение, когда статей нет */
+/* СООБЩЕНИЕ, КОГДА СТАТЕЙ НЕТ */
 .empty-message {
     padding: 40px;
     border-radius: 15px;
@@ -301,39 +290,12 @@ h4.article-front {
     background: rgba(231, 220, 203, 0.95);
 }
 
-/* ===== АДАПТИВНЫЙ ДИЗАЙН (ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ) ===== */
-@media (max-width: 900px) {
-    /* На узких экранах колонки располагаются вертикально */
-    .two-columns {
-        flex-direction: column; /* вертикальное расположение */
-    }
-
-    /* Колонка с формой занимает 100% ширины */
-    .form-column {
-        flex: 0 0 auto;
-        width: 100%;
-    }
-
-    /* Контейнер формы на всю ширину */
-    .menu-container {
-        max-width: 100%;
-    }
-
-    /* Уменьшаем кнопки карусели */
-    .arrow-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-}
-
-/* ===== СООБЩЕНИЯ ОБ ОШИБКАХ ВАЛИДАЦИИ ===== */
-/* Текст ошибки под полем формы */
+/* ===== ОШИБКИ ВАЛИДАЦИИ ===== */
 .field-error {
-    color: #A52A5A; /* коричнево-красный цвет (Brick red) */
-    font-size: 12px;
-    font-weight: bold; /* жирное начертание для заметности */
+    color: #A52A5A;
+    font-size: 18px;
+    font-weight: bold;
     font-family: Arial, sans-serif;
     display: inline-block;
-    margin-top: 5px; /* небольшой отступ сверху */
+    margin-top: 5px;
 }
