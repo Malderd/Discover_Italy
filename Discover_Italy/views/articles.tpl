@@ -50,7 +50,7 @@
                             <br><span class="field-error">{{field_errors['content']}}</span>
                         % end
                     </p>
-                    
+                    <!-- ПОЛЕ: Дата написания статьи  -->
                     <p>
                         <input type="date" name="date"
                                value="{{old.get('date', '')}}"
@@ -128,7 +128,7 @@ function move(direction) {
     // Меняем индекс с учётом направления
     currentIndex += direction;
     
-    // БЕСКОНЕЧНАЯ КАРУСЕЛЬ (зацикливание)
+    // БЕСКОНЕЧНАЯ КАРУСЕЛЬ
     if (currentIndex < 0) {
         currentIndex = items.length - 1;               // если ушли влево за первую - идём к последней
     } else if (currentIndex >= items.length) {
