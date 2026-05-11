@@ -18,7 +18,7 @@ def validate_route(name, desc, date, c1, c2, c3):
     elif name.isdigit():
         errors['route_name'] = "Название должно содержать буквы"
     elif re.match(symbols_pattern, name):
-        errors['route_name'] = "Название не может состоять из символов"
+        errors['route_name'] = "Название не состоит из символов"
     elif len(name) < 3 or len(name) > 50:
         errors['route_name'] = "Название короткое/длинное"
 
@@ -30,7 +30,7 @@ def validate_route(name, desc, date, c1, c2, c3):
     elif desc.isdigit():
         errors['description'] = "Описание должно содержать буквы"
     elif re.match(symbols_pattern, desc):
-        errors['description'] = "Описание не может состоять из символов"
+        errors['description'] = "Описание не состоит из символов"
     elif len(desc) < 10:
         errors['description'] = "Описание слишком короткое"
 
