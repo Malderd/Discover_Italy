@@ -15,7 +15,7 @@ def validate_route(name, desc, date, c1, c2, c3):
     elif name.isdigit():
         errors['route_name'] = "Название должно содержать буквы"
     elif len(name) < 3 or len(name) > 50:
-        errors['route_name'] = "Название слишком короткое"
+        errors['route_name'] = "Название короткое/длинное"
 
     # проверка описания
     if not desc:
@@ -27,12 +27,19 @@ def validate_route(name, desc, date, c1, c2, c3):
     elif len(desc) < 10:
         errors['description'] = "Описание слишком короткое"
 
-    # дата
+     # дата
     if not date:
         errors['date'] = "Введите дату"
     else:
         try:
-            datetime.strptime(date, "%Y-%m-%d %H:%M")
+            route_date = datetime.strptime(date, "%Y-%m-%d %H:%M")
+
+            # проверка года
+            if route_date.year < 2025:
+                errors['date'] = "Дата не может быть меньше 2025 года"
+            elif route_date.year > 2030:
+                errors['date'] = "Дата не может быть больше 2030 года"
+
         except ValueError:
             errors['date'] = "Формат даты: ГГГГ-ММ-ДД ЧЧ:ММ"
 
