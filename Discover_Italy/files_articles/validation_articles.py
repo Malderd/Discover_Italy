@@ -46,8 +46,12 @@ def validate_articles(author, title, content, date):
     else:
         try:
             date_obj = datetime.strptime(date, "%Y-%m-%d")
-            if date_obj < datetime.now().replace(hour=0, minute=0, second=0, microsecond=0):
+            today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+            if date_obj < today:
                 errors['date'] = "Дата не может быть в прошлом"
+            max_date = today.replace(year=today.year+1)
+            if date_obj > max_date:
+                errors['date'] = f"Дата не может позже {max_date.strftime('%d.%m.%Y')}"
         except ValueError:
             errors['date'] = "Неверный формат даты. Используйте ГГГГ-ММ-ДД"
     return errors
