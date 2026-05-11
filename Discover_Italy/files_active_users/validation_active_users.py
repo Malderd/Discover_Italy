@@ -1,52 +1,50 @@
 from datetime import datetime
 import re
 
-email_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9._%+-]{1,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
-nickname_pattern = r'^[a-zA-Z]{1}[a-zA-Z0-9_-]{4,30}'
+# Паттерн для email
+email_pattern = r'^(?!.*[._%+-]{2})(?!.*[._%+-]@)[a-zA-Z]{1}[a-zA-Z0-9._%+-]{3,50}@[a-zA-Z0-9-]{2,35}\.[a-zA-Z]{2,20}$'
+
+# Паттерн для ника
+nickname_pattern = r'^(?!.*[_-]{2})[a-zA-Z]{1}[a-zA-Z0-9_-]{4,30}$'
 
 def validate_user(nickname, email, gender, tour_number, tour_date, users, routes):
     errors = {}
 
-    # Пустые поля
+    # Проверка пустых полей
     if not nickname:
         errors['nickname'] = "Введите ник"
+    # Проверка ника на соответствие паттерну
+    elif validate_nickname(nickname) == False:
+        errors['nickname'] = "Некорректный ник"
 
     if not email:
         errors['email'] = "Введите email"
-
-    if not tour_number:
-        errors['tour_number'] = "Введите номер тура"
-
-    if not tour_date:
-        errors['tour_date'] = "Введите дату тура"
-
-    # Проверка ника
-    if validate_nickname(nickname) == False:
-        errors['nickname'] = "Некорректный ник"
-
-    # Проверка почты
-    if validate_email(email) == False:
+    # Проверка почты на соответствие паттерну
+    elif validate_email(email) == False:
         errors['email'] = "Некорректный email"
+
 
     # Проверка формата даты тура
     if validate_tour_date(tour_date) == False:
             errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД"
-
     # Проверка, что дата тура больше текущего дня
-    if validate_tour_date_after_now(tour_date) == False:
-        errors['tour_date'] = "Дата тура должна быть позже текущего дня"
+    elif validate_tour_date_after_now(tour_date) == False:
+                 errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
 
+    # Провера, что 1 email не может принадлежать разным никак
     for u in users:
         if u['email'] == email and u['nickname'] != nickname:
             errors['email'] = "Этот email уже используется с другим ником"
             break
 
+    # Проверка, если email и ник уже есть в базе, то пол менять нельзя
     for u in users:
         if u['email'] == email and u['nickname'] == nickname:
             if u['gender'] != gender:
                 errors['gender'] = "Нельзя изменить пол для существующего пользователя"
                 break
 
+    # Проверка существования тура в routes
     found = False
 
     for r in routes:
@@ -59,25 +57,30 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
 
     return errors
 
+# Функция проверки email соответствия шаблону
 def validate_email(email):
     if (re.match(email_pattern, email)):
         return True
     else:
         return False
 
+# Функция проверки ника соответствия шаблону
 def validate_nickname(nickname):
     if (re.match(nickname_pattern, nickname)):
         return True
     else:
         return False
 
+# Функция проверки, что дата тура не меньше текущей даты
 def validate_tour_date_after_now(tour_date):
-    if str(tour_date) > datetime.now().strftime("%Y-%m-%d"):
+    tour_dt = datetime.strptime(tour_date, "%Y-%m-%d").date()
+    if tour_dt >= datetime.now().date():
         return True
     else:
         return False
 
 
+# Функция проверка даты соответствия формату
 def validate_tour_date(tour_date):
     try:
         datetime.strptime(tour_date, "%Y-%m-%d")

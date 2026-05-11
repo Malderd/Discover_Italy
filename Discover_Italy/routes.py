@@ -56,10 +56,13 @@ def cities():
 @route('/active_users')
 @view('active_users')
 def active_users():
+    # Загрузка всех пользователей из json
     users = load_users()
 
+    # Только активные пользователи
     users = get_active_users(users)
 
+    # Сортировка
     users = sorted(users, key=lambda u: len(u['recent_tours']), reverse = True)
 
     return dict(
@@ -73,9 +76,11 @@ def active_users():
 @route('/active_users', method='POST')
 @view('active_users')
 def add_users():
+    # Загрузка пользователей и туров
     users = load_users()
     routes = load_routes()
 
+    # Получение данных из формы
     nickname = request.forms.get('nickname', '').strip()
     email = request.forms.get('email', '').strip()
     gender = request.forms.get('gender', '').strip()
@@ -90,13 +95,15 @@ def add_users():
         'tour_date': tour_date
     }
 
+    # Валидация
     errors = validate_user(nickname, email, gender,
                           tour_number, tour_date, users, routes)
 
+    # Проверка, есть ли ошибки при вводе
     if errors:
 
+        # Получение и сортировка активных пользователей
         users = get_active_users(users)
-
         users = sorted(users, key=lambda u: len(u['recent_tours']),
                   reverse = True)
 
@@ -136,10 +143,11 @@ def add_users():
             ]
         })
 
+    # Сохранение пользователей
     save_users(users)
 
+     # Получение и сортировка активных пользователей
     users = get_active_users(users)
-
     users = sorted(users, key=lambda u: len(u['recent_tours']),
                   reverse = True)
 
@@ -163,7 +171,7 @@ def articles():
         reverse=True
     )
     
-    error = None
+    field_errors = {} 
     old = {}
     
     if request.method == 'POST':
@@ -181,13 +189,10 @@ def articles():
             'date': date
         }
         
-        # валидация
-        if not author or not title or not content:
-            error = "Заполните все поля (автор, заголовок, содержание)"
+        field_errors = validate_articles(author, title, content, date)
         
         # если ошибок нет — создаём статью
-        if not error:
-            # если дата не указана, используем текущую
+        if not field_errors:
             if not date:
                 date = datetime.now().strftime("%Y-%m-%d %H:%M")
             
@@ -206,7 +211,7 @@ def articles():
             
             # очищаем форму после успешного добавления
             old = {}
-            error = None
+            field_errors = {}  # ← ИЗМЕНИТЬ С error НА field_errors
             
             # повторная сортировка
             articles_list = sorted(
@@ -218,10 +223,9 @@ def articles():
     return dict(
         title='Статьи',
         articles=articles_list,
-        error=error,
+        field_errors=field_errors, 
         old=old
     )
-
 
 # страница с маршрутами (GET)
 @route('/new_items')

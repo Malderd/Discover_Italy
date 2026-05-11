@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="/static/content/style_active_user.css">
 </head>
-<div class="container" style="margin-top:120px;">
+<div style="margin-top:140px;">
 
     <h1 style="text-align:center;">Бронирование тура</h1>
 
@@ -11,14 +11,14 @@
         Заполните форму, чтобы забронировать тур по Италии.
     </p>
 
-    <!-- ФОРМА ПО ЦЕНТРУ -->
+    <!-- Форма -->
     <div class="booking-wrapper">
 
         <form action="/active_users" method="post" class="booking-form">
 
             <input type="text" name="nickname"
                    value="{{form_data.get('nickname','')}}"
-                   placeholder="Ник"
+                   placeholder="Ник (латиница)"
                    class="form-control">
 
             % if 'nickname' in errors:
@@ -75,13 +75,11 @@
                    value="Забронировать"
                    class="btn booking-btn">
 
-            % users = get_active_users(users)
-
         </form>
     </div>
 
-    <!-- СПИСОК ПОЛЬЗОВАТЕЛЕЙ -->
-    <h2 style="text-align:center;">
+    <!-- Список активных пользователей -->
+    <h2 style="text-align:center">
         Список активных пользователей за последние полгода
     </h2>
 
