@@ -108,6 +108,42 @@ class TestItems(unittest.TestCase):
         )
         self.assertIn('description', errors)
 
+    def test_items_name_only_symbols(self):
+        errors = validate_route(
+            "@@@@@",
+            "Хорошее описание маршрута",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('route_name', errors)
+
+    def test_items_description_only_symbols(self):
+        errors = validate_route(
+            "Маршрут 1",
+            "!!!!!!!!!!",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('description', errors)
+
+    def test_items_date_less_2025(self):
+        errors = validate_route(
+            "Маршрут",
+            "Хорошее описание маршрута",
+            "2024-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('date', errors)
+
+    def test_items_date_more_2030(self):
+        errors = validate_route(
+            "Маршрут",
+            "Хорошее описание маршрута",
+            "2031-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('date', errors)
+
 
 # =========================================
 # СТАТЬИ
@@ -119,7 +155,7 @@ class TestArticles(unittest.TestCase):
             "Дорогов",
             "Путешествие по солевой Италии",
             "Отличное путешествие с замечательными людьми",
-            "2026-05-09"
+            "2026-05-11"
         )
         self.assertEqual(errors, {})
 
