@@ -50,7 +50,7 @@
                             <br><span class="field-error">{{field_errors['content']}}</span>
                         % end
                     </p>
-                    
+                    <!-- ПОЛЕ: Дата написания статьи  -->
                     <p>
                         <input type="date" name="date"
                                value="{{old.get('date', '')}}"
@@ -70,7 +70,7 @@
 
         <!-- ЛЕВАЯ КОЛОНКА: КАРУСЕЛЬ СТАТЕЙ -->
         <div class="carousel-column">
-            % if articles:  <!-- Проверяем: есть ли статьи в списке -->
+            % if articles:
             <div class="carousel-wrapper">
                 <!-- Кнопка "влево" для прокрутки карусели -->
                 <button class="arrow-btn" onclick="move(-1)">&#10094;</button>
@@ -82,7 +82,7 @@
                         <!-- Цикл по всем статьям: выводим каждую как отдельную карточку -->
                         % for a in articles:
                         <div class="card-item">
-                            <h3>{{a['title']}}</h3>                      
+                            <h3><b>{{a['title']}}</b></h3>                      
                             <big><big><b>{{a['author']}}</b></big></big> 
                             <p>{{a['content']}}</p>                       
                             <small>{{a['date']}}</small>                  
@@ -94,7 +94,7 @@
                 <!-- Кнопка "вправо" для прокрутки карусели -->
                 <button class="arrow-btn" onclick="move(1)">&#10095;</button>
             </div>
-            % else:  <!-- Если статей нет - выводим сообщение -->
+            % else:
             <div class="empty-message">
                 <p>Пока нет статей</p>
                 <p>Добавьте первую статью!</p>
@@ -128,7 +128,7 @@ function move(direction) {
     // Меняем индекс с учётом направления
     currentIndex += direction;
     
-    // БЕСКОНЕЧНАЯ КАРУСЕЛЬ (зацикливание)
+    // БЕСКОНЕЧНАЯ КАРУСЕЛЬ
     if (currentIndex < 0) {
         currentIndex = items.length - 1;               // если ушли влево за первую - идём к последней
     } else if (currentIndex >= items.length) {

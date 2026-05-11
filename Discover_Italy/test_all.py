@@ -106,11 +106,49 @@ class TestItems(unittest.TestCase):
             "Рим", "Флоренция", "Милан"
         )
         self.assertIn('description', errors)
+
+    def test_items_name_only_symbols(self):
+        errors = validate_route(
+            "@@@@@",
+            "Хорошее описание маршрута",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('route_name', errors)
+
+    def test_items_description_only_symbols(self):
+        errors = validate_route(
+            "Маршрут 1",
+            "!!!!!!!!!!",
+            "2026-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('description', errors)
+
+    def test_items_date_less_2025(self):
+        errors = validate_route(
+            "Маршрут",
+            "Хорошее описание маршрута",
+            "2024-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('date', errors)
+
+    def test_items_date_more_2030(self):
+        errors = validate_route(
+            "Маршрут",
+            "Хорошее описание маршрута",
+            "2031-05-06 12:00",
+            "Рим", "Флоренция", "Милан"
+        )
+        self.assertIn('date', errors)
+
+
 # =========================================
 # СТАТЬИ
 # =========================================
 class TestArticles(unittest.TestCase):
-
+    #проверка, на все правильные введенные данные
     def test_articles_valid_data(self):
         errors = validate_articles(
             "Дорогов",
@@ -119,7 +157,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-16"
         )
         self.assertEqual(errors, {})
-
+        #неверно введенный автор
     def test_articles_author_incorrect(self):
         errors = validate_articles(
             "!!!!@#ljdkkf",
@@ -128,7 +166,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-
+     # в заголовке только цифры
     def test_articles_title_incorrect(self):
         errors = validate_articles(
             "Ладушка67",
@@ -137,7 +175,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-
+         #содержание статьи только цифры
     def test_articles_content_incorrect(self):
         errors = validate_articles(
             "Ладушка67",
@@ -146,7 +184,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-17"
         )
         self.assertIn('content', errors)
-
+        #некорректная дата
     def test_articles_date_incorrect(self):
         errors = validate_articles(
             "Ладушка67",
@@ -155,7 +193,7 @@ class TestArticles(unittest.TestCase):
             "2024-05-09"
         )
         self.assertIn('date', errors)
-
+         #в авторе только цифры
     def test_articles_author_only_digits(self):
         errors = validate_articles(
             "6767676767",
@@ -164,7 +202,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-
+         #в заголовке только цифры
     def test_articles_title_only_digits(self):
         errors = validate_articles(
             "Ладушка6767",
@@ -173,7 +211,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-
+         #текст статьи пустой
     def test_articles_content_is_empty(self):
         errors = validate_articles(
             "Ладушка6767",
@@ -182,16 +220,16 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('content', errors)
-
+         # короткое имя автора
     def test_articles_short_author(self):
         errors = validate_articles(
-            "7",
+            "в",
             "Италия это очень круто!",
             "замечательная страна для путешествий",
             "2026-05-09"
         )
         self.assertIn('author', errors)
-
+         #короткий текст статьи
     def test_articles_short_content(self):
         errors = validate_articles(
             "Дудоня1",
@@ -200,7 +238,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('content', errors)
-
+         #автор пустой
     def test_articles_author_empty(self):
         errors = validate_articles(
             "",
@@ -209,7 +247,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-
+         #заголовок пустой
     def test_articles_title_empty(self):
         errors = validate_articles(
             "Автор",
@@ -218,7 +256,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-
+         # длинное имя автора
     def test_articles_author_too_long(self):
         errors = validate_articles(
             "А" * 50,
@@ -227,7 +265,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('author', errors)
-
+         # длинный заголовок статьи
     def test_articles_title_too_long(self):
         errors = validate_articles(
             "Автор",
@@ -236,7 +274,7 @@ class TestArticles(unittest.TestCase):
             "2026-05-09"
         )
         self.assertIn('title', errors)
-
+         #неверный формат даты
     def test_articles_date_invalid_format(self):
         errors = validate_articles(
             "Автор",
