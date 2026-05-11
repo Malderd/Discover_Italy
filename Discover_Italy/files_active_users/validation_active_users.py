@@ -91,6 +91,7 @@ def validate_tour_date(tour_date):
     except:
         return False
 
+# Функция проверки, что дата должны быть меньше 2029 года
 def validate_year(tour_date):
     try:
         date = tour_date.split("-")
