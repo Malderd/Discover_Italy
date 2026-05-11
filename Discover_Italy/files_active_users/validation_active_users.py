@@ -29,7 +29,10 @@ def validate_user(nickname, email, gender, tour_number, tour_date, users, routes
             errors['tour_date'] = "Формат даты: ГГГГ-ММ-ДД"
     # Проверка, что дата тура больше текущего дня
     elif validate_tour_date_after_now(tour_date) == False:
-                 errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
+            errors['tour_date'] = "Дата тура должна быть раньше текущего дня"
+    elif validate_year(tour_date) == False:
+            errors['tour_date'] = "Дата тура должны быть меньше 2029 года"
+
 
     # Провера, что 1 email не может принадлежать разным никак
     for u in users:
@@ -83,7 +86,17 @@ def validate_tour_date_after_now(tour_date):
 # Функция проверка даты соответствия формату
 def validate_tour_date(tour_date):
     try:
-        datetime.strptime(tour_date, "%Y-%m-%d")
+        tour_date = datetime.strptime(tour_date, "%Y-%m-%d")
         return True
+    except:
+        return False
+
+def validate_year(tour_date):
+    try:
+        date = tour_date.split("-")
+        if int(date[0]) < 2029:
+            return True
+        else:
+            return False
     except:
         return False
